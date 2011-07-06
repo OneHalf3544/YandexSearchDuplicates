@@ -11,13 +11,11 @@ public class Salary {
     private final Integer maximum;
 
     public Salary() {
-        this.minimum = null;
-        this.maximum = null;
+        this(null);
     }
     
     public Salary(Integer concrete) {
-        this.minimum = concrete;
-        this.maximum = concrete;
+        this(concrete, concrete);
     }
     
     public Salary(Integer minimum, Integer maximum) {

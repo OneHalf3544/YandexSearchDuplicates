@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
@@ -35,9 +37,11 @@ public class SearchDoubles {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Logger.getLogger("ru.yandex.test").setLevel(Level.ALL);
         beanFactory.getBean("SearchDoubles");
     }
     private Map<VacancySource, VacancySet> vacancyMap;
+    private static final Logger LOGGER = Logger.getLogger(SearchDoubles.class.getName());
         
     public void setDialog(SearchDialog dialog) {
         this.dialog = dialog;
@@ -69,20 +73,24 @@ public class SearchDoubles {
     }
     
     private Set<Duplicate> searchDuplicateVacancy() {
+        LOGGER.log(Level.FINE, "Поиск дубликатов");
+        
         Set<Duplicate> result = new HashSet<Duplicate>();
         final VacancySet[] vacancySets = vacancyMap.values().toArray(new VacancySet[]{});
         
         for (int i = 0; i < vacancySets.length; i++) {
             for (int j = i+1; j < vacancySets.length; j++) {
-                for (Vacancy k : vacancySets[i].getVacansies()) {
-                    for (Vacancy l : vacancySets[j].getVacansies()) {
+                for (Vacancy k : vacancySets[i].getVacancies()) {
+                    for (Vacancy l : vacancySets[j].getVacancies()) {
                         if (k.getLevelOfSimilarity(l) > THRESHOLD_OF_EQUIVALENCE) {
                             result.add(new Duplicate(k, l));
+                            LOGGER.log(Level.FINER, "Найдены дубликаты: \n{0}, \n{1}", new Object[]{k, l});
                         }
                     }                    
                 }
             }
         }
+        LOGGER.log(Level.FINE, "Окончание поиска дубликатов");
         return result;
     }
 
@@ -96,6 +104,15 @@ public class SearchDoubles {
 
         public Set<Vacancy> getDuplicates() {
             return Collections.unmodifiableSet(duplicates);
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder result = new StringBuilder();
+            for (Vacancy vacancy : duplicates) {
+                result.append(vacancy).append("\n");
+            }
+            return result.toString();
         }
     }
 

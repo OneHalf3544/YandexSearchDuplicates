@@ -64,10 +64,10 @@ public class ShingleTest {
         System.out.println("Corellation");
         
         double corellation = Shingle.corellation(new Shingle(exampleString), new Shingle(exampleString));
-        assertEquals(100.0, corellation, 0.001);
+        assertEquals(1.0, corellation, 0.001);
         
         corellation = Shingle.corellation(new Shingle(exampleString), new Shingle(exampleString5));
-        assertEquals(35.0, corellation, 0.5);
+        assertEquals(0.35, corellation, 0.1);
         
         corellation = Shingle.corellation(
                 new Shingle(exampleString + exampleString2), 

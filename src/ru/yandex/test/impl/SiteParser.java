@@ -1,6 +1,7 @@
 package ru.yandex.test.impl;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +52,12 @@ public class SiteParser implements VacancySource {
 
     @Override
     public VacancySet getVacancySet() {
+        return getVacancySet(false);
+    }
+    
+    public VacancySet getVacancySet(boolean deleteOnExit) {
         VacancySet result = null;
+        LOGGER.log(Level.INFO, "Сбор информации с сайта {0}", siteName);
         try {
             ScraperConfiguration config = new ScraperConfiguration(configResourceName);
             Scraper scraper = new Scraper(config, WORKING_DIRECTORY);
@@ -63,15 +69,23 @@ public class SiteParser implements VacancySource {
             scraper.execute();
             
             result = new VacancySetImpl();
-            result.parse(tempFile);
+            result.parse(new FileReader(tempFile));
             
-            tempFile.delete();
+            if (deleteOnExit)  {
+                tempFile.delete();
+            }
         } 
         catch (IOException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }        
+        LOGGER.log(Level.INFO, "Окончание сбора информации с сайта {0}", siteName);
         
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "SiteParser{" + "site: " + siteName + ", query: " + searchText + '}';
     }
     
 }

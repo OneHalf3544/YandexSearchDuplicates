@@ -33,5 +33,5 @@
     </bean>
 	
     <bean id="reportCreator" class="ru.yandex.test.impl.ReportCreatorImpl">
-    </bean>
+    </bean>    
 </beans>

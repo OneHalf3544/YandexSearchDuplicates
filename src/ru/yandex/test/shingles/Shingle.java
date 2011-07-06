@@ -55,10 +55,14 @@ public class Shingle {
         if (shingle1.SHINGLE_LENGTH != shingle2.SHINGLE_LENGTH) {
             return 0.0;
         }        
-        int preResult = 0;
         final int[] sh1 = shingle1.getShingle();
         final int[] sh2 = shingle2.getShingle();
         
+        if (sh1.length == 0 || sh2.length ==0) {
+            return 0.0;
+        }
+        
+        int preResult = 0;
         for (int i = 0; i < sh1.length; i++) {
             for (int j = 0; j < sh2.length; j++) {
                 if (sh1[i] == sh2[j]) {
@@ -66,6 +70,6 @@ public class Shingle {
                 }
             }
         }
-        return 2*100.0*preResult/(sh1.length + sh2.length);
+        return 2.0*preResult/(sh1.length + sh2.length);
     }
 }

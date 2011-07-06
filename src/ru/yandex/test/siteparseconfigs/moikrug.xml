@@ -17,7 +17,7 @@
             <call-param name="pageUrl"><var name="url"/></call-param>
             <call-param name="nextXPath">//a[@class='next_page']/@href</call-param>
             <call-param name="itemXPath">//div[@class='b-vacancy']/div[@class='title']/a[1]/@href</call-param>
-            <call-param name="maxloops">1</call-param>
+            <call-param name="maxloops">50</call-param>
         </call>
     </var-def>
 
@@ -41,7 +41,7 @@
           <var-def name="vacUrl"><template>${sys.fullUrl(baseUrl.toString(), vacancyUrl.toString())}</template></var-def>
 
           <var-def name="vacancyName">
-            <xpath expression="//div[@class='title']/span[@class='posotion']/text()">
+            <xpath expression="//div[@class='title']/span[@class='position']/text()">
               <var name="content" />
             </xpath>
           </var-def>

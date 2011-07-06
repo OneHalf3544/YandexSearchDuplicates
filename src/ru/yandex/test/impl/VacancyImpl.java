@@ -1,5 +1,6 @@
 package ru.yandex.test.impl;
 
+import java.text.MessageFormat;
 import ru.yandex.test.Salary;
 import ru.yandex.test.Vacancy;
 import ru.yandex.test.shingles.Shingle;
@@ -20,8 +21,25 @@ public class VacancyImpl implements Vacancy {
 
     private VacancyShingles shingles;
 
-    public VacancyImpl() {
+    public VacancyImpl() {        
+    }
+
+    public VacancyImpl(
+            String vacancyName, String vacancyUrl, 
+            String companyName, String companyUrl, 
+            String cityName, 
+            Salary salary, 
+            String description) {        
         
+        this.vacancyName = vacancyName;
+        this.vacancyUrl = vacancyUrl;
+        
+        this.companyName = companyName;
+        this.companyUrl = companyUrl;
+        
+        this.cityName = cityName;
+        this.salary = salary;
+        this.description = description;
     }
 
     @Override
@@ -104,17 +122,24 @@ public class VacancyImpl implements Vacancy {
         if (other.shingles == null) {
             other.updateShingles();
         }
+        if (!this.salary.permissible(other.salary)) { 
+            /* Эквивалентность зарплат. Не влияет на вероятность, 
+             * но если диапазоны не перекрываются, считаем, что вакансии разные
+             */
+            return 0.0;
+        }
+        
         Double result = 0.0;
         
         // Сумма коэфициентов перед слагаемыми должна быть равно единице
         
         // Равенство названий вакансии
-        result += 0.15 * Shingle.corellation(
+        result += 0.2 * Shingle.corellation(
                 this.shingles.vacancyNameShingle, 
                 other.shingles.vacancyNameShingle);
         
         // Город
-        result += 0.15 * Shingle.corellation(
+        result += 0.2 * Shingle.corellation(
                 this.shingles.cityShingles, 
                 other.shingles.cityShingles);
         
@@ -122,9 +147,6 @@ public class VacancyImpl implements Vacancy {
         result += 0.3 * Shingle.corellation(
                 this.shingles.companyNameShingle, 
                 other.shingles.companyNameShingle);
-        
-        // Эквивалентность зарплат
-        result += 0.1 * (this.salary.permissible(other.salary) ? 1 : 0);
         
         // Описание
         result += 0.3 * Shingle.corellation(
@@ -136,6 +158,11 @@ public class VacancyImpl implements Vacancy {
 
     private void updateShingles() {
         shingles = new VacancyShingles();
+    }
+
+    @Override
+    public String toString() {
+        return MessageFormat.format("Вакансия: {0} ({1}) url: {2}", vacancyName, companyName, vacancyUrl);
     }
     
     private class VacancyShingles {

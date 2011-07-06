@@ -3,9 +3,12 @@ package ru.yandex.test.impl;
 import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 import java.io.File;
 import java.io.FileReader;
+import java.io.Reader;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -21,127 +24,219 @@ import ru.yandex.test.VacancySet;
  * @author OneHalf
  */
 public class VacancySetImpl implements VacancySet {
-    private Set<Vacancy> vacancies = new HashSet<Vacancy>();
+    
+    private static final Logger LOGGER = Logger.getLogger(VacancySetImpl.class.getName());
+    
+    private Set<Vacancy> vacancies;
+    private String query;
+    private final VacancyCreatorHandler vacancyCreatorHandler = new VacancyCreatorHandler();
 
     @Override
-    public void parse(File file) {
+    public void parse(Reader reader) {
+        LOGGER.log(Level.INFO, "Начало парсинга xml-потока с вакансиями");
         try {
-            XMLReader reader = new SAXParser();
-            reader.setContentHandler(new VacancyCreatorHandler());
-            reader.parse(new InputSource(new FileReader(file)));
+            XMLReader parser = new SAXParser();
+            parser.setContentHandler(vacancyCreatorHandler);
+            parser.parse(new InputSource(reader));
+            
+            vacancies = vacancyCreatorHandler.getVacancies();
+            query = Tag.getQuery();
         } catch(Exception e){
-            System.out.println(e);
+            LOGGER.log(Level.INFO, "Ошибка парсинга потока");
         }
+        LOGGER.log(Level.INFO, "Окончание парсинга xml-потока с вакансиями");
     }
 
     @Override
-    public Set<Vacancy> getVacansies() {
-        return Collections.unmodifiableSet(vacancies);
+    public Set<Vacancy> getVacancies() {
+        return vacancies;
     }
 
+    /**
+     * Класс, объекты которого должны оповещаться о событиях просмотра xml-файлов
+     */
     private class VacancyCreatorHandler extends DefaultHandler {
 
-        private Integer minSalary;
-        private Integer maxSalary;
-        
-        private Vacancy currentVacancy;
-        private Tag currentTag;
-        
         private VacancyCreatorHandler() {
         }
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-            if (localName.equals("vacancy")) {
-                currentVacancy = new VacancyImpl();
-            }
-            else if (localName.equals(Tag.VACANCY_NAME.TAG_NAME)) {
-                currentTag = Tag.VACANCY_NAME;
-                currentVacancy.setVacancyUrl(attributes.getValue("", "url"));
-            }
-            else if (localName.equals(Tag.COMPANY_NAME.TAG_NAME)) {
-                currentTag = Tag.COMPANY_NAME;
-                currentVacancy.setCompanyUrl(attributes.getValue("", "companyUrl"));
-            }
-            else if (localName.equals(Tag.SALARY.TAG_NAME)) {
-                currentTag = Tag.SALARY;
-                minSalary = null; maxSalary = null;
-            }
-            else if (localName.equals(Tag.MINIMUM_SALARY.TAG_NAME)) {
-                currentTag = Tag.MINIMUM_SALARY;
-            }
-            else if (localName.equals(Tag.MAXIMUM_SALARY.TAG_NAME)) {
-                currentTag = Tag.MAXIMUM_SALARY;
-            }
-            else if (localName.equals(Tag.CITY.TAG_NAME)) {
-                currentTag = Tag.CITY;
-            }
-            else if (localName.equals(Tag.DESCRIPTION.TAG_NAME)) {
-                currentTag = Tag.DESCRIPTION;
+            for (Tag tag : Tag.values()) {
+                if (localName.equals(tag.TAG_NAME)) {
+                    tag.starting(attributes);
+                    break;
+                }
             }
         }
 
         @Override
         public void characters(char[] ch, int start, int length) throws SAXException {
-            if (currentTag == null || currentTag == Tag.SALARY) {
-                return;
+            if (Tag.currentTag != null) {
+                Tag.currentTag.text(ch, start, length);
             }
-            String value = new String(ch, start, length);
-            if (currentTag == Tag.CITY) {
-                currentVacancy.setCity(value);
-            }
-            else if (currentTag == Tag.COMPANY_NAME) {
-                currentVacancy.setCompanyName(value);
-            }
-            else if (currentTag == Tag.MAXIMUM_SALARY) {
-                try {
-                    maxSalary = Integer.parseInt(value);
-                } catch (NumberFormatException ex) {
-                    maxSalary = null;
+        }
+
+        @Override
+        public void endElement(String uri, String localName, String qName) throws SAXException {
+            for (Tag tag : Tag.values()) {
+                if (localName.equals(tag.TAG_NAME)) {
+                    tag.ending();
+                    break;
                 }
             }
-            else if (currentTag == Tag.MINIMUM_SALARY) {
+        }
+        
+        public Set<Vacancy> getVacancies() {
+            return Collections.unmodifiableSet(Tag.vacancies);
+        }
+    }
+    
+    private enum Tag {
+        VACANCIES("vacancies") {
+            @Override
+            public void starting(Attributes attributes) {
+                super.starting(attributes);
+                vacancies = new HashSet<Vacancy>();
+            }            
+        },
+        QUERY("query") {
+            @Override
+            public void starting(Attributes attributes) {
+                query = attributes.getValue("query");
+            }
+        },
+        VACANCY("vacancy") {
+            @Override
+            public void starting(Attributes attributes) {
+                currentVacancy = new VacancyImpl();
+            }
+
+            @Override
+            public void ending() {
+                vacancies.add(currentVacancy);
+                currentVacancy = null;
+            }
+        },
+        VACANCY_NAME("vacancyName") {
+
+            @Override
+            public void starting(Attributes attributes) {
+                currentTag = Tag.VACANCY_NAME;
+                currentVacancy.setVacancyUrl(attributes.getValue("", "url"));
+            }
+
+            @Override
+            public void text(char[] ch, int start, int length) {
+                String value = new String(ch, start, length);
+                currentVacancy.setVacancyName(value);
+            }
+            
+        },
+        COMPANY_NAME("companyName") {
+            @Override
+            public void starting(Attributes attributes) {
+                super.starting(attributes);
+                currentVacancy.setCompanyUrl(attributes.getValue("", "companyUrl"));
+            }
+
+            @Override
+            public void text(char[] ch, int start, int length) {
+                String value = new String(ch, start, length);
+                currentVacancy.setCompanyName(value);
+            }
+        },
+        CITY("vacancyCity") {
+            @Override
+            public void text(char[] ch, int start, int length) {
+                String value = new String(ch, start, length);
+                currentVacancy.setCity(value);
+            }
+        }, 
+        SALARY("salary") {
+            @Override
+            public void starting(Attributes attributes) {
+                super.starting(attributes);
+                minSalary = null; 
+                maxSalary = null;
+            }
+
+            @Override
+            public void ending() {
+                currentVacancy.setSalary(new Salary(minSalary, maxSalary));
+            }
+        },
+        MINIMUM_SALARY("minimum") {
+
+            @Override
+            public void starting(Attributes attributes) {
+                super.starting(attributes);
+            }
+
+            @Override
+            public void ending() {
+                currentTag = Tag.SALARY;
+            }
+
+            @Override
+            public void text(char[] ch, int start, int length) {
+                String value = new String(ch, start, length);
                 try {
                     minSalary = Integer.parseInt(value);
                 } catch (NumberFormatException ex) {
                     minSalary = null;
                 }
             }
-            else if (currentTag == Tag.VACANCY_NAME) {
-                currentVacancy.setVacancyName(value);
-            }
-            else if (currentTag == Tag.DESCRIPTION) {
-                currentVacancy.setDescription(value);
-            }
-        }
+            
+        },
+        MAXIMUM_SALARY("maximum") {
 
-        @Override
-        public void endElement(String uri, String localName, String qName) throws SAXException {
-            if (currentTag == Tag.MINIMUM_SALARY || currentTag == Tag.MAXIMUM_SALARY) {
+            @Override
+            public void starting(Attributes attributes) {
+                super.starting(attributes);
+            }
+
+            @Override
+            public void ending() {
                 currentTag = Tag.SALARY;
             }
-            else if (currentTag == Tag.SALARY) {
-                currentVacancy.setSalary(new Salary(minSalary, maxSalary));
+
+            @Override
+            public void text(char[] ch, int start, int length) {
+                String value = new String(ch, start, length);
+                try {
+                    maxSalary = Integer.parseInt(value);
+                } catch (NumberFormatException ex) {
+                    maxSalary = null;
+                }
             }
-            currentTag = null;
             
-            if (localName.equals(Tag.VACANCY.TAG_NAME)) {
-                vacancies.add(currentVacancy);
-                currentVacancy = null;
+        },
+        DESCRIPTION("description") {
+
+            @Override
+            public void starting(Attributes attributes) {
+                super.starting(attributes);
             }
-        }
+
+            @Override
+            public void text(char[] ch, int start, int length) {
+                String value = new String(ch, start, length);
+                currentVacancy.setDescription(value);
+            }
+            
+        };
         
-    }
-    
-    private enum Tag {
-        VACANCY("vacancy"),
-        VACANCY_NAME("vacancyName"),
-        COMPANY_NAME("companyName"),
-        CITY("vacancyCity"), 
-        SALARY("salary"),
-        MINIMUM_SALARY("minimum"),
-        MAXIMUM_SALARY("maximum"),
-        DESCRIPTION("description");
+        
+        private static Integer minSalary;
+        private static Integer maxSalary;
+        
+        private static String query;
+        
+        private static Vacancy currentVacancy;
+        private static Tag currentTag;
+        
+        private static Set<Vacancy> vacancies;
         
         /**
          * Название соответствующего тега в xml-документе
@@ -150,6 +245,25 @@ public class VacancySetImpl implements VacancySet {
 
         Tag(String tagName) {
             this.TAG_NAME = tagName;
+        }
+        
+        public static Set<Vacancy> getVacancies() {
+            return vacancies;
+        }
+        
+        public static String getQuery() {
+            return query;
+        }
+        
+        public void starting(Attributes attributes) {
+            currentTag = this;
+        }
+        
+        public void text(char[] ch, int start, int length) {
+        }
+        
+        public void ending() {
+            currentTag = null;
         }
     }
 }

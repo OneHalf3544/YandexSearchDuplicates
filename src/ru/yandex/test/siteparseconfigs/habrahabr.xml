@@ -17,7 +17,7 @@
             <call-param name="pageUrl"><var name="url"/></call-param>
             <call-param name="nextXPath">//a[@class='next']/@href</call-param>
             <call-param name="itemXPath">//a[@class='job-title']/@href</call-param>
-            <call-param name="maxloops">1</call-param>
+            <call-param name="maxloops">25</call-param>
         </call>
     </var-def>
 

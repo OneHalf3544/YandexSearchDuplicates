@@ -17,7 +17,7 @@
             <call-param name="pageUrl"><var name="url"/></call-param>
             <call-param name="nextXPath">//div[@class='paging_nav']/a[last()]/@href</call-param>
             <call-param name="itemXPath">//td[@class='first_col']/following-sibling::td[1]/a[1]/@href</call-param>
-            <call-param name="maxloops">1</call-param>
+            <call-param name="maxloops">50</call-param>
         </call>
     </var-def>
 

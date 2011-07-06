@@ -1,6 +1,7 @@
 package ru.yandex.test;
 
 import java.io.File;
+import java.io.Reader;
 import java.util.Set;
 
 /**
@@ -12,13 +13,13 @@ public interface VacancySet {
     
     /**
      * Распарсить xml-файл с результатами, собранными с сайта
-     * @param file Файл с собранными данными
+     * @param reader Файл с собранными данными
      */
-    public void parse(File file);
+    public void parse(Reader reader);
     
     /**
      * Возвращает вакансии содержащиеся в объекте в виде множества
      * @return 
      */
-    public Set<Vacancy> getVacansies();
+    public Set<Vacancy> getVacancies();
 }

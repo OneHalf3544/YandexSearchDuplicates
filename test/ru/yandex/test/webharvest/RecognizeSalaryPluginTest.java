@@ -83,6 +83,10 @@ public class RecognizeSalaryPluginTest {
         expected = new Salary(60000, 75000);
         result = RecognizeSalaryPlugin.recognizeSalary("60 000 – 75 000 руб. в месяц");
         assertEquals(expected, result);
+
+        expected = new Salary(1320000, 1400000);
+        result = RecognizeSalaryPlugin.recognizeSalary("1 320 000 – 1 400 000 руб. в месяц");
+        assertEquals(expected, result);
     }
     
     @Test
