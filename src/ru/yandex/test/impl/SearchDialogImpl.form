@@ -62,7 +62,7 @@
                 <Property name="text" type="java.lang.String" value="&#x427;&#x442;&#x43e; &#x438;&#x449;&#x435;&#x43c;?"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="tfSearchQuery">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[120, 20]"/>
@@ -88,6 +88,28 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x413;&#x434;&#x435; &#x438;&#x449;&#x435;&#x43c;?"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x421;&#x43a;&#x43e;&#x43b;&#x44c;&#x43a;&#x43e; &#x438;&#x449;&#x435;&#x43c;? (&#x43d;&#x430; &#x43a;&#x430;&#x436;&#x434;&#x44b;&#x439; &#x438;&#x441;&#x442;&#x43e;&#x447;&#x43d;&#x438;&#x43a;)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfItemCount">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="25"/>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[60, 20]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[60, 20]"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

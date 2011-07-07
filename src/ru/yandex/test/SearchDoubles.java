@@ -2,7 +2,6 @@ package ru.yandex.test;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,7 +22,7 @@ import org.springframework.core.io.Resource;
 public class SearchDoubles {
     
     private static BeanFactory beanFactory;
-    private static final Double THRESHOLD_OF_EQUIVALENCE = 0.8;
+    private static final Double THRESHOLD_OF_EQUIVALENCE = 0.5;
 
     static {
         Resource resource = new FileSystemResource("src/ru/yandex/test/config.xml");
@@ -32,6 +31,8 @@ public class SearchDoubles {
     
     private SearchDialog dialog;
     private ReportCreator reportCreator;
+    private Map<VacancySource, VacancySet> vacancyMap;
+    private static final Logger LOGGER = Logger.getLogger(SearchDoubles.class.getName());
 
     /**
      * @param args the command line arguments
@@ -40,8 +41,6 @@ public class SearchDoubles {
         Logger.getLogger("ru.yandex.test").setLevel(Level.ALL);
         beanFactory.getBean("SearchDoubles");
     }
-    private Map<VacancySource, VacancySet> vacancyMap;
-    private static final Logger LOGGER = Logger.getLogger(SearchDoubles.class.getName());
         
     public void setDialog(SearchDialog dialog) {
         this.dialog = dialog;
@@ -49,7 +48,8 @@ public class SearchDoubles {
             @Override
             public void actionPerformed(ActionEvent e) {
                 loadVacancySet();
-                searchDuplicateVacancy();
+                Set<Duplicate> duplicatedVacancies = searchDuplicateVacancy();
+                SearchDoubles.this.dialog.setDuplicateVacancy(duplicatedVacancies);
             }
         });
     }
@@ -68,6 +68,7 @@ public class SearchDoubles {
         vacancyMap = new HashMap<VacancySource, VacancySet>();
         for (VacancySource siteParser : dialog.getVacancySources()) {
             siteParser.setSearchText(dialog.getSearchString());
+            siteParser.setItemsCount(dialog.getItemsCount());
             vacancyMap.put(siteParser, siteParser.getVacancySet());
         }
     }

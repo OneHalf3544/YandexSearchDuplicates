@@ -5,21 +5,19 @@
  */
 package ru.yandex.test.impl;
 
+import ru.yandex.test.SearchDialog;
+import ru.yandex.test.SearchDoubles.Duplicate;
+import ru.yandex.test.Vacancy;
+import ru.yandex.test.VacancySource;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JCheckBox;
-import javax.swing.SwingWorker;
-import javax.swing.UIManager;
-import ru.yandex.test.SearchDialog;
-import ru.yandex.test.SearchDoubles.Duplicate;
-import ru.yandex.test.VacancySource;
-import ru.yandex.test.VacancySet;
 
 /**
  *
@@ -51,11 +49,14 @@ public class SearchDialogImpl extends javax.swing.JFrame implements SearchDialog
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfSearchQuery = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
         pnlSites = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        tfItemCount = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,8 +71,8 @@ public class SearchDialogImpl extends javax.swing.JFrame implements SearchDialog
         jLabel1.setText("Что ищем?");
         jPanel1.add(jLabel1);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(120, 20));
-        jPanel1.add(jTextField1);
+        tfSearchQuery.setPreferredSize(new java.awt.Dimension(120, 20));
+        jPanel1.add(tfSearchQuery);
 
         btnSearch.setText("Найти");
         jPanel1.add(btnSearch);
@@ -86,6 +87,16 @@ public class SearchDialogImpl extends javax.swing.JFrame implements SearchDialog
 
         jPanel2.add(pnlSites);
 
+        jLabel3.setText("Сколько ищем? (на каждый источник)");
+        jPanel3.add(jLabel3);
+
+        tfItemCount.setText("25");
+        tfItemCount.setMinimumSize(new java.awt.Dimension(60, 20));
+        tfItemCount.setPreferredSize(new java.awt.Dimension(60, 20));
+        jPanel3.add(tfItemCount);
+
+        jPanel2.add(jPanel3);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         pack();
@@ -96,19 +107,22 @@ public class SearchDialogImpl extends javax.swing.JFrame implements SearchDialog
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel pnlSites;
+    private javax.swing.JTextField tfItemCount;
+    private javax.swing.JTextField tfSearchQuery;
     // End of variables declaration//GEN-END:variables
 
     private Map<JCheckBox, VacancySource> checkBoxes = new HashMap<JCheckBox, VacancySource>();
     
     @Override
     public String getSearchString() {
-        return jTextField1.getText();
+        return tfSearchQuery.getText();
     }
 
     @Override
@@ -123,7 +137,16 @@ public class SearchDialogImpl extends javax.swing.JFrame implements SearchDialog
 
     @Override
     public void setDuplicateVacancy(Set<Duplicate> duplicates) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        StringBuilder sb = new StringBuilder();
+        for (Duplicate duplicate : duplicates) {
+            for (Vacancy vacancy : duplicate.getDuplicates()) {
+                sb.append(vacancy.getVacancyName()).append(" ")
+                        .append(vacancy.getVacancyUrl()).append("\n");
+            }
+            sb.append("\n");
+        }
+        
+        jTextArea1.setText(sb.toString());
     }
 
     @Override
@@ -151,23 +174,9 @@ public class SearchDialogImpl extends javax.swing.JFrame implements SearchDialog
         }
         return result;
     }
-    
-    private class ParserProcess extends SwingWorker<Set<Duplicate>, VacancySet> {
 
-        @Override
-        protected Set<Duplicate> doInBackground() throws Exception {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-
-        @Override
-        protected void done() {
-            super.done();
-        }
-
-        @Override
-        protected void process(List<VacancySet> chunks) {
-            super.process(chunks);
-        }
-        
+    @Override
+    public int getItemsCount() {
+        return Integer.parseInt(tfItemCount.getText());
     }
 }

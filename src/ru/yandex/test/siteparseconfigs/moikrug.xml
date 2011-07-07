@@ -11,13 +11,20 @@
     <var-def name="baseUrl"><template>http://moikrug.ru</template></var-def>
     <var-def name="url"><template>${baseUrl}/vacancies/?keywords=${search}</template></var-def>
     
+    <!-- Число ссылок на странице -->
+    <var-def name="itemsOnPage">20</var-def> 
+    
+    <!-- Число вакансий, которые надо обработать -->
+    <var-def name="itemsCount" overwrite="false">40</var-def> 
+    <var-def name="loopsCount"><template>${itemsCount.toInt()/itemsOnPage.toInt()}</template></var-def>
+    
     <!-- Собираем ссылки на вакансии -->
     <var-def name="vacancyLinks">
         <call name="download-multipage-list">
             <call-param name="pageUrl"><var name="url"/></call-param>
             <call-param name="nextXPath">//a[@class='next_page']/@href</call-param>
             <call-param name="itemXPath">//div[@class='b-vacancy']/div[@class='title']/a[1]/@href</call-param>
-            <call-param name="maxloops">50</call-param>
+            <call-param name="maxloops"><template>${loopsCount}</template></call-param>
         </call>
     </var-def>
 

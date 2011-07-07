@@ -10,6 +10,7 @@ import java.util.Set;
 public interface SearchDialog {
     
     public String getSearchString();
+    public int getItemsCount();
 
     public void addSearchListener(ActionListener listener);
     
