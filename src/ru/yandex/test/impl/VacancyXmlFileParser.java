@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -61,6 +64,29 @@ import ru.yandex.test.VacancySource;
     }
 
     /**
+     * Создание объекта по имени и строке, которая может быть адресом ресурса
+     * или именем файла
+     * @param name Имя источника
+     * @param resourceName Имя ресурса 
+     */
+    public VacancyXmlFileParser(String name, String resourceName) {
+        this.sourceName = name;
+        InputStream resourceStream = VacancyXmlFileParser.class.getResourceAsStream(resourceName);
+        try {
+            if (resourceStream != null) {
+                this.parse(new InputStreamReader(resourceStream, "UTF8"));
+            } 
+            else {
+                this.parse(new FileReader(resourceName));
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(VacancyXmlFileParser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(VacancyXmlFileParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
      * Конструктор объекта с указанием потока, из которого нужно брать данные 
      * и названия источника
      * @param name Название источника
@@ -72,21 +98,21 @@ import ru.yandex.test.VacancySource;
     }
 
     private void parse(Reader reader) {
-        LOGGER.log(Level.FINE, "Начало парсинга xml-потока \"{0}\" с вакансиями", sourceName);
         try {
+        LOGGER.log(Level.FINE, "Начало парсинга xml-потока \"{0}\" с вакансиями", sourceName);
             XMLReader xmlParser = new SAXParser();
             xmlParser.setContentHandler(vacancyCreatorHandler);
             xmlParser.parse(new InputSource(reader));
             
             vacancies = vacancyCreatorHandler.getVacancies();
             query = Tag.getQuery();
+            LOGGER.log(Level.FINE, "Окончание парсинга xml-потока \"{0}\" с вакансиями", sourceName);
         } catch(Exception e){
-            LOGGER.log(Level.WARNING, "Ошибка парсинга xml-потока \"{0}\"", sourceName);
+            LOGGER.log(Level.WARNING, "Ошибка парсинга xml-потока \""+sourceName+"\"", e);
         }
         finally {
             try { reader.close(); } catch (IOException ex) {}
         }
-        LOGGER.log(Level.FINE, "Окончание парсинга xml-потока \"{0}\" с вакансиями", sourceName);
     }
 
     @Override

@@ -5,50 +5,52 @@
     
     <bean id="moikrug_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="moikrug.ru" />
-        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/moikrug.xml" />
+        <property name="webHarvestConfig" value="/ru/yandex/test/siteparseconfigs/moikrug.xml" />
     </bean>
     
     <bean id="moikrug_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/moikrug.xml" />
+        <constructor-arg index="0" type="String" value="moikrug.xml" />
+        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/moikrug.xml" />
     </bean>
+    
+    
     
     <bean id="job_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="job.ru" />
-        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/job.xml" />
+        <property name="webHarvestConfig" value="/ru/yandex/test/siteparseconfigs/job.xml" />
     </bean>
     
     <bean id="job_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/job.xml" />
+        <constructor-arg index="0" type="String" value="job.xml" />
+        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/job.xml" />
     </bean>
+    
+    
     
     <bean id="habrahabr_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="habrahabr.ru" />
-        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/habrahabr.xml" />
+        <property name="webHarvestConfig" value="/ru/yandex/test/siteparseconfigs/habrahabr.xml" />
     </bean>
     
     <bean id="habrahabr_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/habrahabr.xml" />
+        <constructor-arg index="0" type="String" value="habrahabr.xml" />
+        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/habrahabr.xml" />
     </bean>
     
-    <bean id="hh_ru" class="ru.yandex.test.impl.SiteParser">
-        <property name="siteName" value="hh.ru" />
-        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/hh.xml" />
-    </bean>
     
-    <bean id="rabota_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/rabota.xml" />
-    </bean>
     
     <bean id="rabota_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="rabota.ru" />
-        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/rabota.xml" />
+        <property name="webHarvestConfig" value="/ru/yandex/test/siteparseconfigs/rabota.xml" />
     </bean>
     
-    <bean id="trud_com" class="ru.yandex.test.impl.SiteParser">
-        <property name="siteName" value="hh.ru" />
-        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/hh.xml" />
+    <bean id="rabota_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
+        <constructor-arg index="0" type="String" value="rabota.xml" />
+        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/rabota.xml" />
     </bean>
-	
+    
+    
+    
     <bean id="reportCreator" class="ru.yandex.test.impl.ReportCreatorImpl">
     </bean>    
     

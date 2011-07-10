@@ -5,7 +5,43 @@
 -->
 <config charset="UTF-8">
 
-    <include path="functions.xml"/>
+    <!-- 
+        Download multi-page list of items.
+        
+        @param pageUrl       - URL of starting page
+        @param itemXPath     - XPath expression to obtain single item in the list
+        @param nextXPath     - XPath expression to URL for the next page
+        @param maxloops      - maximum number of pages downloaded
+        
+        @return list of all downloaded items
+     -->
+    <function name="download-multipage-list">
+        <return>
+            <while condition="${pageUrl.toString().length() != 0}" maxloops="${maxloops}" index="i">
+                <empty>
+                    <var-def name="content">
+                        <html-to-xml>
+                            <http url="${pageUrl}"/>
+                        </html-to-xml>
+                    </var-def>
+ 
+                    <var-def name="nextLinkUrl">
+                        <xpath expression="${nextXPath}">
+                            <var name="content"/>
+                        </xpath>
+                    </var-def>
+ 
+                    <var-def name="pageUrl">
+                        <template>${(nextLinkUrl.toString().isEmpty())?"":sys.fullUrl(pageUrl.toString(), nextLinkUrl.toString())}</template>
+                    </var-def>
+                </empty>
+    
+                <xpath expression="${itemXPath}">
+                    <var name="content"/>
+                </xpath>
+            </while>
+        </return>
+    </function>
 
     <!-- defines search keyword and start URL -->
     <var-def name="search" overwrite="false">java</var-def>

@@ -3,6 +3,7 @@ package ru.yandex.test.impl;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -90,7 +91,17 @@ public class SiteParser implements VacancySource {
         VacancySource result = null;
         LOGGER.log(Level.INFO, "Сбор информации с сайта {0}", siteName);
         try {
-            ScraperConfiguration config = new ScraperConfiguration(configResourceName);
+            ScraperConfiguration config;
+            // Пытаемся получить URL внутреннего ресурса по имени
+            final URL internalConfig = SiteParser.class.getResource(configResourceName);
+            if (internalConfig != null) {
+                config = new ScraperConfiguration(internalConfig);
+            }
+            else {
+                // Если такого ресурса нет, попытаемся использовать имя ресурса как имя файла
+                config = new ScraperConfiguration(configResourceName);
+            }
+            
             Scraper scraper = new Scraper(config, WORKING_DIRECTORY);
             
             final File tempFile = File.createTempFile("Vacancy", ".xml");
