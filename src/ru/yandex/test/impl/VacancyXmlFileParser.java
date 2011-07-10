@@ -22,7 +22,8 @@ import ru.yandex.test.Vacancy;
 import ru.yandex.test.VacancySource;
 
 /**
- * Класс набора вакансий.
+ * Класс представляющий собранный Webharvest'ом файл
+ * С помощью SAX-парсера создает список собранных вакансий.
  * 
  * @author OneHalf
  */
@@ -35,10 +36,21 @@ import ru.yandex.test.VacancySource;
     private final VacancyCreatorHandler vacancyCreatorHandler = new VacancyCreatorHandler();
     private String sourceName;
 
+    /**
+     * Конструктор объекта с указанием файла, из которого нужно брать данные.
+     * Названием источника будет имя файла
+     * @param xmlFile Файл, созданный WebHarvest'ом
+     */
     public VacancyXmlFileParser(File xmlFile) {
         this(xmlFile.getName(), xmlFile);
     }
 
+    /**
+     * Конструктор объекта с указанием файла, из которого нужно брать данные 
+     * и названия источника
+     * @param sourceName Название источника
+     * @param xmlFile Файл, созданный WebHarvest'ом
+     */
     public VacancyXmlFileParser(String sourceName, File xmlFile) {
         this.sourceName = sourceName;
         try {
@@ -48,6 +60,12 @@ import ru.yandex.test.VacancySource;
         }
     }
 
+    /**
+     * Конструктор объекта с указанием потока, из которого нужно брать данные 
+     * и названия источника
+     * @param name Название источника
+     * @param reader Поток созданный на основе данных собранных WebHarvest'ом
+     */
     public VacancyXmlFileParser(String name, Reader reader) {
         this.sourceName = name;
         this.parse(reader);
@@ -121,6 +139,9 @@ import ru.yandex.test.VacancySource;
         }
     }
     
+    /**
+     * Теги документа. Содержат функции для обработки xml-документа
+     */
     private enum Tag {
         VACANCIES("vacancies") {
             @Override

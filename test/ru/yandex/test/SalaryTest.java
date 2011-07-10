@@ -1,8 +1,6 @@
 package ru.yandex.test;
 
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -83,4 +81,32 @@ public class SalaryTest {
         instance2 = new Salary(null, 8000);
         assertFalse(instance1.permissible(instance2));
     }
+    
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        String expected;
+        Salary salary;
+        
+        expected = "50\u00a0000";
+        salary = new Salary(50000);
+        assertEquals(expected, salary.toString());
+        
+        expected = "До 70\u00a0000";
+        salary = new Salary(null, 70000);
+        assertEquals(expected, salary.toString());
+        
+        expected = "От 40\u00a0000";
+        salary = new Salary(40000, null);
+        assertEquals(expected, salary.toString());
+        
+        expected = "От 50\u00a0000 до 80\u00a0000";
+        salary = new Salary(50000, 80000);
+        assertEquals(expected, salary.toString());
+        
+        expected = "Зарплата не указана";
+        salary = new Salary();
+        assertEquals(expected, salary.toString());
+    }
+
 }

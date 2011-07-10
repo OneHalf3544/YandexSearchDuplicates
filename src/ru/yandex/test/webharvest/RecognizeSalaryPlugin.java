@@ -9,18 +9,24 @@ import org.webharvest.runtime.variables.Variable;
 import ru.yandex.test.Salary;
 
 /**
- *
+ * Плагин для WebHarvest, который распознает строку с зарплатой
+ * и создает переменную salary.
+ * 
+ * <p>Применение:</p>
+ * <p>Код: <code>&lt;salary&gt;От 40 000 до 50 000&lt;/salary&gt;</code> 
+ * создаст переменную salary, которую можно будет использовать дальше в конфиге WebHarvest</p>
+ * 
  * @author OneHalf
  */
 public class RecognizeSalaryPlugin extends WebHarvestPlugin {
+    private final static Logger LOGGER = Logger.getLogger(RecognizeSalaryPlugin.class.getName());
+
     private static final String WITHOUT_DIGITS = "\\D*";
     private static final String FROM = "(?i)\\s*([Бб]олее|[Оо]т)\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
     private static final String TO = "(?i)\\s*([Мм]енее|[Дд]о|-|–)\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
     private static final String CONRETE = "\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
     private static final String FROM_TO = "(?i)\\s*([Оо]т)?\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*\\s*([Дд]о|-|–)\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
     
-    private final static Logger LOGGER = Logger.getLogger(RecognizeSalaryPlugin.class.getName());
-
     @Override
     public String getName() {
         return "salaryparse";
@@ -43,6 +49,12 @@ public class RecognizeSalaryPlugin extends WebHarvestPlugin {
         return salaryVariable;
     }
 
+    /**
+     * Парсер строки зарплаты. Создает объект Salary на основе строки типа 
+     * "От 40000", "З/п не указана" и т.д.
+     * @param strSalary Строка для распознавания
+     * @return Объект зарплаты, созданный на основе строки
+     */
     static Salary recognizeSalary(String strSalary) {
         if (strSalary.matches(WITHOUT_DIGITS)) { // Нет 
             return new Salary(null, null);

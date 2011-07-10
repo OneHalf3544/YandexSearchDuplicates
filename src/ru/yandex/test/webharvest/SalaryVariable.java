@@ -9,7 +9,8 @@ import org.webharvest.runtime.variables.Variable;
 import ru.yandex.test.Salary;
 
 /**
- *
+ * Тип данных представляющий зарплату в WebHarvest
+ * 
  * @author OneHalf
  */
 public class SalaryVariable extends Variable {
@@ -64,6 +65,10 @@ public class SalaryVariable extends Variable {
         return salary;
     }
 
+    /**
+     * Получение минимальной границы зарплаты
+     * @return Минимальная граница зарплаты
+     */
     public String getMinimum() {
         if (salary.getMinimum() == null) {
             return "";
@@ -71,6 +76,10 @@ public class SalaryVariable extends Variable {
         return salary.getMinimum().toString();
     }
 
+    /**
+     * Получение максимальной границы зарплаты
+     * @return Максимальная граница зарплаты
+     */
     public String getMaximum() {
         if (salary.getMaximum() == null) {
             return "";

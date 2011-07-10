@@ -26,14 +26,12 @@ import ru.yandex.test.ReportCreator;
 import ru.yandex.test.Vacancy;
 
 /**
- *
+ * Класс объектов, создающих отчеты
+ * 
  * @author OneHalf
  */
 public class ReportCreatorImpl implements ReportCreator {
     private final static Logger LOGGER = Logger.getLogger(ReportCreatorImpl.class.getName());
-
-    public ReportCreatorImpl() {
-    }
     
     @Override
     public File getReport(Set<Duplicate> vacancies) {
@@ -66,6 +64,13 @@ public class ReportCreatorImpl implements ReportCreator {
         return fileResult;
     }
 
+    /**
+     * Создание xml-элемента с данными компании
+     * @param document Документ, в котором должен создаться элемент
+     * @param vacancy Вакансия для которой создается элемент
+     * @return Xml-элемент, который содержит данные о компании-работодателе
+     * @throws DOMException 
+     */
     private Element createCompanyXmlElement(Document document, Vacancy vacancy) throws DOMException {
         Element companyName = document.createElement("name");
         companyName.appendChild(document.createTextNode(vacancy.getCompanyName()));
@@ -80,6 +85,13 @@ public class ReportCreatorImpl implements ReportCreator {
         return company;
     }
 
+    /**
+     * Создание xml-элемента, представляющего одинаковые вакансии
+     * @param document
+     * @param duplicate
+     * @return
+     * @throws DOMException 
+     */
     private Element createDuplicateXmlElement(Document document, Duplicate duplicate) throws DOMException {
         Element result = document.createElement("duplicates");
         
@@ -96,6 +108,13 @@ public class ReportCreatorImpl implements ReportCreator {
         return result;
     }
     
+    /**
+     * Создание xml-элемента для вакансии
+     * @param document
+     * @param vacancy
+     * @return
+     * @throws DOMException 
+     */
     private Element createVacancyXmlElement(Document document, Vacancy vacancy) throws DOMException {
         Element vacancyElem = document.createElement("vacancy");
         
@@ -110,10 +129,14 @@ public class ReportCreatorImpl implements ReportCreator {
         Element city = document.createElement("city");
         city.appendChild(document.createTextNode(vacancy.getCity()));
         
+        Element salary = document.createElement("salary");
+        salary.appendChild(document.createTextNode(vacancy.getSalary().toString()));
+        
         vacancyElem.appendChild(url);
         vacancyElem.appendChild(name);
         vacancyElem.appendChild(company);
         vacancyElem.appendChild(city);
+        vacancyElem.appendChild(salary);
         
         return vacancyElem;
     }

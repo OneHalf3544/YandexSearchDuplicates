@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+    Файл конфигурации WebHarvest для получения xml-файла 
+    с вакансиями с сайта moikrug.ru
+-->
 <config charset="UTF-8">
 
     <include path="functions.xml"/>

@@ -1,7 +1,6 @@
 package ru.yandex.test;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Источник набора вакансий
@@ -10,10 +9,14 @@ import java.util.Set;
  */
 public interface VacancySource {
     /**
-     * Получение набора вакансий
+     * Получение набора вакансий из текущего источника
      * @return Набор вакансий
      */
     public List<Vacancy> getVacancies();
 
+    /**
+     * Возвращает название текущего источника
+     * @return Название источника
+     */
     public String getSourceName();
 }

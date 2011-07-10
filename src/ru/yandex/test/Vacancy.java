@@ -8,63 +8,63 @@ public interface Vacancy {
     
     /**
      * Предлагаемая должность
-     * @return Название должности
+     * @return Название должности (вакансии)
      */
     public String getVacancyName();
     
     /**
      * Установка предлагаемой должности
-     * @param vacancyName 
+     * @param vacancyName Устанавливаемое название вакансии
      */
     public void setVacancyName(String vacancyName);
     
     /**
      * Ссылка на вакансию
-     * @return Название должности
+     * @return url вакансии
      */
     public String getVacancyUrl();
     
     /**
-     * Ссылка на вакансию
-     * @param vacancyUrl 
+     * Получение ссылки на вакансию
+     * @param vacancyUrl устанавливаемый url
      */
     public void setVacancyUrl(String vacancyUrl);
     
     /**
      * Уровень зарплаты
-     * @return 
+     * @return Уровень зарплаты
      */
     public Salary getSalary();
     
     /**
-     * Уровень зарплаты
-     * @param salary 
+     * Установка уровеня зарплаты
+     * @param salary Уровень зарплаты
      */
     public void setSalary(Salary salary);
     
     /**
-     * Название компании
-     * @return 
+     * Получение названия вакансии
+     * @return Название компании
      */
     public String getCompanyName();
     
     /**
-     * Название компании
-     * @param companyName 
+     * Установка названия компании
+     * @param companyName Название компании
      */
     public void setCompanyName(String companyName);
     
     /**
      * Описание вакансии
-     * @return 
+     * @return Описание вакансии
      */
     public String getDescription();
     
     /**
-     * Описание вакансии
-     * @param string 
+     * Установка описания вакансии
+     * @param description Устанавливаемое описание
      */
-    public void setDescription(String string);
+    public void setDescription(String description);
     
     /**
      * Город, в котором предлагается работа
@@ -73,27 +73,28 @@ public interface Vacancy {
     public String getCity();
     
     /**
-     * Город, в котором предлагается работа
-     * @param cityName 
+     * Установка города, в котором предлагается работа
+     * @param cityName Название города
      */
     public void setCity(String cityName);
     
     /**
      * Интернет-адрес работодателя
-     * @return 
+     * @return url компании-работодателя
      */
     public String getCompanyUrl();
     
     /**
      * Установка интернет-адреса работодателя
-     * @param value 
+     * @param value Новый url
      */
     public void setCompanyUrl(String value);
     
     /**
-     * Уровень сходства текущей вакансии с указанной
-     * @param other
-     * @return 
+     * Уровень сходства текущей вакансии с указанной.
+     * @param other Вакансия, с которой производится сравнение
+     * @return Уровень "похожести" вакансии. 
+     *   Должен быть в пределах от 0.0 до 1.0
      */
     public Double getLevelOfSimilarity(Vacancy other);
 

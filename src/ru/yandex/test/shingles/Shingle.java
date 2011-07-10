@@ -1,19 +1,33 @@
 package ru.yandex.test.shingles;
 
 /**
- *
+ * Класс для вычисления шинглов текста
+ * Алгоритм работы описан здесь: http://www.codeisart.ru/python-shingles-algorithm/
+ * 
  * @author OneHalf
  */
 public class Shingle {
+    /** Число слов в шингле */
     private final int SHINGLE_LENGTH;
+    /** Число слов в шингле по умолчанию */
     private final static int DEFAULT_SHINGLE_LENGTH = 5;
 
+    /** Вычисленные шинглы текста */
     private int[] shingle;
 
+    /** 
+     * Вычисление шинглов с числом слов по умолчанию 
+     * @param text Текст, для которого вычисляются шинглы
+     */
     public Shingle(String text) {
         this(text, DEFAULT_SHINGLE_LENGTH);
     }
     
+    /**
+     * Вычисление шинглов с указанным числом слов в шингле
+     * @param text Текст, для которого вычисляются шинглы
+     * @param shingleLength Число слов в шингле
+     */
     public Shingle(String text, int shingleLength) {
         SHINGLE_LENGTH = shingleLength;
         
@@ -34,10 +48,19 @@ public class Shingle {
         }
     }
 
+    /**
+     * Получение вычисленных шинглов для текста
+     * @return Вычисленные шинглы
+     */
     public int[] getShingle() {
         return shingle;
     }
     
+    /**
+     * Удаление из текста лишних символов и слов
+     * @param text Обрабатываемый текст
+     * @return Канонизированный текст
+     */
     static String canonize(String text) {
         String result = String.valueOf(text).toLowerCase()
                 .replaceAll("[\\*•.,!?:;—\\-\\n\\r()]", " ")
@@ -51,6 +74,12 @@ public class Shingle {
         return result;
     }
     
+    /**
+     * Сравнение двух наборов шинглов
+     * @param shingle1 Первый набор шинглов
+     * @param shingle2 Второй набор шинглов
+     * @return Сходство шинглов. От 0.0 до 1.0
+     */
     public static double corellation(Shingle shingle1, Shingle shingle2) {
         if (shingle1.SHINGLE_LENGTH != shingle2.SHINGLE_LENGTH) {
             return 0.0;

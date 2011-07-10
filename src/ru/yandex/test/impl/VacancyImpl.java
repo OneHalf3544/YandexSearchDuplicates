@@ -113,6 +113,23 @@ public class VacancyImpl implements Vacancy {
     }
 
 
+    /**
+     * Уровень сходства текущей вакансии с указанной.
+     * Алгоритм сравнения такой:
+     * <p>Зарплата не влияет на процент сходства. Но если диапазоны зарплат 
+     * не пересекаются, то функция сразу возвращает 0.0</p>
+     * <p>Далее по алгоритму шинглов сравниваются:
+     * <ul> 
+     * <li> Название вакансии (вклад в результат - до 10%)
+     * <li> Название компании-работодателя (вклад в результат - до 40%)</li>
+     * <li> Регион, в котором предлагается работа (вклад в результат - до 10%)</li>
+     * <li> Описание вакансии (вклад в результат - до 40%)</li>
+     * </ul>
+     * </p>
+     * 
+     * @param o Вакансия, с которой производится сравнение 
+     * @return Уровень "похожести" вакансии. Находится в пределах от 0.0 до 1.0
+     */
     @Override
     public Double getLevelOfSimilarity(Vacancy o) {
         if (shingles == null) {
@@ -156,6 +173,9 @@ public class VacancyImpl implements Vacancy {
         return result;
     }
 
+    /** 
+     * Обновление шинглов
+     */
     private void updateShingles() {
         shingles = new VacancyShingles();
     }
@@ -165,6 +185,9 @@ public class VacancyImpl implements Vacancy {
         return MessageFormat.format("Вакансия: {0} ({1}) url: {2}", vacancyName, companyName, vacancyUrl);
     }
     
+    /**
+     * Класс с набором шинглов
+     */
     private class VacancyShingles {
         private Shingle cityShingles;
         private Shingle vacancyNameShingle;

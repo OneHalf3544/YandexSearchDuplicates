@@ -52,7 +52,8 @@
     <bean id="reportCreator" class="ru.yandex.test.impl.ReportCreatorImpl">
     </bean>    
     
-    <bean id="dialog" class="ru.yandex.test.impl.SearchDialog">
+    <bean id="dialog" class="ru.yandex.test.SearchDialog">
+        <constructor-arg type="Double" value="0.55"/>
         <property name="siteParsers">
             <set>
                 <ref bean="job_ru" />

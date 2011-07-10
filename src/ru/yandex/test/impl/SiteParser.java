@@ -34,10 +34,18 @@ public class SiteParser implements VacancySource {
     public SiteParser() {
     }
     
+    /**
+     * Установка конфига для WebHarvest
+     * @param configName Устанавливаемый файл конфигурации
+     */
     public void setWebHarvestConfig(String configName) {
         this.configResourceName = configName;
     }
 
+    /**
+     * Установка названия сайта
+     * @param siteName Название сайта
+     */
     public void setSiteName(String siteName) {
         this.siteName = siteName;
     }
@@ -47,11 +55,19 @@ public class SiteParser implements VacancySource {
         return siteName;
     }
 
+    /**
+     * Установка числа вакансий, котоые нужно искать
+     * @param itemsCount Максимальное число вакансий при поиске
+     */
     public void setItemsCount(int itemsCount) {
         this.itemsCount = itemsCount;
         vacancies = null;
     }
 
+    /**
+     * Установка текста, по которому будут искаться вакансии
+     * @param searchText Текст запроса
+     */
     public void setSearchText(String searchText) {
         this.searchText = searchText;
         vacancies = null;
@@ -60,11 +76,16 @@ public class SiteParser implements VacancySource {
     @Override
     public List<Vacancy> getVacancies() {
         if (vacancies == null) {
-            vacancies = getVacancies(false);
+            vacancies = getVacancies(true);
         }
         return vacancies;
     }
     
+    /**
+     * Сбор вакансий с сайта
+     * @param deleteOnExit Удалять ли файл после закрытия программы
+     * @return Список вакансий
+     */
     public List<Vacancy> getVacancies(boolean deleteOnExit) {
         VacancySource result = null;
         LOGGER.log(Level.INFO, "Сбор информации с сайта {0}", siteName);
@@ -82,7 +103,7 @@ public class SiteParser implements VacancySource {
             result = new VacancyXmlFileParser(siteName, new FileReader(tempFile));
             
             if (deleteOnExit)  {
-                tempFile.delete();
+                tempFile.deleteOnExit();
             }
         } 
         catch (IOException ex) {
