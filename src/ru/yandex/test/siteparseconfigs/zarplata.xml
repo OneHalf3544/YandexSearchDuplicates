@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config charset="UTF-8">
+
+    <include path="functions.xml"/>
+
+    <!-- defines search keyword and start URL -->
+    <var-def name="search" overwrite="false">java</var-def>
+    <var-def name="outputFile" overwrite="false">vacancy/job.xml</var-def>
+    
+    <var-def name="baseUrl"><template>http://spb.zarplata.ru</template></var-def>
+    <var-def name="url"><template>${baseUrl}/workman/result.aspx?keywords=${search}</template></var-def>
+    
+    <!-- Число ссылок на странице -->
+    <var-def name="itemsOnPage">20</var-def> 
+    
+    <!-- Число вакансий, которые надо обработать -->
+    <var-def name="itemsCount" overwrite="false">40</var-def> 
+    <var-def name="loopsCount"><template>${itemsCount.toInt()/itemsOnPage.toInt()}</template></var-def>
+    
+    <!-- Собираем ссылки на вакансии -->
+    <var-def name="vacancyLinks">
+        <call name="download-multipage-list">
+            <call-param name="pageUrl"><var name="url"/></call-param>
+            <call-param name="nextXPath">//div[@class='pages']/strong/following-sibling::a[1]/@href</call-param>
+            <call-param name="itemXPath">//div[starts-with(@class, 'vacancy')]/div/h3/a/@href</call-param>
+            <call-param name="maxloops"><template>${loopsCount}</template></call-param>
+        </call>
+    </var-def>
+
+    <file action="write" path="${outputFile}" charset="UTF-8">
+    <![CDATA[ <?xml version="1.0" encoding="UTF-8" ?> ]]>
+    <![CDATA[ <vacancies> ]]>
+    <template><![CDATA[ <query value="${search}" /> ]]></template>
+
+    <loop item="vacancyUrl">
+      <list><var name="vacancyLinks"/></list>
+      <body>
+        <empty>
+          <var-def name="content">
+            <xpath expression="/html/body/form">
+              <html-to-xml>
+                <http url="${sys.fullUrl(baseUrl.toString(), vacancyUrl.toString())}"/>
+              </html-to-xml>
+            </xpath>
+          </var-def>
+
+          <var-def name="vacUrl"><template>${sys.fullUrl(baseUrl.toString(), vacancyUrl.toString())}</template></var-def>
+
+          <var-def name="vacancyName">
+            <xpath expression="//h1/normalize-space(text()[1])">
+              <var name="content" />
+            </xpath>
+          </var-def>
+
+          <var-def name="companyName">
+            <xpath expression="//h1[1]/following-sibling::table[1]/tbody/tr[3]/td[2]/div/a[1]/normalize-space(text())">
+              <var name="content" />
+            </xpath>
+          </var-def>
+
+          <var-def name="companyUrl">
+            <xpath expression="//h1[1]/following-sibling::table[1]/tbody/tr[3]/td[2]/div/a[2]/text()">
+              <var name="content" />
+            </xpath>
+          </var-def>
+
+          <!-- 
+            "salaryparse" - наш плагин. Создает переменную "salary", 
+            которая содержит в себе минимум и максимум зарплаты.
+          -->
+          <salaryparse>
+            <xpath expression="//h1[1]/following-sibling::table[1]/tbody/tr[2]/td[2]/div/span[1]/descendant-or-self::*/text()">
+              <var name="content" />
+            </xpath>
+          </salaryparse>
+
+          <var-def name="vacancyCity">
+            <xpath expression="//h1[1]/following-sibling::table[1]/tbody/tr[4]/td[2]/div/normalize-space(text())">
+              <var name="content" />
+            </xpath>
+          </var-def>
+          
+          <var-def name="description">
+            <xpath expression="//h1/following-sibling::table[2]/tbody/tr[2]/td[2]//text()">
+              <var name="content" />
+            </xpath>
+          </var-def>
+
+        </empty>
+
+        <![CDATA[ <vacancy> ]]>
+
+        <template><![CDATA[ <vacancyName url="${sys.escapeXml(vacUrl)}">${sys.escapeXml(vacancyName)}</vacancyName> ]]></template>
+        <template><![CDATA[ <companyName companyUrl="${sys.escapeXml(companyUrl)}">${sys.escapeXml(companyName)}</companyName> ]]></template>
+        <template><![CDATA[ <salary> ]]></template>
+        <template><![CDATA[   <minimum>${salary.getMinimum()}</minimum> ]]></template>
+        <template><![CDATA[   <maximum>${salary.getMaximum()}</maximum> ]]></template>
+        <template><![CDATA[ </salary> ]]></template>
+        <template><![CDATA[ <description> ]]></template>
+        <template><![CDATA[   ${sys.escapeXml(description)} ]]></template>
+        <template><![CDATA[ </description> ]]></template>
+        <template><![CDATA[ <vacancyCity>${sys.escapeXml(vacancyCity)}</vacancyCity> ]]></template>
+
+        <![CDATA[ </vacancy> ]]>
+    </body>
+  </loop>
+
+  <![CDATA[ </vacancies> ]]>
+  </file>
+
+</config>

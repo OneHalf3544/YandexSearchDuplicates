@@ -131,7 +131,7 @@ public class VacancyImpl implements Vacancy {
         
         Double result = 0.0;
         
-        // Сумма коэфициентов перед слагаемыми должна быть равно единице
+        // Сумма коэфициентов перед слагаемыми должна быть равна единице
         
         // Равенство названий вакансии
         result += 0.1 * Shingle.corellation(
@@ -139,12 +139,12 @@ public class VacancyImpl implements Vacancy {
                 other.shingles.vacancyNameShingle);
         
         // Город
-        result += 0.2 * Shingle.corellation(
+        result += 0.1 * Shingle.corellation(
                 this.shingles.cityShingles, 
                 other.shingles.cityShingles);
         
         // Компания
-        result += 0.3 * Shingle.corellation(
+        result += 0.4 * Shingle.corellation(
                 this.shingles.companyNameShingle, 
                 other.shingles.companyNameShingle);
         

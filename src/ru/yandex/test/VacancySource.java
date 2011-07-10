@@ -1,5 +1,6 @@
 package ru.yandex.test;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,7 +13,7 @@ public interface VacancySource {
      * Получение набора вакансий
      * @return Набор вакансий
      */
-    public Set<Vacancy> getVacancies();
+    public List<Vacancy> getVacancies();
 
     public String getSourceName();
 }

@@ -3,7 +3,7 @@ package ru.yandex.test.impl;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.webharvest.definition.DefinitionResolver;
@@ -25,6 +25,7 @@ public class SiteParser implements VacancySource {
     private String configResourceName;
     private String searchText;
     private int itemsCount;
+    private List<Vacancy> vacancies;
 
     static {
         DefinitionResolver.registerPlugin(RecognizeSalaryPlugin.class);
@@ -41,24 +42,30 @@ public class SiteParser implements VacancySource {
         this.siteName = siteName;
     }
 
+    @Override
     public String getSourceName() {
         return siteName;
     }
 
     public void setItemsCount(int itemsCount) {
         this.itemsCount = itemsCount;
+        vacancies = null;
     }
 
     public void setSearchText(String searchText) {
         this.searchText = searchText;
+        vacancies = null;
     }
 
     @Override
-    public Set<Vacancy> getVacancies() {
-        return getVacancies(false);
+    public List<Vacancy> getVacancies() {
+        if (vacancies == null) {
+            vacancies = getVacancies(false);
+        }
+        return vacancies;
     }
     
-    public Set<Vacancy> getVacancies(boolean deleteOnExit) {
+    public List<Vacancy> getVacancies(boolean deleteOnExit) {
         VacancySource result = null;
         LOGGER.log(Level.INFO, "Сбор информации с сайта {0}", siteName);
         try {
@@ -72,16 +79,16 @@ public class SiteParser implements VacancySource {
             
             scraper.execute();
             
-            result = new VacancyXmlFileParser(new FileReader(tempFile));
+            result = new VacancyXmlFileParser(siteName, new FileReader(tempFile));
             
             if (deleteOnExit)  {
                 tempFile.delete();
             }
         } 
         catch (IOException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.WARNING, null, ex);
         }        
-        LOGGER.log(Level.INFO, "Окончание сбора информации с сайта {0}", siteName);
+        LOGGER.log(Level.FINE, "Окончание сбора информации с сайта {0}", siteName);
         
         return result.getVacancies();
     }

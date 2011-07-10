@@ -3,35 +3,73 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     
-    <bean id="SearchDoubles" class="ru.yandex.test.SearchDoubles">
-        <property name="dialog" ref="dialog"/>
-        <property name="reportCreator" ref="reportCreator"/>
-    </bean>
-    
     <bean id="moikrug_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="moikrug.ru" />
         <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/moikrug.xml" />
     </bean>
+    
+    <bean id="moikrug_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
+        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/moikrug.xml" />
+    </bean>
+    
     <bean id="job_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="job.ru" />
         <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/job.xml" />
     </bean>
+    
+    <bean id="job_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
+        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/job.xml" />
+    </bean>
+    
     <bean id="habrahabr_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="habrahabr.ru" />
         <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/habrahabr.xml" />
     </bean>
     
-    <bean id="dialog" class="ru.yandex.test.impl.SearchDialogImpl">
+    <bean id="habrahabr_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
+        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/habrahabr.xml" />
+    </bean>
+    
+    <bean id="hh_ru" class="ru.yandex.test.impl.SiteParser">
+        <property name="siteName" value="hh.ru" />
+        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/hh.xml" />
+    </bean>
+    
+    <bean id="rabota_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
+        <constructor-arg index="0" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/test/ru/yandex/test/impl/rabota.xml" />
+    </bean>
+    
+    <bean id="rabota_ru" class="ru.yandex.test.impl.SiteParser">
+        <property name="siteName" value="rabota.ru" />
+        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/rabota.xml" />
+    </bean>
+    
+    <bean id="trud_com" class="ru.yandex.test.impl.SiteParser">
+        <property name="siteName" value="hh.ru" />
+        <property name="webHarvestConfig" value="/Users/OneHalf/Documents/NetBeansProjects/Yandex/SearchDoules/src/ru/yandex/test/siteparseconfigs/hh.xml" />
+    </bean>
+	
+    <bean id="reportCreator" class="ru.yandex.test.impl.ReportCreatorImpl">
+    </bean>    
+    
+    <bean id="dialog" class="ru.yandex.test.impl.SearchDialog">
         <property name="siteParsers">
             <set>
                 <ref bean="job_ru" />
                 <ref bean="moikrug_ru" />
                 <ref bean="habrahabr_ru" />
+                <ref bean="rabota_ru" />
             </set>
         </property>
+        <property name="preparsedXmlFiles">
+            <set>
+                <ref bean="job_file" />
+                <ref bean="moikrug_file" />
+                <ref bean="habrahabr_file" />
+                <ref bean="rabota_file" />
+            </set>
+        </property>
+        <property name="reportCreator" ref="reportCreator" />
         <property name="visible" value="true"/>
     </bean>
-	
-    <bean id="reportCreator" class="ru.yandex.test.impl.ReportCreatorImpl">
-    </bean>    
 </beans>
