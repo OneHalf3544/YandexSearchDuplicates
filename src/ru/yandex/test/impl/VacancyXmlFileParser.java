@@ -154,12 +154,18 @@ import ru.yandex.test.VacancySource;
                 currentTag = Tag.VACANCY_NAME;
                 final String url = attributes.getValue("", "url").replaceAll("(^\\s+)|(\\s+$)", "");
                 currentVacancy.setVacancyUrl(url);
+                textBuffer = new StringBuilder();
             }
 
             @Override
             public void text(char[] ch, int start, int length) {
-                String value = new String(ch, start, length).replaceAll("(^\\s+)|(\\s+$)", "");
-                currentVacancy.setVacancyName(value);
+                textBuffer.append(ch, start, length);
+            }
+
+            @Override
+            public void ending() {
+                currentVacancy.setVacancyName(textBuffer.toString().replaceAll("(^\\s+)|(\\s+$)", ""));
+                super.ending();
             }
         },
         COMPANY_NAME("companyName") {
@@ -167,19 +173,38 @@ import ru.yandex.test.VacancySource;
             public void starting(Attributes attributes) {
                 super.starting(attributes);
                 currentVacancy.setCompanyUrl(attributes.getValue("", "companyUrl"));
+                textBuffer = new StringBuilder();
             }
 
             @Override
             public void text(char[] ch, int start, int length) {
-                String value = new String(ch, start, length);
-                currentVacancy.setCompanyName(value);
+                textBuffer.append(ch, start, length);
             }
+
+            @Override
+            public void ending() {
+                currentVacancy.setCompanyName(textBuffer.toString());
+                super.ending();
+            }
+            
         },
         CITY("vacancyCity") {
+
+            @Override
+            public void starting(Attributes attributes) {
+                super.starting(attributes);
+                textBuffer = new StringBuilder();
+            }
+            
             @Override
             public void text(char[] ch, int start, int length) {
-                String value = new String(ch, start, length);
-                currentVacancy.setCity(value);
+                textBuffer.append(ch, start, length);
+            }
+
+            @Override
+            public void ending() {
+                currentVacancy.setCity(textBuffer.toString());
+                super.ending();
             }
         }, 
         SALARY("salary") {
@@ -246,19 +271,19 @@ import ru.yandex.test.VacancySource;
             @Override
             public void starting(Attributes attributes) {
                 super.starting(attributes);
-                descriptionText = new StringBuilder();
+                textBuffer = new StringBuilder();
                 
             }
 
             @Override
             public void text(char[] ch, int start, int length) {
-                descriptionText.append(ch, start, length);
+                textBuffer.append(ch, start, length);
             }
 
             @Override
             public void ending() {
-                currentVacancy.setDescription(descriptionText.toString());
-                descriptionText = null;
+                currentVacancy.setDescription(textBuffer.toString());
+                textBuffer = null;
                 super.ending();
             }
             
@@ -269,7 +294,7 @@ import ru.yandex.test.VacancySource;
         private static Integer maxSalary;
         
         private static String query;
-        private static StringBuilder descriptionText;
+        private static StringBuilder textBuffer;
         
         private static Vacancy currentVacancy;
         private static Tag currentTag;

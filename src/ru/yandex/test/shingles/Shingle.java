@@ -40,11 +40,11 @@ public class Shingle {
     
     static String canonize(String text) {
         String result = String.valueOf(text).toLowerCase()
-                .replaceAll("[\\*.,!?:;—\\-\\n\\r()]", " ")
+                .replaceAll("[\\*•.,!?:;—\\-\\n\\r()]", " ")
                 .replaceAll(
-                "\b(это|как|так|и|в|над|к|до|не|на|но|за|то|с|ли"
+                "(?<=\\s)(это|как|так|и|в|над|к|до|не|на|но|за|то|с|ли"
                 + "|а|во|от|со|для|о|же|ну|вы|бы|что|кто|он|она"
-                + "|inc|llc|corp|ltd)\b", "")
+                + "|inc|llc|corp|ltd)(?=\\s)", "")
                 .replaceAll("(\\s{2,})", " ")
                 .trim();
         

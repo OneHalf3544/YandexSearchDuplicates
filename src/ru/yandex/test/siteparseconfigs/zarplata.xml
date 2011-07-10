@@ -8,11 +8,11 @@
     <var-def name="search" overwrite="false">java</var-def>
     <var-def name="outputFile" overwrite="false">vacancy/job.xml</var-def>
     
-    <var-def name="baseUrl"><template>http://spb.zarplata.ru</template></var-def>
+    <var-def name="baseUrl"><template>http://www.zarplata.ru</template></var-def>
     <var-def name="url"><template>${baseUrl}/workman/result.aspx?keywords=${search}</template></var-def>
     
     <!-- Число ссылок на странице -->
-    <var-def name="itemsOnPage">20</var-def> 
+    <var-def name="itemsOnPage">30</var-def> 
     
     <!-- Число вакансий, которые надо обработать -->
     <var-def name="itemsCount" overwrite="false">40</var-def> 
@@ -23,7 +23,7 @@
         <call name="download-multipage-list">
             <call-param name="pageUrl"><var name="url"/></call-param>
             <call-param name="nextXPath">//div[@class='pages']/strong/following-sibling::a[1]/@href</call-param>
-            <call-param name="itemXPath">//div[starts-with(@class, 'vacancy')]/div/h3/a/@href</call-param>
+            <call-param name="itemXPath">//table[starts-with(@class, 'search-list')]/tbody/tr[@class='announcement']/a/@href</call-param>
             <call-param name="maxloops"><template>${loopsCount}</template></call-param>
         </call>
     </var-def>

@@ -14,12 +14,25 @@
         <html>
             <head>
                 <title>Отчет по поиску одинаковых вакансий</title>
+                <style type="text/css">
+                    div.vacancy {
+                        padding: 10px;
+                    }
+                    table {
+                        border-collapse: collapse;
+                    }
+                    td, th { 
+                        border: 1px solid black;
+                        padding: 20px;
+                    }
+                </style>
             </head>
             <body>
                 <h1>Отчет по поиску одинаковых вакансий</h1>
                 <table>
                     <tbody>
-                        <xsl:apply-templates/>
+                        <tr><th>Схожесть</th><th>Вакансии</th></tr>
+                        <xsl:apply-templates />
                     </tbody>
                 </table>
             </body>
@@ -27,28 +40,21 @@
     </xsl:template>
 
     <xsl:template match="duplicates">
-        <tr>
-            <xsl:apply-templates />
-        </tr>
+        <tr><td><xsl:apply-templates select="equalency" /></td>
+            <td><xsl:apply-templates select="vacancy" /></td></tr>
     </xsl:template>
 
-    <xsl:template match="equalency">
-        <td>
-            <xsl:apply-templates />%
-        </td>
-    </xsl:template>
+    <xsl:template match="equalency"><xsl:value-of select="." />%</xsl:template>
 
     <xsl:template match="vacancy">
-        <a>
-            <xsl:attribute name="href">
-                <xsl:text>http://</xsl:text>
-                <xsl:value-of select="url/text()"/>
-            </xsl:attribute>
-            <xsl:value-of select="name/text()"/>
-        </a>  
-    </xsl:template>
-
-    <xsl:template match="name">
-        <xsl:value-of select="//text()"/>
+        <div class="vacancy">
+            <span>Вакансия: </span><a href="{url/text()}">
+                <xsl:value-of select="name/text()"/>
+            </a><br />
+            <span>Компания: </span><a href="{company/url/text()}">
+                <xsl:value-of select="company/name/text()"/>
+            </a><br />
+            <span>Регион: <xsl:value-of select="city/text()"/></span>
+        </div>
     </xsl:template>
 </xsl:stylesheet>

@@ -1,11 +1,12 @@
 package ru.yandex.test.impl;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,9 +16,11 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
 import ru.yandex.test.Duplicate;
 import ru.yandex.test.ReportCreator;
 import ru.yandex.test.Vacancy;
@@ -41,6 +44,7 @@ public class ReportCreatorImpl implements ReportCreator {
             Document document = builder.newDocument();
             
             Element root = document.createElement("root");
+            document.appendChild(root);
             for (Duplicate duplicate : vacancies) {
                 Element duplElem = createDuplicateXmlElement(document, duplicate);
                 root.appendChild(duplElem);
@@ -62,11 +66,28 @@ public class ReportCreatorImpl implements ReportCreator {
         return fileResult;
     }
 
-    private Element createDuplicateXmlElement(Document document, Duplicate duplicate) throws DOMException {
-        Element result = document.createElement("duplicate");
+    private Element createCompanyXmlElement(Document document, Vacancy vacancy) throws DOMException {
+        Element companyName = document.createElement("name");
+        companyName.appendChild(document.createTextNode(vacancy.getCompanyName()));
         
+        Element companyUrl = document.createElement("url");
+        companyUrl.appendChild(document.createTextNode(vacancy.getCompanyUrl()));
+        
+        Element company = document.createElement("company");
+        company.appendChild(companyName);
+        company.appendChild(companyUrl);
+        
+        return company;
+    }
+
+    private Element createDuplicateXmlElement(Document document, Duplicate duplicate) throws DOMException {
+        Element result = document.createElement("duplicates");
+        
+        Iterator<Vacancy> iterator = duplicate.getDuplicates().iterator();
         Element equalency = document.createElement("equalency");
-        equalency.appendChild(document.createTextNode(""));
+        final Double levelOfSimilarity = iterator.next().getLevelOfSimilarity(iterator.next());
+        equalency.appendChild(document.createTextNode(
+                String.valueOf((int)(100*levelOfSimilarity.doubleValue()))));
         result.appendChild(equalency);
         
         for (Vacancy vacancy : duplicate.getDuplicates()) {
@@ -74,6 +95,7 @@ public class ReportCreatorImpl implements ReportCreator {
         }
         return result;
     }
+    
     private Element createVacancyXmlElement(Document document, Vacancy vacancy) throws DOMException {
         Element vacancyElem = document.createElement("vacancy");
         
@@ -81,10 +103,17 @@ public class ReportCreatorImpl implements ReportCreator {
         url.appendChild(document.createTextNode(vacancy.getVacancyUrl()));
         
         Element name = document.createElement("name");
-        url.appendChild(document.createTextNode(vacancy.getVacancyName()));
+        name.appendChild(document.createTextNode(vacancy.getVacancyName()));
+        
+        Element company = createCompanyXmlElement(document, vacancy);
+        
+        Element city = document.createElement("city");
+        city.appendChild(document.createTextNode(vacancy.getCity()));
         
         vacancyElem.appendChild(url);
         vacancyElem.appendChild(name);
+        vacancyElem.appendChild(company);
+        vacancyElem.appendChild(city);
         
         return vacancyElem;
     }

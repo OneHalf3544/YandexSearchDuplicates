@@ -9,7 +9,7 @@
     <var-def name="outputFile" overwrite="false">vacancy/habrahabr.xml</var-def>
     
     <var-def name="baseUrl"><template>http://habrahabr.ru</template></var-def>
-    <var-def name="url"><template>${baseUrl}/job/?action=find&amp;keywords=${search}</template></var-def>
+    <var-def name="url"><template>${baseUrl}/job/?action=find&amp;sector_id=0&amp;keyword=${search}&amp;country=&amp;region=&amp;city=&amp;pay=</template></var-def>
     
     <!-- Число ссылок на странице -->
     <var-def name="itemsOnPage">40</var-def> 

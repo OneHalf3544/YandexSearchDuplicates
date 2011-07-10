@@ -28,7 +28,7 @@
                     </var-def>
  
                     <var-def name="pageUrl">
-                        <template>${sys.fullUrl(pageUrl.toString(), nextLinkUrl.toString())}</template>
+                        <template>${(nextLinkUrl.toString().isEmpty())?"":sys.fullUrl(pageUrl.toString(), nextLinkUrl.toString())}</template>
                     </var-def>
                 </empty>
     
