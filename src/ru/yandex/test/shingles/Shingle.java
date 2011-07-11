@@ -87,7 +87,7 @@ public class Shingle {
         final int[] sh1 = shingle1.getShingle();
         final int[] sh2 = shingle2.getShingle();
         
-        if (sh1.length == 0 || sh2.length ==0) {
+        if (sh1.length == 0 || sh2.length == 0) {
             return 0.0;
         }
         
@@ -96,6 +96,7 @@ public class Shingle {
             for (int j = 0; j < sh2.length; j++) {
                 if (sh1[i] == sh2[j]) {
                     preResult++;
+                    break;
                 }
             }
         }

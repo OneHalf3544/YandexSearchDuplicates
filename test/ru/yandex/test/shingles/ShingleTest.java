@@ -73,5 +73,10 @@ public class ShingleTest {
                 new Shingle(exampleString + exampleString2), 
                 new Shingle(exampleString4 + exampleString4));
         assertEquals(0.0, corellation, 0.001);
+        
+        corellation = Shingle.corellation(
+                new Shingle(exampleString + exampleString5),
+                new Shingle(exampleString + exampleString5));
+        assertEquals(1.0, corellation, 0.001);
     }
 }
