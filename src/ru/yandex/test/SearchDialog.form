@@ -88,11 +88,6 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="cbSearchInSelf">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="&#x418;&#x441;&#x43a;&#x430;&#x442;&#x44c; &#x434;&#x443;&#x431;&#x43b;&#x438; &#x438; &#x432; &#x43f;&#x440;&#x435;&#x434;&#x435;&#x43b;&#x430;&#x445; &#x43e;&#x434;&#x43d;&#x43e;&#x433;&#x43e; &#x441;&#x430;&#x439;&#x442;&#x430;"/>
-                  </Properties>
-                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlItemsCount">
@@ -153,6 +148,11 @@
             <Property name="alignment" type="int" value="0"/>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="cbSearchInSelf">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x418;&#x441;&#x43a;&#x430;&#x442;&#x44c; &#x434;&#x443;&#x431;&#x43b;&#x438; &#x438; &#x432; &#x43f;&#x440;&#x435;&#x434;&#x435;&#x43b;&#x430;&#x445; &#x43e;&#x434;&#x43d;&#x43e;&#x433;&#x43e; &#x441;&#x430;&#x439;&#x442;&#x430;"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JButton" name="btnSearch">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x41d;&#x430;&#x439;&#x442;&#x438;"/>

@@ -1,24 +1,20 @@
 package ru.yandex.test.impl;
 
-import com.sun.org.apache.xerces.internal.parsers.SAXParser;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import ru.yandex.test.Salary;
 import ru.yandex.test.Vacancy;
@@ -57,7 +53,7 @@ import ru.yandex.test.VacancySource;
     public VacancyXmlFileParser(String sourceName, File xmlFile) {
         this.sourceName = sourceName;
         try {
-            this.parse(new FileReader(xmlFile));
+            this.parse(new FileInputStream(xmlFile));
         } catch (FileNotFoundException ex) {
             LOGGER.log(Level.WARNING, "Нет такого файла", ex);
         }
@@ -74,14 +70,12 @@ import ru.yandex.test.VacancySource;
         InputStream resourceStream = VacancyXmlFileParser.class.getResourceAsStream(resourceName);
         try {
             if (resourceStream != null) {
-                this.parse(new InputStreamReader(resourceStream, "UTF8"));
+                this.parse(resourceStream);
             } 
             else {
-                this.parse(new FileReader(resourceName));
+                this.parse(new FileInputStream(resourceName));
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(VacancyXmlFileParser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(VacancyXmlFileParser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -90,19 +84,19 @@ import ru.yandex.test.VacancySource;
      * Конструктор объекта с указанием потока, из которого нужно брать данные 
      * и названия источника
      * @param name Название источника
-     * @param reader Поток созданный на основе данных собранных WebHarvest'ом
+     * @param inputStream Поток созданный на основе данных собранных WebHarvest'ом
      */
-    public VacancyXmlFileParser(String name, Reader reader) {
+    public VacancyXmlFileParser(String name, InputStream inputStream) {
         this.sourceName = name;
-        this.parse(reader);
+        this.parse(inputStream);
     }
 
-    private void parse(Reader reader) {
+    private void parse(InputStream inputStream) {
         try {
-        LOGGER.log(Level.FINE, "Начало парсинга xml-потока \"{0}\" с вакансиями", sourceName);
-            XMLReader xmlParser = new SAXParser();
-            xmlParser.setContentHandler(vacancyCreatorHandler);
-            xmlParser.parse(new InputSource(reader));
+            LOGGER.log(Level.FINE, "Начало парсинга xml-потока \"{0}\" с вакансиями", sourceName);
+            SAXParserFactory SAXFactory = SAXParserFactory.newInstance();
+            SAXParser saxParser = SAXFactory.newSAXParser();
+            saxParser.parse(inputStream, vacancyCreatorHandler);
             
             vacancies = vacancyCreatorHandler.getVacancies();
             query = Tag.getQuery();
@@ -111,7 +105,7 @@ import ru.yandex.test.VacancySource;
             LOGGER.log(Level.WARNING, "Ошибка парсинга xml-потока \""+sourceName+"\"", e);
         }
         finally {
-            try { reader.close(); } catch (IOException ex) {}
+            try { inputStream.close(); } catch (IOException ex) {}
         }
     }
 
@@ -136,7 +130,7 @@ import ru.yandex.test.VacancySource;
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
             for (Tag tag : Tag.values()) {
-                if (localName.equals(tag.TAG_NAME)) {
+                if (qName.equals(tag.TAG_NAME)) {
                     tag.starting(attributes);
                     break;
                 }
@@ -153,7 +147,7 @@ import ru.yandex.test.VacancySource;
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
             for (Tag tag : Tag.values()) {
-                if (localName.equals(tag.TAG_NAME)) {
+                if (qName.equals(tag.TAG_NAME)) {
                     tag.ending();
                     break;
                 }
