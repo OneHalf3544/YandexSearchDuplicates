@@ -1,7 +1,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" xmlns:aop="http://www.springframework.org/schema/aop">
     
     <bean id="moikrug_ru" class="ru.yandex.test.impl.SiteParser">
         <property name="siteName" value="moikrug.ru" />
@@ -51,9 +51,6 @@
     
     
     
-    <bean id="reportCreator" class="ru.yandex.test.impl.ReportCreatorImpl">
-    </bean>    
-    
     <bean id="dialog" class="ru.yandex.test.SearchDialog">
         <constructor-arg type="Double" value="0.55"/>
         <property name="siteParsers">
@@ -72,7 +69,9 @@
                 <ref bean="rabota_file" />
             </set>
         </property>
-        <property name="reportCreator" ref="reportCreator" />
+        <property name="reportCreator">
+            <bean class="ru.yandex.test.impl.ReportCreatorImpl"/>
+        </property>
         <property name="visible" value="true"/>
     </bean>
 </beans>

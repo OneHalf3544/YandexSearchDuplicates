@@ -79,17 +79,17 @@ public class SearchDialog extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taResult = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        pnlSiteSearch = new javax.swing.JPanel();
+        pnlSearchQuery = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfSearchQuery = new javax.swing.JTextField();
         cbSearchInSelf = new javax.swing.JCheckBox();
-        pnlSites = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        pnlItemsCount = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tfItemCount = new javax.swing.JTextField();
+        pnlSites = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         pnlFiles = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         pnlButtons = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
@@ -106,43 +106,45 @@ public class SearchDialog extends javax.swing.JFrame {
 
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.PAGE_AXIS));
 
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        pnlSiteSearch.setBorder(javax.swing.BorderFactory.createTitledBorder("Поиск по сайтам"));
+        pnlSiteSearch.setLayout(new javax.swing.BoxLayout(pnlSiteSearch, javax.swing.BoxLayout.PAGE_AXIS));
+
+        pnlSearchQuery.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel1.setText("Что ищем?");
-        jPanel1.add(jLabel1);
+        pnlSearchQuery.add(jLabel1);
 
         tfSearchQuery.setPreferredSize(new java.awt.Dimension(120, 20));
-        jPanel1.add(tfSearchQuery);
+        pnlSearchQuery.add(tfSearchQuery);
 
-        cbSearchInSelf.setText("Искать дубли в пределах одного сайта");
-        jPanel1.add(cbSearchInSelf);
+        cbSearchInSelf.setText("Искать дубли и в пределах одного сайта");
+        pnlSearchQuery.add(cbSearchInSelf);
 
-        jPanel2.add(jPanel1);
+        pnlSiteSearch.add(pnlSearchQuery);
+
+        pnlItemsCount.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        jLabel3.setText("Сколько ищем? (на каждый источник)");
+        pnlItemsCount.add(jLabel3);
+
+        tfItemCount.setText("25");
+        tfItemCount.setMinimumSize(new java.awt.Dimension(60, 20));
+        tfItemCount.setPreferredSize(new java.awt.Dimension(60, 20));
+        pnlItemsCount.add(tfItemCount);
+
+        pnlSiteSearch.add(pnlItemsCount);
 
         pnlSites.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel2.setText("Где ищем?");
         pnlSites.add(jLabel2);
 
-        jPanel2.add(pnlSites);
+        pnlSiteSearch.add(pnlSites);
 
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel2.add(pnlSiteSearch);
 
-        jLabel3.setText("Сколько ищем? (на каждый источник)");
-        jPanel3.add(jLabel3);
-
-        tfItemCount.setText("25");
-        tfItemCount.setMinimumSize(new java.awt.Dimension(60, 20));
-        tfItemCount.setPreferredSize(new java.awt.Dimension(60, 20));
-        jPanel3.add(tfItemCount);
-
-        jPanel2.add(jPanel3);
-
+        pnlFiles.setBorder(javax.swing.BorderFactory.createTitledBorder("Уже собранная информация"));
         pnlFiles.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-        jLabel4.setText("Уже собранная информация:");
-        pnlFiles.add(jLabel4);
-
         jPanel2.add(pnlFiles);
 
         pnlButtons.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
@@ -182,13 +184,13 @@ public class SearchDialog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlFiles;
+    private javax.swing.JPanel pnlItemsCount;
+    private javax.swing.JPanel pnlSearchQuery;
+    private javax.swing.JPanel pnlSiteSearch;
     private javax.swing.JPanel pnlSites;
     private javax.swing.JTextArea taResult;
     private javax.swing.JTextField tfItemCount;
