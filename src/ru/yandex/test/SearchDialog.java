@@ -83,7 +83,6 @@ public class SearchDialog extends javax.swing.JFrame {
         pnlSearchQuery = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tfSearchQuery = new javax.swing.JTextField();
-        cbSearchInSelf = new javax.swing.JCheckBox();
         pnlItemsCount = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tfItemCount = new javax.swing.JTextField();
@@ -91,6 +90,7 @@ public class SearchDialog extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         pnlFiles = new javax.swing.JPanel();
         pnlButtons = new javax.swing.JPanel();
+        cbSearchInSelf = new javax.swing.JCheckBox();
         btnSearch = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
 
@@ -116,9 +116,6 @@ public class SearchDialog extends javax.swing.JFrame {
 
         tfSearchQuery.setPreferredSize(new java.awt.Dimension(120, 20));
         pnlSearchQuery.add(tfSearchQuery);
-
-        cbSearchInSelf.setText("Искать дубли и в пределах одного сайта");
-        pnlSearchQuery.add(cbSearchInSelf);
 
         pnlSiteSearch.add(pnlSearchQuery);
 
@@ -148,6 +145,9 @@ public class SearchDialog extends javax.swing.JFrame {
         jPanel2.add(pnlFiles);
 
         pnlButtons.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        cbSearchInSelf.setText("Искать дубли и в пределах одного сайта");
+        pnlButtons.add(cbSearchInSelf);
 
         btnSearch.setText("Найти");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {

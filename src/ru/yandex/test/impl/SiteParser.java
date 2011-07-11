@@ -1,7 +1,6 @@
 package ru.yandex.test.impl;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -111,7 +110,7 @@ public class SiteParser implements VacancySource {
             
             scraper.execute();
             
-            result = new VacancyXmlFileParser(siteName, new FileReader(tempFile));
+            result = new VacancyXmlFileParser(siteName, tempFile);
             
             if (deleteOnExit)  {
                 tempFile.deleteOnExit();
