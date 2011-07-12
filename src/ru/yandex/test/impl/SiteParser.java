@@ -1,6 +1,7 @@
 package ru.yandex.test.impl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -19,34 +20,27 @@ import ru.yandex.test.webharvest.RecognizeSalaryPlugin;
  */
 public class SiteParser implements VacancySource {
     private static final Logger LOGGER = Logger.getLogger(SiteParser.class.getName());
-    private final String WORKING_DIRECTORY = "..";
-    
-    private String siteName;
-    private String configResourceName;
+    private static final String WORKING_DIRECTORY = "..";
+
+    private final String siteName;
+    private final String configResourceName;
+
     private String searchText;
     private int itemsCount;
     private List<Vacancy> vacancies;
 
     static {
+        // Регистрируем плагин
         DefinitionResolver.registerPlugin(RecognizeSalaryPlugin.class);
-    }
-    
-    public SiteParser() {
-    }
-    
-    /**
-     * Установка конфига для WebHarvest
-     * @param configName Устанавливаемый файл конфигурации
-     */
-    public void setWebHarvestConfig(String configName) {
-        this.configResourceName = configName;
     }
 
     /**
-     * Установка названия сайта
+     * Создание парсера по имени сайта и файла конфигурации WebHarvest
      * @param siteName Название сайта
+     * @param configResourceName Устанавливаемый файл конфигурации
      */
-    public void setSiteName(String siteName) {
+    public SiteParser(String siteName, String configResourceName) {
+        this.configResourceName = configResourceName;
         this.siteName = siteName;
     }
 
@@ -92,7 +86,7 @@ public class SiteParser implements VacancySource {
         try {
             ScraperConfiguration config;
             // Пытаемся получить URL внутреннего ресурса по имени
-            final URL internalConfig = SiteParser.class.getResource(configResourceName);
+            URL internalConfig = SiteParser.class.getResource(configResourceName);
             if (internalConfig != null) {
                 config = new ScraperConfiguration(internalConfig);
             }
@@ -103,7 +97,7 @@ public class SiteParser implements VacancySource {
             
             Scraper scraper = new Scraper(config, WORKING_DIRECTORY);
             
-            final File tempFile = File.createTempFile("Vacancy", ".xml");
+            File tempFile = File.createTempFile("Vacancy", ".xml");
             scraper.addVariableToContext("search", searchText);
             scraper.addVariableToContext("itemsCount", itemsCount);
             scraper.addVariableToContext("outputFile", tempFile);
@@ -126,7 +120,7 @@ public class SiteParser implements VacancySource {
 
     @Override
     public String toString() {
-        return "SiteParser{" + "site: " + siteName + ", query: " + searchText + '}';
+        return String.format("SiteParser{site: %s, query: %s}", siteName, searchText);
     }
     
 }

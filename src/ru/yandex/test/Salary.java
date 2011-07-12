@@ -61,15 +61,15 @@ public class Salary {
      * @param other Другой объект, с которым производится сравнение
      * @return true, если диапазоны зарплат перекрываются
      */
-    public boolean permissible(Salary other) {
-        final boolean part1 
+   public boolean isPermissible(Salary other) {
+        final boolean part1
                 = this.minimum == null 
                 || other.maximum == null 
                 || this.minimum < other.maximum;
         
         final boolean part2 
-                = this.maximum == null 
-                || other.minimum == null 
+                = this.maximum == null
+                || other.minimum == null
                 || this.maximum > other.minimum;
         
         return part1 && part2;

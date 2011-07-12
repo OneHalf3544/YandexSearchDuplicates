@@ -43,43 +43,43 @@ public class SalaryTest {
     }
     
     /**
-     * Test of permissible method, of class Salary.
+     * Test of isPermissible method, of class Salary.
      */
     @Test
     public void testPermissible() {
-        System.out.println("permissible");
+        System.out.println("isPermissible");
         
         Salary instance1 = new Salary(null, 10000);
         Salary instance2 = new Salary(2000, 10000);
-        assertTrue(instance1.permissible(instance2));
+        assertTrue(instance1.isPermissible(instance2));
         
         instance1 = new Salary(3000, 9000);
         instance2 = new Salary(2000, 10000);
-        assertTrue(instance1.permissible(instance2));
+        assertTrue(instance1.isPermissible(instance2));
         
         instance1 = new Salary(null, null);
         instance2 = new Salary(2000, 10000);
-        assertTrue(instance1.permissible(instance2));
+        assertTrue(instance1.isPermissible(instance2));
         
         instance1 = new Salary(null, 5000);
         instance2 = new Salary(null, 10000);
-        assertTrue(instance1.permissible(instance2));
+        assertTrue(instance1.isPermissible(instance2));
         
         instance1 = new Salary(5000, null);
         instance2 = new Salary(10000, null);
-        assertTrue(instance1.permissible(instance2));
+        assertTrue(instance1.isPermissible(instance2));
         
         instance1 = new Salary(1000, 9000);
         instance2 = new Salary(10000, 20000);
-        assertFalse(instance1.permissible(instance2));
+        assertFalse(instance1.isPermissible(instance2));
         
         instance1 = new Salary(null, 9000);
         instance2 = new Salary(10000, null);
-        assertFalse(instance1.permissible(instance2));
+        assertFalse(instance1.isPermissible(instance2));
         
         instance1 = new Salary(9000, null);
         instance2 = new Salary(null, 8000);
-        assertFalse(instance1.permissible(instance2));
+        assertFalse(instance1.isPermissible(instance2));
     }
     
     @Test

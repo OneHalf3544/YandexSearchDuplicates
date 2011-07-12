@@ -9,20 +9,21 @@ package ru.yandex.test.shingles;
 public class Shingle {
     /** Число слов в шингле */
     private final int SHINGLE_LENGTH;
+
     /** Число слов в шингле по умолчанию */
     private final static int DEFAULT_SHINGLE_LENGTH = 5;
 
     /** Вычисленные шинглы текста */
     private int[] shingle;
 
-    /** 
-     * Вычисление шинглов с числом слов по умолчанию 
+    /**
+     * Вычисление шинглов с числом слов по умолчанию
      * @param text Текст, для которого вычисляются шинглы
      */
     public Shingle(String text) {
         this(text, DEFAULT_SHINGLE_LENGTH);
     }
-    
+
     /**
      * Вычисление шинглов с указанным числом слов в шингле
      * @param text Текст, для которого вычисляются шинглы
@@ -30,7 +31,7 @@ public class Shingle {
      */
     public Shingle(String text, int shingleLength) {
         SHINGLE_LENGTH = shingleLength;
-        
+
         String[] words = canonize(text).split(" ");
         final int shinglesCount = words.length - SHINGLE_LENGTH + 1;
         if (shinglesCount > 0) {
@@ -70,7 +71,7 @@ public class Shingle {
                 + "|inc|llc|corp|ltd)(?=\\s)", "")
                 .replaceAll("(\\s{2,})", " ")
                 .trim();
-        
+
         return result;
     }
     
@@ -80,17 +81,17 @@ public class Shingle {
      * @param shingle2 Второй набор шинглов
      * @return Сходство шинглов. От 0.0 до 1.0
      */
-    public static double corellation(Shingle shingle1, Shingle shingle2) {
+    public static double correlation(Shingle shingle1, Shingle shingle2) {
         if (shingle1.SHINGLE_LENGTH != shingle2.SHINGLE_LENGTH) {
             return 0.0;
-        }        
+        }
         final int[] sh1 = shingle1.getShingle();
         final int[] sh2 = shingle2.getShingle();
-        
+
         if (sh1.length == 0 || sh2.length == 0) {
             return 0.0;
         }
-        
+
         int preResult = 0;
         for (int i = 0; i < sh1.length; i++) {
             for (int j = 0; j < sh2.length; j++) {

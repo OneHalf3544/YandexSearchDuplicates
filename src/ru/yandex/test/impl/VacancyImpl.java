@@ -139,7 +139,7 @@ public class VacancyImpl implements Vacancy {
         if (other.shingles == null) {
             other.updateShingles();
         }
-        if (!this.salary.permissible(other.salary)) { 
+        if (!this.salary.isPermissible(other.salary)) {
             /* Эквивалентность зарплат. Не влияет на вероятность, 
              * но если диапазоны не перекрываются, считаем, что вакансии разные
              */
@@ -151,23 +151,23 @@ public class VacancyImpl implements Vacancy {
         // Сумма коэфициентов перед слагаемыми должна быть равна единице
         
         // Равенство названий вакансии
-        result += 0.1 * Shingle.corellation(
-                this.shingles.vacancyNameShingle, 
+        result += 0.1 * Shingle.correlation(
+                this.shingles.vacancyNameShingle,
                 other.shingles.vacancyNameShingle);
         
         // Город
-        result += 0.1 * Shingle.corellation(
-                this.shingles.cityShingles, 
+        result += 0.1 * Shingle.correlation(
+                this.shingles.cityShingles,
                 other.shingles.cityShingles);
         
         // Компания
-        result += 0.4 * Shingle.corellation(
-                this.shingles.companyNameShingle, 
+        result += 0.4 * Shingle.correlation(
+                this.shingles.companyNameShingle,
                 other.shingles.companyNameShingle);
         
         // Описание
-        result += 0.4 * Shingle.corellation(
-                this.shingles.descriptionShingle, 
+        result += 0.4 * Shingle.correlation(
+                this.shingles.descriptionShingle,
                 other.shingles.descriptionShingle);
         
         return result;

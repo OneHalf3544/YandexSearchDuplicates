@@ -60,34 +60,34 @@ public class ShingleTest {
     }
     
     @Test
-    public void testCorellation() {
-        System.out.println("Corellation");
+    public void testCorrelation() {
+        System.out.println("Correlation");
         
-        double corellation = Shingle.corellation(new Shingle(exampleString), new Shingle(exampleString));
-        assertEquals(1.0, corellation, 0.001);
+        double correlation = Shingle.correlation(new Shingle(exampleString), new Shingle(exampleString));
+        assertEquals(1.0, correlation, 0.001);
         
-        corellation = Shingle.corellation(new Shingle(exampleString), new Shingle(exampleString5));
-        assertEquals(0.35, corellation, 0.1);
-        
-        corellation = Shingle.corellation(
-                new Shingle(exampleString + exampleString2), 
+        correlation = Shingle.correlation(new Shingle(exampleString), new Shingle(exampleString5));
+        assertEquals(0.35, correlation, 0.1);
+
+        correlation = Shingle.correlation(
+                new Shingle(exampleString + exampleString2),
                 new Shingle(exampleString4 + exampleString4));
-        assertEquals(0.0, corellation, 0.001);
+        assertEquals(0.0, correlation, 0.001);
         
-        corellation = Shingle.corellation(
+        correlation = Shingle.correlation(
                 new Shingle(exampleString + exampleString5),
                 new Shingle(exampleString + exampleString5));
-        assertEquals(1.0, corellation, 0.001);
+        assertEquals(1.0, correlation, 0.001);
         
         // Не должен возвращать больше 1.0
-        corellation = Shingle.corellation(
+        correlation = Shingle.correlation(
                 new Shingle("bla bla bla bla bla"),
                 new Shingle("bla bla bla bla bla"));
-        assertEquals(1.0, corellation, 0.001);
+        assertEquals(1.0, correlation, 0.001);
         
-        corellation = Shingle.corellation(
+        correlation = Shingle.correlation(
                 new Shingle(exampleString5 + exampleString),
                 new Shingle(exampleString + exampleString5));
-        assertEquals(0.81, corellation, 0.001);
+        assertEquals(0.81, correlation, 0.001);
     }
 }

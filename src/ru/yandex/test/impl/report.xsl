@@ -35,7 +35,8 @@
                         <tr><th>Схожесть</th><th>Вакансии</th></tr>
                         <xsl:for-each select="/root/duplicates">
                             <xsl:sort order="descending" select="equalency"/>
-                            <tr><td><xsl:apply-templates select="equalency" /></td>
+                            <tr>
+                                <td><xsl:apply-templates select="equalency" /></td>
                                 <td><xsl:apply-templates select="vacancy" /></td>
                             </tr>
                         </xsl:for-each>
@@ -49,14 +50,24 @@
 
     <xsl:template match="vacancy">
         <div class="vacancy">
-            <span>Вакансия: </span><a href="{url/text()}">
-                <xsl:value-of select="name/text()"/>
-            </a><br />
-            <span>Компания: </span><a href="{company/url/text()}">
-                <xsl:value-of select="company/name/text()"/>
-            </a><br />
-            <span>Регион: <xsl:value-of select="city/text()"/></span><br />
-            <span>Зарплата: <xsl:value-of select="salary/text()"/></span>
+            <div>
+                <span>Вакансия: </span>
+                <a href="{url/text()}">
+                    <xsl:value-of select="name/text()"/>
+                </a>
+            </div>
+            <div>
+                <span>Компания: </span>
+                <a href="{company/url/text()}">
+                    <xsl:value-of select="company/name/text()"/>
+                </a>
+            </div>
+            <div>
+                <span>Регион: <xsl:value-of select="city/text()"/></span>
+            </div>
+            <div>
+                <span>Зарплата: <xsl:value-of select="salary/text()"/></span>
+            </div>
         </div>
     </xsl:template>
 </xsl:stylesheet>
