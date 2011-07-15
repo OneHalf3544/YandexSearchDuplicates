@@ -52,15 +52,11 @@
         <div class="vacancy">
             <div>
                 <span>Вакансия: </span>
-                <a href="{url/text()}">
-                    <xsl:value-of select="name/text()"/>
-                </a>
+                <a href="{url/text()}"> <xsl:value-of select="name/text()"/> </a>
             </div>
             <div>
                 <span>Компания: </span>
-                <a href="{company/url/text()}">
-                    <xsl:value-of select="company/name/text()"/>
-                </a>
+                <a href="{company/url/text()}"> <xsl:value-of select="company/name/text()"/> </a>
             </div>
             <div>
                 <span>Регион: <xsl:value-of select="city/text()"/></span>

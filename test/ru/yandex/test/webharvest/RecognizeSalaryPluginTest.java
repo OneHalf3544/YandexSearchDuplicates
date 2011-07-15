@@ -1,10 +1,9 @@
 package ru.yandex.test.webharvest;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import ru.yandex.test.Salary;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -13,14 +12,6 @@ import ru.yandex.test.Salary;
 public class RecognizeSalaryPluginTest {
     
     public RecognizeSalaryPluginTest() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**

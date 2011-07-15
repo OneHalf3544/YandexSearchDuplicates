@@ -12,7 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="lib" level="project" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" scope="TEST">
       <library>
         <CLASSES>
           <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.8.jar!/" />
@@ -22,6 +22,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="WebHarvest" level="application" />
+    <orderEntry type="library" exported="" name="AspectJ" level="application" />
   </component>
 </module>
 

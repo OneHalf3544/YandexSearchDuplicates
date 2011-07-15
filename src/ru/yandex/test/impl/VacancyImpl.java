@@ -1,6 +1,8 @@
 package ru.yandex.test.impl;
 
 import java.text.MessageFormat;
+import java.util.logging.Logger;
+
 import ru.yandex.test.Salary;
 import ru.yandex.test.Vacancy;
 import ru.yandex.test.shingles.Shingle;
@@ -10,7 +12,15 @@ import ru.yandex.test.shingles.Shingle;
  * @author OneHalf
  */
 public class VacancyImpl implements Vacancy {
-    
+
+    private final static Logger LOGGER = Logger.getLogger(VacancyImpl.class.getName());
+
+    // Сумма коэфициентов перед слагаемыми должна быть равна единице
+    private static final double CITY_NAME_INFLUENCE = 0.1;
+    private static final double VACANCY_NAME_INFLUENCE = 0.1;
+    private static final double COMPANY_NAME_INFLUENCE = 0.4;
+    private static final double VACANCY_DESCRIPTION_INFLUENCE = 0.4;
+
     private String cityName;
     private String companyName;
     private String companyUrl;
@@ -102,36 +112,25 @@ public class VacancyImpl implements Vacancy {
         this.salary = salary;
     }
 
-    @Override
-    public void setVacancyName(String vacancyName) {
-        this.vacancyName = vacancyName;
-    }
-
-    @Override
-    public void setVacancyUrl(String vacancyUrl) {
-        this.vacancyUrl = vacancyUrl;
-    }
-
-
     /**
      * Уровень сходства текущей вакансии с указанной.
      * Алгоритм сравнения такой:
-     * <p>Зарплата не влияет на процент сходства. Но если диапазоны зарплат 
+     * <p>Зарплата не влияет на процент сходства. Но если диапазоны зарплат
      * не пересекаются, то функция сразу возвращает 0.0</p>
      * <p>Далее по алгоритму шинглов сравниваются:
-     * <ul> 
+     * <ul>
      * <li> Название вакансии (вклад в результат - до 10%)
      * <li> Название компании-работодателя (вклад в результат - до 40%)</li>
      * <li> Регион, в котором предлагается работа (вклад в результат - до 10%)</li>
      * <li> Описание вакансии (вклад в результат - до 40%)</li>
      * </ul>
      * </p>
-     * 
-     * @param o Вакансия, с которой производится сравнение 
+     *
+     * @param o Вакансия, с которой производится сравнение
      * @return Уровень "похожести" вакансии. Находится в пределах от 0.0 до 1.0
      */
     @Override
-    public Double getLevelOfSimilarity(Vacancy o) {
+    public double getLevelOfSimilarity(Vacancy o) {
         if (shingles == null) {
             updateShingles();
         }
@@ -140,37 +139,47 @@ public class VacancyImpl implements Vacancy {
             other.updateShingles();
         }
         if (!this.salary.isPermissible(other.salary)) {
-            /* Эквивалентность зарплат. Не влияет на вероятность, 
+            /*
+             * Эквивалентность зарплат. Не влияет на вероятность,
              * но если диапазоны не перекрываются, считаем, что вакансии разные
              */
             return 0.0;
         }
-        
-        Double result = 0.0;
-        
-        // Сумма коэфициентов перед слагаемыми должна быть равна единице
-        
+
+        double result = 0.0;
+
         // Равенство названий вакансии
-        result += 0.1 * Shingle.correlation(
+        result += VACANCY_NAME_INFLUENCE * Shingle.correlation(
                 this.shingles.vacancyNameShingle,
                 other.shingles.vacancyNameShingle);
-        
+
         // Город
-        result += 0.1 * Shingle.correlation(
+        result += CITY_NAME_INFLUENCE * Shingle.correlation(
                 this.shingles.cityShingles,
                 other.shingles.cityShingles);
-        
+
         // Компания
-        result += 0.4 * Shingle.correlation(
+        result += COMPANY_NAME_INFLUENCE * Shingle.correlation(
                 this.shingles.companyNameShingle,
                 other.shingles.companyNameShingle);
-        
+
         // Описание
-        result += 0.4 * Shingle.correlation(
+        result += VACANCY_DESCRIPTION_INFLUENCE * Shingle.correlation(
                 this.shingles.descriptionShingle,
                 other.shingles.descriptionShingle);
-        
+
         return result;
+    }
+
+    @Override
+    public void setVacancyName(String vacancyName) {
+        this.vacancyName = vacancyName;
+    }
+
+
+    @Override
+    public void setVacancyUrl(String vacancyUrl) {
+        this.vacancyUrl = vacancyUrl;
     }
 
     /** 
@@ -189,10 +198,10 @@ public class VacancyImpl implements Vacancy {
      * Класс с набором шинглов
      */
     private class VacancyShingles {
-        private Shingle cityShingles;
-        private Shingle vacancyNameShingle;
-        private Shingle companyNameShingle;
-        private Shingle descriptionShingle;
+        private final Shingle cityShingles;
+        private final Shingle vacancyNameShingle;
+        private final Shingle companyNameShingle;
+        private final Shingle descriptionShingle;
 
         VacancyShingles() {
             cityShingles = new Shingle(cityName, 1);

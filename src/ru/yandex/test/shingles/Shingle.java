@@ -7,6 +7,7 @@ package ru.yandex.test.shingles;
  * @author OneHalf
  */
 public class Shingle {
+    private static final int[] EMPTY_ARRAY = new int[0];
     /** Число слов в шингле */
     private final int SHINGLE_LENGTH;
 
@@ -38,7 +39,7 @@ public class Shingle {
             shingle = new int[shinglesCount];
         }
         else {
-            shingle = new int[0];
+            shingle = EMPTY_ARRAY;
         }
         for (int i = 0; i < shingle.length; i++) {
             StringBuilder sb = new StringBuilder(words[i]);
@@ -53,7 +54,7 @@ public class Shingle {
      * Получение вычисленных шинглов для текста
      * @return Вычисленные шинглы
      */
-    public int[] getShingle() {
+    int[] getShingle() {
         return shingle;
     }
     
@@ -63,7 +64,8 @@ public class Shingle {
      * @return Канонизированный текст
      */
     static String canonize(String text) {
-        String result = String.valueOf(text).toLowerCase()
+
+        return String.valueOf(text).toLowerCase()
                 .replaceAll("[\\*•.,!?:;—\\-\\n\\r()]", " ")
                 .replaceAll(
                 "(?<=\\s)(это|как|так|и|в|над|к|до|не|на|но|за|то|с|ли"
@@ -71,8 +73,6 @@ public class Shingle {
                 + "|inc|llc|corp|ltd)(?=\\s)", "")
                 .replaceAll("(\\s{2,})", " ")
                 .trim();
-
-        return result;
     }
     
     /**
@@ -85,17 +85,17 @@ public class Shingle {
         if (shingle1.SHINGLE_LENGTH != shingle2.SHINGLE_LENGTH) {
             return 0.0;
         }
-        final int[] sh1 = shingle1.getShingle();
-        final int[] sh2 = shingle2.getShingle();
+        int[] sh1 = shingle1.getShingle();
+        int[] sh2 = shingle2.getShingle();
 
         if (sh1.length == 0 || sh2.length == 0) {
             return 0.0;
         }
 
         int preResult = 0;
-        for (int i = 0; i < sh1.length; i++) {
-            for (int j = 0; j < sh2.length; j++) {
-                if (sh1[i] == sh2[j]) {
+        for (int aSh1 : sh1) {
+            for (int aSh2 : sh2) {
+                if (aSh1 == aSh2) {
                     preResult++;
                     break;
                 }

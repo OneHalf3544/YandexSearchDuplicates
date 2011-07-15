@@ -69,7 +69,7 @@ public class ReportCreatorImpl implements ReportCreator {
      * @param document Документ, в котором должен создаться элемент
      * @param vacancy Вакансия для которой создается элемент
      * @return Xml-элемент, который содержит данные о компании-работодателе
-     * @throws DOMException 
+     * @throws DOMException Ошибка построения DOM
      */
     private Element createCompanyXmlElement(Document document, Vacancy vacancy) throws DOMException {
         Element companyName = document.createElement("name");
@@ -87,10 +87,10 @@ public class ReportCreatorImpl implements ReportCreator {
 
     /**
      * Создание xml-элемента, представляющего одинаковые вакансии
-     * @param document
-     * @param duplicate
-     * @return
-     * @throws DOMException 
+     * @param document Документ-владелец элемента
+     * @param duplicate Дубликат, который нужно добавить в отчет
+     * @return xml-представление объекта
+     * @throws DOMException Ошибка построения DOM
      */
     private Element createDuplicateXmlElement(Document document, Duplicate duplicate) throws DOMException {
         Element result = document.createElement("duplicates");
@@ -99,7 +99,7 @@ public class ReportCreatorImpl implements ReportCreator {
         Element equalency = document.createElement("equalency");
         final Double levelOfSimilarity = iterator.next().getLevelOfSimilarity(iterator.next());
         equalency.appendChild(document.createTextNode(
-                String.valueOf((int)(100*levelOfSimilarity.doubleValue()))));
+                String.valueOf((int)(100*levelOfSimilarity))));
         result.appendChild(equalency);
         
         for (Vacancy vacancy : duplicate.getDuplicates()) {
@@ -110,10 +110,10 @@ public class ReportCreatorImpl implements ReportCreator {
     
     /**
      * Создание xml-элемента для вакансии
-     * @param document
-     * @param vacancy
-     * @return
-     * @throws DOMException 
+     * @param document Документ, в который нужно добавить элемент
+     * @param vacancy Вакансия, которую нужно добавить в отчет
+     * @return Xml-представление вакансии
+     * @throws DOMException Ошибка построения DOM
      */
     private Element createVacancyXmlElement(Document document, Vacancy vacancy) throws DOMException {
         Element vacancyElem = document.createElement("vacancy");

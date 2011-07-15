@@ -9,31 +9,31 @@ import static org.junit.Assert.*;
  */
 public class ShingleTest {
     
-    private String exampleString = 
+    private static final String exampleString =
             " Я помню чудное мгновенье:\n"
             + "Передо мной явилась ты, \n"
             + "Как мимолетное виденье, \n"
             + "Как гений чистой красоты.";
     
-    private String exampleString2 = 
+    private static final String exampleString2 =
             "В томленьях грусти безнадежной\n"
             + "В тревогах шумной суеты,\n"
             + "Звучал мне долго голос нежный\n"
             + "И снились милые черты.\n";
 
-    private String exampleString3 = 
+    private static final String exampleString3 =
             "Шли годы. Бурь порыв мятежный\n"
             + "Рассеял прежние мечты,\n"
             + "И я забыл твой голос нежный,\n"
             + "Твои небесные черты.";
 
-    private String exampleString4 = 
+    private static final String exampleString4 =
             "В глуши, во мраке заточенья\n"
             + "Тянулись тихо дни мои\n"
             + "Без божества, без вдохновенья,\n"
             + "Без слез, без жизни, без любви.\n";
 
-    private String exampleString5 = 
+    private static final String exampleString5 =
             "Душе настало пробужденье:\n"
             + "И вот опять явилась ты,\n"
             + "Как мимолетное виденье,\n"

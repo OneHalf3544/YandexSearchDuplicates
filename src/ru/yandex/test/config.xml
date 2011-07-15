@@ -1,73 +1,70 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
-        xmlns:aop="http://www.springframework.org/schema/aop">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
     <bean id="moikrug_ru" class="ru.yandex.test.impl.SiteParser">
-        <constructor-arg index="0" value="moikrug.ru" />
-        <constructor-arg index="1" value="/ru/yandex/test/siteparseconfigs/moikrug.xml" />
+        <constructor-arg index="0" value="moikrug.ru"/>
+        <constructor-arg index="1" value="/ru/yandex/test/siteparseconfigs/moikrug.xml"/>
     </bean>
 
     <bean id="moikrug_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" type="String" value="moikrug.xml" />
-        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/moikrug.xml" />
+        <constructor-arg index="0" type="String" value="moikrug.xml"/>
+        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/moikrug.xml"/>
     </bean>
-
 
 
     <bean id="job_ru" class="ru.yandex.test.impl.SiteParser">
-        <constructor-arg index="0" type="java.lang.String" value="job.ru" />
-        <constructor-arg index="1" type="java.lang.String" value="/ru/yandex/test/siteparseconfigs/job.xml" />
+        <constructor-arg index="0" type="java.lang.String" value="job.ru"/>
+        <constructor-arg index="1" type="java.lang.String" value="/ru/yandex/test/siteparseconfigs/job.xml"/>
     </bean>
 
     <bean id="job_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" type="java.lang.String" value="job.xml" />
-        <constructor-arg index="1" type="java.lang.String" value="/ru/yandex/test/examplefiles/job.xml" />
+        <constructor-arg index="0" type="java.lang.String" value="job.xml"/>
+        <constructor-arg index="1" type="java.lang.String" value="/ru/yandex/test/examplefiles/job.xml"/>
     </bean>
-
 
 
     <bean id="habrahabr_ru" class="ru.yandex.test.impl.SiteParser">
-        <constructor-arg index="0" type="java.lang.String" value="habrahabr.ru" />
-        <constructor-arg index="1" type="java.lang.String" value="/ru/yandex/test/siteparseconfigs/habrahabr.xml" />
+        <constructor-arg index="0" type="java.lang.String" value="habrahabr.ru"/>
+        <constructor-arg index="1" type="java.lang.String" value="/ru/yandex/test/siteparseconfigs/habrahabr.xml"/>
     </bean>
 
     <bean id="habrahabr_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" type="String" value="habrahabr.xml" />
-        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/habrahabr.xml" />
+        <constructor-arg index="0" type="String" value="habrahabr.xml"/>
+        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/habrahabr.xml"/>
     </bean>
-
 
 
     <bean id="rabota_ru" class="ru.yandex.test.impl.SiteParser">
-        <constructor-arg index="0" value="rabota.ru" />
-        <constructor-arg index="1" value="/ru/yandex/test/siteparseconfigs/rabota.xml" />
+        <constructor-arg index="0" value="rabota.ru"/>
+        <constructor-arg index="1" value="/ru/yandex/test/siteparseconfigs/rabota.xml"/>
     </bean>
 
     <bean id="rabota_file" class="ru.yandex.test.impl.VacancyXmlFileParser">
-        <constructor-arg index="0" type="String" value="rabota.xml" />
-        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/rabota.xml" />
+        <constructor-arg index="0" type="String" value="rabota.xml"/>
+        <constructor-arg index="1" type="String" value="/ru/yandex/test/examplefiles/rabota.xml"/>
     </bean>
-
 
 
     <bean id="dialog" class="ru.yandex.test.SearchDialog">
         <constructor-arg type="Double" value="0.55"/>
         <property name="siteParsers">
             <set>
-                <ref bean="job_ru" />
-                <ref bean="moikrug_ru" />
-                <ref bean="habrahabr_ru" />
-                <ref bean="rabota_ru" />
+                <ref bean="job_ru"/>
+                <ref bean="moikrug_ru"/>
+                <ref bean="habrahabr_ru"/>
+                <ref bean="rabota_ru"/>
             </set>
         </property>
         <property name="preparsedXmlFiles">
             <set>
-                <ref bean="job_file" />
-                <ref bean="moikrug_file" />
-                <ref bean="habrahabr_file" />
-                <ref bean="rabota_file" />
+                <ref bean="job_file"/>
+                <ref bean="moikrug_file"/>
+                <ref bean="habrahabr_file"/>
+                <ref bean="rabota_file"/>
             </set>
         </property>
         <property name="reportCreator">
@@ -75,4 +72,7 @@
         </property>
         <property name="visible" value="true"/>
     </bean>
+
+    <aop:aspectj-autoproxy/>
+    <bean id="logAspect" class="ru.yandex.test.LogAspect"/>
 </beans>

@@ -1,24 +1,16 @@
 package ru.yandex.test;
 
-import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
+ * Тест класса заралаты
  *
  * @author OneHalf
  */
 public class SalaryTest {
-    private Salary salary;
-    
-    public SalaryTest() {
-    }
 
-    @Before
-    public void setUp() {
-        salary = new Salary();
-    }
-    
     @Test
     public void testConstructor0() {
         System.out.println("constructor()");
@@ -29,17 +21,17 @@ public class SalaryTest {
     @Test
     public void testConstructor1() {
         System.out.println("constructor(int)");
-        final Salary instance = new Salary(4000);
-        assertEquals(new Integer(4000), instance.getMinimum());
-        assertEquals(new Integer(4000), instance.getMaximum());
+        Salary instance = new Salary(4000);
+        assertEquals(Integer.valueOf(4000), instance.getMinimum());
+        assertEquals(Integer.valueOf(4000), instance.getMaximum());
     }
     
     @Test
     public void testConstructor2() {
         System.out.println("constructor(int, int)");
         final Salary instance = new Salary(1000, 5000);
-        assertEquals(new Integer(1000), instance.getMinimum());
-        assertEquals(new Integer(5000), instance.getMaximum());
+        assertEquals("Нижняя граница не совпадает с заданной", Integer.valueOf(1000), instance.getMinimum());
+        assertEquals("Верхняя граница не совпадает с заданной", Integer.valueOf(5000), instance.getMaximum());
     }
     
     /**

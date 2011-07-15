@@ -96,6 +96,6 @@ public interface Vacancy {
      * @return Уровень "похожести" вакансии. 
      *   Должен быть в пределах от 0.0 до 1.0
      */
-    public Double getLevelOfSimilarity(Vacancy other);
+    public double getLevelOfSimilarity(Vacancy other);
 
 }

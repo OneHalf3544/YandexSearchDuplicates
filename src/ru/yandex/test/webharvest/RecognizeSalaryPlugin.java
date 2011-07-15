@@ -11,25 +11,27 @@ import ru.yandex.test.Salary;
 /**
  * Плагин для WebHarvest, который распознает строку с зарплатой
  * и создает переменную salary.
- * 
+ *
  * <p>Применение:</p>
- * <p>Код: <code>&lt;salary&gt;От 40 000 до 50 000&lt;/salary&gt;</code> 
+ * <p>Код: {@code &lt;salary&gt;От 40 000 до 50 000&lt;/salary&gt;}
  * создаст переменную salary, которую можно будет использовать дальше в конфиге WebHarvest</p>
- * 
+ *
  * @author OneHalf
  */
 public class RecognizeSalaryPlugin extends WebHarvestPlugin {
-    private final static Logger LOGGER = Logger.getLogger(RecognizeSalaryPlugin.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(RecognizeSalaryPlugin.class.getName());
+    private static final String PLUGIN_TAG_NAME = "salaryparse";
 
     private static final String WITHOUT_DIGITS = "\\D*";
     private static final String FROM = "(?i)\\s*([Бб]олее|[Оо]т)\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
     private static final String TO = "(?i)\\s*([Мм]енее|[Дд]о|-|–)\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
-    private static final String CONRETE = "\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
+    private static final String CONCRETE = "\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
     private static final String FROM_TO = "(?i)\\s*([Оо]т)?\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*\\s*([Дд]о|-|–)\\s*(\\$|€)?\\d+([,.\\s]?\\d{3})*\\D*";
-    
+
+
     @Override
     public String getName() {
-        return "salaryparse";
+        return PLUGIN_TAG_NAME;
     }
 
     @Override
@@ -67,15 +69,15 @@ public class RecognizeSalaryPlugin extends WebHarvestPlugin {
             int maximum = Integer.parseInt(strSalary.replaceAll("\\D", ""));
             return new Salary(null, maximum);
         }
-        if (strSalary.matches(CONRETE)) {
-            int conrcete = Integer.parseInt(strSalary.replaceAll("\\D", ""));
-            return new Salary(conrcete, conrcete);
+        if (strSalary.matches(CONCRETE)) {
+            int concrete = Integer.parseInt(strSalary.replaceAll("\\D", ""));
+            return new Salary(concrete, concrete);
         }
         if (strSalary.matches(FROM_TO)) {
             String[] twoString = strSalary.split("(?i)[Дд]о|-|–", 2);
             
-            int minimum = Integer.parseInt(twoString[0].replaceAll("\\D", ""));
-            int maximum = Integer.parseInt(twoString[1].replaceAll("\\D", ""));
+            Integer minimum = Integer.valueOf(twoString[0].replaceAll("\\D", ""));
+            Integer maximum = Integer.valueOf(twoString[1].replaceAll("\\D", ""));
             
             return new Salary(minimum, maximum);
         }

@@ -19,10 +19,9 @@ public class VacancyXmlFileParserTest {
 
     /**
      * Test of parse method, of class VacancyXmlFileParser.
-     * @throws UnsupportedEncodingException 
      */
     @Test
-    public void testParse() throws UnsupportedEncodingException {
+    public void testParse() {
         System.out.println("parse");
         VacancyXmlFileParser instance = new VacancyXmlFileParser("vacancyexample.xml", "vacancyexample.xml");
         
