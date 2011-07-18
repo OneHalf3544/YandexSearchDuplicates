@@ -1,6 +1,6 @@
 package ru.yandex.test;
 
-import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -15,17 +15,17 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class LogAspect {
 
-    @Pointcut("execution(* ru.yandex.test.VacancySource.*(..))")
+    @Pointcut("execution (* *(..))")
     public void vacancyBuildPointcut() {}
 
     
     @Before("vacancyBuildPointcut()")
-    public void logBefore(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void logBefore(JoinPoint joinPoint) throws Throwable {
         System.out.println(joinPoint.getSignature().toString());
     }
 
     @After("vacancyBuildPointcut()")
-    public void logAfter(ProceedingJoinPoint joinPoint) throws Throwable {
+    public void logAfter(JoinPoint joinPoint) throws Throwable {
         System.out.println(joinPoint.getSignature().toString());
     }
 }

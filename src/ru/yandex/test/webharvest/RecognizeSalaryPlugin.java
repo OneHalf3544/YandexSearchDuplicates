@@ -38,7 +38,7 @@ public class RecognizeSalaryPlugin extends WebHarvestPlugin {
     public Variable executePlugin(Scraper scrpr, ScraperContext sc) {
         String strSalary = executeBody(scrpr, sc).toString();
         
-        Salary salary = null;
+        Salary salary;
         try {
             salary = recognizeSalary(strSalary);
         } catch (Exception e) {

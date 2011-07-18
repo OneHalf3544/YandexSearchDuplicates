@@ -12,6 +12,10 @@ import java.io.IOException;
 
 import java.awt.event.ActionListener;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -41,24 +45,53 @@ public class SearchDialog extends javax.swing.JFrame {
     private static BeanFactory beanFactory;
     private static final Logger LOGGER = Logger.getLogger(SearchDialog.class.getName());
 
-    static {
-        Resource resource = new FileSystemResource("src/ru/yandex/test/config.xml");
-        beanFactory = new XmlBeanFactory(resource);
-    }
-    
     private final Double THRESHOLD_OF_EQUIVALENCE;
+
     private ReportCreator reportCreator;
     private VacancySource[] vacancySources;
     /** Последний результат сравнения */
     private Set<Duplicate> lastResult = new HashSet<Duplicate>();
-    
     /** Соответствие CheckBox'ов и файлов с данными */
     private Map<JCheckBox, VacancyXmlFileParser> preparsedCheckBoxes = new HashMap<JCheckBox, VacancyXmlFileParser>();
+
     /** Соответствие CheckBox'ов и сайтов с которых берутся данные */
     private Map<JCheckBox, SiteParser> siteCheckBoxes = new HashMap<JCheckBox, SiteParser>();
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReport;
+
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JCheckBox cbSearchInSelf;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pnlButtons;
+    private javax.swing.JPanel pnlFiles;
+    private javax.swing.JPanel pnlItemsCount;
+    private javax.swing.JPanel pnlSearchQuery;
+    private javax.swing.JPanel pnlSiteSearch;
+    private javax.swing.JPanel pnlSites;
+    private javax.swing.JTextArea taResult;
+    private javax.swing.JTextField tfItemCount;
+    private javax.swing.JTextField tfSearchQuery;
+    // End of variables declaration//GEN-END:variables
+    static {
+        Logger.getLogger("ru.yandex.test").setLevel(Level.ALL);
+        Resource resource = new FileSystemResource("src/ru/yandex/test/config.xml");
+        beanFactory = new XmlBeanFactory(resource);
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        beanFactory.getBean("dialog");
+    }
+
     /** Creates new form SearchDialog
-     * @param thresholdOfEquivalence Порог эквивалентости определяющий уровень 
+     * @param thresholdOfEquivalence Порог эквивалентости определяющий уровень
      * "похожести" ввакансий при котором они считаются равными и попадают в отчет
      */
     public SearchDialog(Double thresholdOfEquivalence) {
@@ -166,7 +199,7 @@ public class SearchDialog extends javax.swing.JFrame {
 
     /**
      * Реакция на нажатие кнопки поиска
-     * @param evt 
+     * @param evt
      */
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
         loadVacancySet();
@@ -174,26 +207,6 @@ public class SearchDialog extends javax.swing.JFrame {
         setDuplicateVacancy(searchDuplicateVacancy);
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnReport;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JCheckBox cbSearchInSelf;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlButtons;
-    private javax.swing.JPanel pnlFiles;
-    private javax.swing.JPanel pnlItemsCount;
-    private javax.swing.JPanel pnlSearchQuery;
-    private javax.swing.JPanel pnlSiteSearch;
-    private javax.swing.JPanel pnlSites;
-    private javax.swing.JTextArea taResult;
-    private javax.swing.JTextField tfItemCount;
-    private javax.swing.JTextField tfSearchQuery;
-    // End of variables declaration//GEN-END:variables
-    
     /**
      * Получение строки запроса для поиска по сайтам
      * @return Строка запроса
@@ -210,7 +223,7 @@ public class SearchDialog extends javax.swing.JFrame {
     private Set<Duplicate> searchDuplicatesInVacancySource(VacancySource vacancySource) {
         Set<Duplicate> result = new HashSet<Duplicate>();
         Vacancy[] vacancies = vacancySource.getVacancies().toArray(new Vacancy[]{});
-        
+
         for (int i = 0; i < vacancies.length; i++) {
             for (int j = i+1; j < vacancies.length; j++) {
                  if (vacancies[i].getLevelOfSimilarity(vacancies[j]) > THRESHOLD_OF_EQUIVALENCE) {
@@ -224,7 +237,7 @@ public class SearchDialog extends javax.swing.JFrame {
     }
 
     /**
-     * Установка результата в диалог. Запоминает последний результат, 
+     * Установка результата в диалог. Запоминает последний результат,
      * отображает данные в диалоге
      * @param duplicates Набор дублирующихся вакансий
      */
@@ -244,7 +257,7 @@ public class SearchDialog extends javax.swing.JFrame {
             }
             sb.append("\n");
         }
-        
+
         taResult.setText(sb.toString());
     }
 
@@ -257,7 +270,7 @@ public class SearchDialog extends javax.swing.JFrame {
             pnlSites.remove(checkBox);
         }
         siteCheckBoxes.clear();
-        
+
         for (SiteParser siteParser : siteParsers) {
             final JCheckBox jCheckBox = new JCheckBox(siteParser.getSourceName(), true);
             pnlSites.add(jCheckBox);
@@ -274,7 +287,7 @@ public class SearchDialog extends javax.swing.JFrame {
             pnlFiles.remove(checkBox);
         }
         preparsedCheckBoxes.clear();
-        
+
         for (VacancyXmlFileParser xmlFile : files) {
             final JCheckBox jCheckBox = new JCheckBox(xmlFile.getSourceName(), true);
             pnlFiles.add(jCheckBox);
@@ -288,7 +301,7 @@ public class SearchDialog extends javax.swing.JFrame {
      */
     private Set<VacancySource> getVacancySources() {
         Set<VacancySource> result = new HashSet<VacancySource>();
-        
+
         for (JCheckBox checkbox : siteCheckBoxes.keySet()) {
             if (checkbox.isSelected()) {
                 result.add(siteCheckBoxes.get(checkbox));
@@ -308,13 +321,6 @@ public class SearchDialog extends javax.swing.JFrame {
      */
     private int getItemsCount() {
         return Integer.parseInt(tfItemCount.getText());
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        beanFactory.getBean("dialog");
     }
 
     /**
@@ -341,9 +347,34 @@ public class SearchDialog extends javax.swing.JFrame {
      */
     public void loadVacancySet() {
         vacancySources = this.getVacancySources().toArray(new VacancySource[]{});
-        for (SiteParser siteParser : siteCheckBoxes.values()) {
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        final CountDownLatch latch = new CountDownLatch(siteCheckBoxes.size());
+
+        for (JCheckBox checkBox : siteCheckBoxes.keySet()) {
+            if (!checkBox.isSelected()) {
+                latch.countDown();
+                continue;
+            }
+
+            final SiteParser siteParser = siteCheckBoxes.get(checkBox);
+
             siteParser.setSearchText(this.getSearchString());
             siteParser.setItemsCount(this.getItemsCount());
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    // Получаем вакансии чтобы "обмануть" ленивую инициализацию
+                    siteParser.getVacancies();
+                    latch.countDown();
+                }
+            });
+        }
+        executorService.shutdown();
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            System.exit(1);
         }
     }
     

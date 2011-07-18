@@ -4,7 +4,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import ru.yandex.test.Vacancy;
-import ru.yandex.test.impl.VacancyXmlFileParser;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
 public class VacancySaxParserHandler extends DefaultHandler {
 
     private TagSet tagSet = new TagSet();
-    private String query;
 
     public VacancySaxParserHandler() {
     }
@@ -44,6 +42,6 @@ public class VacancySaxParserHandler extends DefaultHandler {
     }
 
     public String getQuery() {
-        return query;
+        return tagSet.getQuery();
     }
 }

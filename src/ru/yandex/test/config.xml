@@ -74,5 +74,5 @@
     </bean>
 
     <aop:aspectj-autoproxy/>
-    <bean id="logAspect" class="ru.yandex.test.LogAspect"/>
+    <bean id="logAspect" class="ru.yandex.test.LogAspect" lazy-init="false"/>
 </beans>

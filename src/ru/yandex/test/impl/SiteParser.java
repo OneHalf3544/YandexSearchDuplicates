@@ -80,7 +80,7 @@ public class SiteParser implements VacancySource {
      * @param deleteOnExit Удалять ли файл после закрытия программы
      * @return Список вакансий
      */
-    public List<Vacancy> getVacancies(boolean deleteOnExit) {
+    List<Vacancy> getVacancies(boolean deleteOnExit) {
         VacancySource result = null;
         LOGGER.log(Level.INFO, "Сбор информации с сайта {0}", siteName);
         try {
