@@ -19,4 +19,10 @@ public interface VacancySource {
      * @return Название источника
      */
     public String getSourceName();
+
+    /**
+     * Получение запроса, по которому была собрана информация
+     * @return Запрос
+     */
+    public String getQuery();
 }

@@ -5,41 +5,32 @@
  */
 package ru.yandex.test;
 
-import java.awt.Desktop;
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
-
-import java.awt.event.ActionListener;
-import java.util.*;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.WindowConstants;
-
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-
 import ru.yandex.test.impl.SiteParser;
 import ru.yandex.test.impl.VacancyXmlFileParser;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author OneHalf
  */
+@SuppressWarnings({"FieldCanBeLocal"})
 public class SearchDialog extends javax.swing.JFrame {
 
     private static BeanFactory beanFactory;
@@ -48,17 +39,16 @@ public class SearchDialog extends javax.swing.JFrame {
     private final Double THRESHOLD_OF_EQUIVALENCE;
 
     private ReportCreator reportCreator;
-    private VacancySource[] vacancySources;
+    private List<VacancySource> vacancySources;
     /** Последний результат сравнения */
-    private Set<Duplicate> lastResult = new HashSet<Duplicate>();
+    private Collection<Duplicate> lastResult = new HashSet<Duplicate>();
     /** Соответствие CheckBox'ов и файлов с данными */
     private Map<JCheckBox, VacancyXmlFileParser> preparsedCheckBoxes = new HashMap<JCheckBox, VacancyXmlFileParser>();
 
     /** Соответствие CheckBox'ов и сайтов с которых берутся данные */
     private Map<JCheckBox, SiteParser> siteCheckBoxes = new HashMap<JCheckBox, SiteParser>();
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnReport;
+        private javax.swing.JButton btnReport;
 
     private javax.swing.JButton btnSearch;
     private javax.swing.JCheckBox cbSearchInSelf;
@@ -76,7 +66,8 @@ public class SearchDialog extends javax.swing.JFrame {
     private javax.swing.JTextArea taResult;
     private javax.swing.JTextField tfItemCount;
     private javax.swing.JTextField tfSearchQuery;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JLabel waitLabel;
+
     static {
         Logger.getLogger("ru.yandex.test").setLevel(Level.ALL);
         Resource resource = new FileSystemResource("src/ru/yandex/test/config.xml");
@@ -87,7 +78,13 @@ public class SearchDialog extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        beanFactory.getBean("dialog");
+        final JFrame dialog = (JFrame) beanFactory.getBean("dialog");
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                dialog.setVisible(true);
+            }
+        });
     }
 
     /** Creates new form SearchDialog
@@ -123,6 +120,7 @@ public class SearchDialog extends javax.swing.JFrame {
         cbSearchInSelf = new javax.swing.JCheckBox();
         btnSearch = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
+        waitLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Сравнение вакансий");
@@ -146,6 +144,10 @@ public class SearchDialog extends javax.swing.JFrame {
 
         tfSearchQuery.setPreferredSize(new java.awt.Dimension(120, 20));
         pnlSearchQuery.add(tfSearchQuery);
+
+        waitLabel.setText("<html><font color='#a0a0a0'>Ждите...</font></html>");
+        waitLabel.setVisible(false);
+        pnlSearchQuery.add(waitLabel);
 
         pnlSiteSearch.add(pnlSearchQuery);
 
@@ -182,7 +184,7 @@ public class SearchDialog extends javax.swing.JFrame {
         btnSearch.setText("Найти");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
+                btnSearchActionPerformed();
             }
         });
         pnlButtons.add(btnSearch);
@@ -199,12 +201,10 @@ public class SearchDialog extends javax.swing.JFrame {
 
     /**
      * Реакция на нажатие кнопки поиска
-     * @param evt
      */
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
-        loadVacancySet();
-        Set<Duplicate> searchDuplicateVacancy = searchDuplicateVacancy();
-        setDuplicateVacancy(searchDuplicateVacancy);
+    private void btnSearchActionPerformed() {
+        // Запускаем поиск. SearchProcessor сам установит результат в окно
+        new SearchProcessor().execute();
     }
 
     /**
@@ -222,14 +222,15 @@ public class SearchDialog extends javax.swing.JFrame {
      */
     private Set<Duplicate> searchDuplicatesInVacancySource(VacancySource vacancySource) {
         Set<Duplicate> result = new HashSet<Duplicate>();
-        Vacancy[] vacancies = vacancySource.getVacancies().toArray(new Vacancy[]{});
 
-        for (int i = 0; i < vacancies.length; i++) {
-            for (int j = i+1; j < vacancies.length; j++) {
-                 if (vacancies[i].getLevelOfSimilarity(vacancies[j]) > THRESHOLD_OF_EQUIVALENCE) {
-                    result.add(new Duplicate(vacancies[i], vacancies[j]));
+        List<Vacancy> vacancies = vacancySource.getVacancies();
+
+        for (int i = 0; i < vacancies.size(); i++) {
+            for (int j = i+1; j < vacancies.size(); j++) {
+                 if (vacancies.get(i).getLevelOfSimilarity(vacancies.get(j)) > THRESHOLD_OF_EQUIVALENCE) {
+                    result.add(new Duplicate(vacancies.get(i), vacancies.get(j)));
                     LOGGER.log(Level.FINE, "Найдены дубликаты: \n{0}, \n{1}",
-                            new Object[]{vacancies[i], vacancies[j]});
+                            new Object[]{vacancies.get(i), vacancies.get(j)});
                 }
             }
         }
@@ -241,7 +242,7 @@ public class SearchDialog extends javax.swing.JFrame {
      * отображает данные в диалоге
      * @param duplicates Набор дублирующихся вакансий
      */
-    private void setDuplicateVacancy(Set<Duplicate> duplicates) {
+    private void setDuplicateVacancy(Collection<Duplicate> duplicates) {
         lastResult = duplicates;
         StringBuilder sb = new StringBuilder();
         for (Duplicate duplicate : duplicates) {
@@ -265,6 +266,7 @@ public class SearchDialog extends javax.swing.JFrame {
      * Установка сайтов-источников. Добавляет сайты источники в программу и ChekBox'ы в диалог
      * @param siteParsers Сайты-источники
      */
+    @SuppressWarnings({"UnusedDeclaration"})
     public void setSiteParsers(Set<SiteParser> siteParsers) {
         for (JCheckBox checkBox : siteCheckBoxes.keySet()) {
             pnlSites.remove(checkBox);
@@ -282,6 +284,7 @@ public class SearchDialog extends javax.swing.JFrame {
      * Установка файлов-источников. Добавляет файлы-источники в программу и ChekBox'ы в диалог
      * @param files Файлы-источники
      */
+    @SuppressWarnings({"UnusedDeclaration"})
     public void setPreparsedXmlFiles(Set<VacancyXmlFileParser> files) {
         for (JCheckBox checkBox : preparsedCheckBoxes.keySet()) {
             pnlFiles.remove(checkBox);
@@ -299,8 +302,8 @@ public class SearchDialog extends javax.swing.JFrame {
      * Получение источников, зарегистрированных в программе
      * @return Источники вакйнсий
      */
-    private Set<VacancySource> getVacancySources() {
-        Set<VacancySource> result = new HashSet<VacancySource>();
+    private List<VacancySource> getVacancySources() {
+        List<VacancySource> result = new ArrayList<VacancySource>();
 
         for (JCheckBox checkbox : siteCheckBoxes.keySet()) {
             if (checkbox.isSelected()) {
@@ -327,6 +330,7 @@ public class SearchDialog extends javax.swing.JFrame {
      * Установка объекта, создающего отчеты
      * @param reportCreator Создатель отчетов
      */
+    @SuppressWarnings({"UnusedDeclaration"})
     public void setReportCreator(ReportCreator reportCreator) {
         this.reportCreator = reportCreator;
         this.btnReport.addActionListener(new ActionListener() {
@@ -345,22 +349,34 @@ public class SearchDialog extends javax.swing.JFrame {
     /**
      * Отбор источников вакансий в соответствии с состояниями CheckBox'ов
      */
-    public void loadVacancySet() {
-        vacancySources = this.getVacancySources().toArray(new VacancySource[]{});
+    private void loadVacancySet() {
+
+        // Показываем пользователю, что нужно подождать
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                waitLabel.setVisible(true);
+                taResult.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                SearchDialog.this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            }
+        });
+
+        vacancySources = this.getVacancySources();
+
+        Set<SiteParser> selectedSiteParsers = new HashSet<SiteParser>();
+        for (JCheckBox checkBox : siteCheckBoxes.keySet()) {
+            if (checkBox.isSelected()) {
+                selectedSiteParsers.add(siteCheckBoxes.get(checkBox));
+            }
+        }
 
         ExecutorService executorService = Executors.newCachedThreadPool();
-        final CountDownLatch latch = new CountDownLatch(siteCheckBoxes.size());
+        final CountDownLatch latch = new CountDownLatch(selectedSiteParsers.size());
 
-        for (JCheckBox checkBox : siteCheckBoxes.keySet()) {
-            if (!checkBox.isSelected()) {
-                latch.countDown();
-                continue;
-            }
-
-            final SiteParser siteParser = siteCheckBoxes.get(checkBox);
-
+        for (final SiteParser siteParser : selectedSiteParsers) {
+            // Установка данных поиска
             siteParser.setSearchText(this.getSearchString());
             siteParser.setItemsCount(this.getItemsCount());
+
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
@@ -373,6 +389,14 @@ public class SearchDialog extends javax.swing.JFrame {
         executorService.shutdown();
         try {
             latch.await();
+            // Убираем надпись ожидания и возвращаем курсоры по умолчанию
+            SwingUtilities.invokeLater(new Runnable(){
+                public void run(){
+                    SearchDialog.this.setCursor(Cursor.getDefaultCursor());
+                    taResult.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+                    waitLabel.setVisible(false);
+                }
+            });
         } catch (InterruptedException e) {
             System.exit(1);
         }
@@ -386,17 +410,21 @@ public class SearchDialog extends javax.swing.JFrame {
         LOGGER.log(Level.FINE, "Поиск дубликатов");
         
         Set<Duplicate> result = new HashSet<Duplicate>();
-        
-        for (int i = 0; i < vacancySources.length; i++) {
-            for (int j = i+1; j < vacancySources.length; j++) {
-                for (Vacancy k : vacancySources[i].getVacancies()) {
-                    for (Vacancy l : vacancySources[j].getVacancies()) {
+
+        // Получаем пару источников вакансий
+        for (int i = 0; i < vacancySources.size(); i++) {
+            for (int j = i+1; j < vacancySources.size(); j++) {
+
+                // Сравниваем все вакансии из данной пары источников
+                for (Vacancy k : vacancySources.get(i).getVacancies()) {
+                    for (Vacancy l : vacancySources.get(j).getVacancies()) {
+
                         if (k.getLevelOfSimilarity(l) > THRESHOLD_OF_EQUIVALENCE) {
                             result.add(new Duplicate(k, l));
                             LOGGER.log(Level.FINE, "Найдены дубликаты: \n{0}, \n{1}",
                                     new Object[]{k, l});
                         }
-                    }                    
+                    }
                 }
             }
         }
@@ -408,5 +436,23 @@ public class SearchDialog extends javax.swing.JFrame {
             }
         }
         return result;
+    }
+
+    public class SearchProcessor extends SwingWorker<Set<Duplicate>, Duplicate> {
+
+        @Override
+        protected Set<Duplicate> doInBackground() throws Exception {
+            loadVacancySet();
+            return searchDuplicateVacancy();
+        }
+
+        @Override
+        protected void done() {
+            try {
+                setDuplicateVacancy(this.get());
+            } catch (Exception e) {
+                LOGGER.log(Level.WARNING, "Ошибка при поиске дубликатов", e);
+            }
+        }
     }
 }

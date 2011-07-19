@@ -1,6 +1,7 @@
 package ru.yandex.test;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -14,5 +15,5 @@ public interface ReportCreator {
      * @param duplicates Набор дублей, по которым нужно создать отчет
      * @return Файл, в котором содержится отчет
      */
-    public File getReport(Set<Duplicate> duplicates);
+    public File getReport(Collection<Duplicate> duplicates);
 }

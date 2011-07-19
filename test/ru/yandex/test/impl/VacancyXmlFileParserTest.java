@@ -27,7 +27,9 @@ public class VacancyXmlFileParserTest {
         
         List<Vacancy> v = instance.getVacancies();
         Vacancy[] vacancies = v.toArray(new Vacancy[]{});
-        
+
+        assertEquals("Запрос поиска", "Java", instance.getQuery());
+
         assertEquals("Java Developer", vacancies[0].getVacancyName());
         assertEquals("Actimind", vacancies[0].getCompanyName());
         assertEquals(Integer.valueOf(40000), vacancies[0].getSalary().getMinimum());

@@ -90,7 +90,7 @@ class TagSet {
 
         @Override
         public void starting(Attributes attributes) {
-            tagSet.query = attributes.getValue("query");
+            tagSet.query = attributes.getValue("value");
         }
     }
 

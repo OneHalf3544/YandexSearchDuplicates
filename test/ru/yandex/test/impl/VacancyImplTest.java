@@ -220,9 +220,14 @@ public class VacancyImplTest {
         result = VACANCY_1.getLevelOfSimilarity(VACANCY_3);
         assertEquals(expResult, result);
 
-        expResult = 0.80; delta = 0.10;
+        //------------
+        expResult = 0.75; delta = 0.10;
         result = VACANCY_1.getLevelOfSimilarity(VACANCY_2);
         assertEquals(expResult, result, delta);
+
+        double otherResult = VACANCY_2.getLevelOfSimilarity(VACANCY_1);
+        assertEquals(result, otherResult, 0.001);
+        //------------
     }
 
     /**

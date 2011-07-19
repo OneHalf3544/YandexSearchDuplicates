@@ -70,7 +70,6 @@
         <property name="reportCreator">
             <bean class="ru.yandex.test.impl.ReportCreatorImpl"/>
         </property>
-        <property name="visible" value="true"/>
     </bean>
 
     <aop:aspectj-autoproxy/>

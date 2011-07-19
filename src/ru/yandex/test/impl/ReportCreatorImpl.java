@@ -2,6 +2,7 @@ package ru.yandex.test.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Level;
@@ -34,7 +35,7 @@ public class ReportCreatorImpl implements ReportCreator {
     private final static Logger LOGGER = Logger.getLogger(ReportCreatorImpl.class.getName());
     
     @Override
-    public File getReport(Set<Duplicate> vacancies) {
+    public File getReport(Collection<Duplicate> vacancies) {
         File fileResult = null;
         try {
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();

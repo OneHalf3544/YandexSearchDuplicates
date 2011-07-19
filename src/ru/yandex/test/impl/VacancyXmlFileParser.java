@@ -115,4 +115,8 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
         return sourceName;
     }
 
+    @Override
+    public String getQuery() {
+        return query;
+    }
 }
