@@ -1,12 +1,12 @@
 package ru.yandex.test.impl;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.springframework.stereotype.Service;
+import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import ru.yandex.test.Duplicate;
+import ru.yandex.test.ReportCreator;
+import ru.yandex.test.Vacancy;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -17,20 +17,19 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-
-import org.w3c.dom.DOMException;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import ru.yandex.test.Duplicate;
-import ru.yandex.test.ReportCreator;
-import ru.yandex.test.Vacancy;
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Класс объектов, создающих отчеты
  * 
  * @author OneHalf
  */
+@Service("reportCreator")
 public class ReportCreatorImpl implements ReportCreator {
     private final static Logger LOGGER = Logger.getLogger(ReportCreatorImpl.class.getName());
     

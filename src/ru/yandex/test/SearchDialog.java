@@ -6,6 +6,7 @@
 package ru.yandex.test;
 
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.yandex.test.impl.SiteParser;
 import ru.yandex.test.impl.VacancyXmlFileParser;
@@ -36,6 +37,7 @@ public class SearchDialog extends javax.swing.JFrame {
 
     private final Double THRESHOLD_OF_EQUIVALENCE;
 
+    @Autowired
     private ReportCreator reportCreator;
     private List<VacancySource> vacancySources;
     /** Последний результат сравнения */
@@ -185,6 +187,12 @@ public class SearchDialog extends javax.swing.JFrame {
         pnlButtons.add(btnSearch);
 
         btnReport.setText("Отчет");
+        this.btnReport.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnReportActionPerformed();
+            }
+        });
         pnlButtons.add(btnReport);
 
         jPanel2.add(pnlButtons);
@@ -192,6 +200,15 @@ public class SearchDialog extends javax.swing.JFrame {
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         pack();
+    }
+
+    private void btnReportActionPerformed() {
+        try {
+            File fileResult = this.reportCreator.getReport(lastResult);
+            Desktop.getDesktop().open(fileResult);
+        } catch (IOException ex) {
+            Logger.getLogger(SearchDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -319,26 +336,6 @@ public class SearchDialog extends javax.swing.JFrame {
      */
     private int getItemsCount() {
         return Integer.parseInt(tfItemCount.getText());
-    }
-
-    /**
-     * Установка объекта, создающего отчеты
-     * @param reportCreator Создатель отчетов
-     */
-    @SuppressWarnings({"UnusedDeclaration"})
-    public void setReportCreator(ReportCreator reportCreator) {
-        this.reportCreator = reportCreator;
-        this.btnReport.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    File fileResult = SearchDialog.this.reportCreator.getReport(lastResult);
-                    Desktop.getDesktop().open(fileResult);
-                } catch (IOException ex) {
-                    Logger.getLogger(SearchDialog.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
     }
 
     /**
