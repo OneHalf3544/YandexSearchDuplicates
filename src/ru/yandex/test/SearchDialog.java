@@ -6,9 +6,7 @@
 package ru.yandex.test;
 
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.yandex.test.impl.SiteParser;
 import ru.yandex.test.impl.VacancyXmlFileParser;
 
@@ -48,7 +46,7 @@ public class SearchDialog extends javax.swing.JFrame {
     /** Соответствие CheckBox'ов и сайтов с которых берутся данные */
     private Map<JCheckBox, SiteParser> siteCheckBoxes = new HashMap<JCheckBox, SiteParser>();
 
-        private javax.swing.JButton btnReport;
+    private javax.swing.JButton btnReport;
 
     private javax.swing.JButton btnSearch;
     private javax.swing.JCheckBox cbSearchInSelf;
@@ -69,9 +67,7 @@ public class SearchDialog extends javax.swing.JFrame {
     private javax.swing.JLabel waitLabel;
 
     static {
-        Logger.getLogger("ru.yandex.test").setLevel(Level.ALL);
-        Resource resource = new FileSystemResource("src/ru/yandex/test/config.xml");
-        beanFactory = new XmlBeanFactory(resource);
+        beanFactory = new ClassPathXmlApplicationContext("/ru/yandex/test/config.xml");
     }
 
     /**
@@ -117,7 +113,7 @@ public class SearchDialog extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         pnlFiles = new javax.swing.JPanel();
         pnlButtons = new javax.swing.JPanel();
-        cbSearchInSelf = new javax.swing.JCheckBox();
+        cbSearchInSelf = new javax.swing.JCheckBox("Искать дубли и в пределах одного сайта", true);
         btnSearch = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
         waitLabel = new javax.swing.JLabel();
@@ -178,7 +174,6 @@ public class SearchDialog extends javax.swing.JFrame {
 
         pnlButtons.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        cbSearchInSelf.setText("Искать дубли и в пределах одного сайта");
         pnlButtons.add(cbSearchInSelf);
 
         btnSearch.setText("Найти");

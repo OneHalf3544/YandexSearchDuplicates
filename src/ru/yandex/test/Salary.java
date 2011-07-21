@@ -95,6 +95,7 @@ public class Salary {
     }
 
     @Override
+    @SuppressWarnings({"NumberEquality", "RedundantIfStatement"})
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

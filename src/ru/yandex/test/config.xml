@@ -1,9 +1,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="moikrug_ru" class="ru.yandex.test.impl.SiteParser">
         <constructor-arg index="0" value="moikrug.ru"/>
@@ -71,7 +69,4 @@
             <bean class="ru.yandex.test.impl.ReportCreatorImpl"/>
         </property>
     </bean>
-
-    <aop:aspectj-autoproxy/>
-    <bean id="logAspect" class="ru.yandex.test.LogAspect" lazy-init="false"/>
 </beans>

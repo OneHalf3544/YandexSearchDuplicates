@@ -2,7 +2,6 @@ package ru.yandex.test;
 
 import java.io.File;
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * Интерфейс для объекта, создающего отчеты по результатам поиска дублирующихся вакансий

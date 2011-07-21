@@ -18,7 +18,7 @@ public class Duplicate {
 
     /**
      * Создание объекта с дублирующимися вакансиями
-     * @param vacancies 
+     * @param vacancies Массив дублирующихся вакансий
      */
     public Duplicate(Vacancy ... vacancies) {
         duplicates.addAll(Arrays.asList(vacancies));

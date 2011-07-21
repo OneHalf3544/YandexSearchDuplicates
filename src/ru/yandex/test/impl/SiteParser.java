@@ -81,7 +81,6 @@ public class SiteParser implements VacancySource {
      * @return Список вакансий
      */
     List<Vacancy> getVacancies(boolean deleteOnExit) {
-        VacancySource result = null;
         LOGGER.log(Level.INFO, "Сбор информации с сайта {0}", siteName);
         try {
             ScraperConfiguration config;
@@ -105,7 +104,7 @@ public class SiteParser implements VacancySource {
             scraper.execute();
             LOGGER.log(Level.FINE, "Окончание сбора информации с сайта {0}", siteName);
 
-            result = new VacancyXmlFileParser(siteName, tempFile);
+            VacancySource result = new VacancyXmlFileParser(siteName, tempFile);
 
             if (deleteOnExit)  {
                 tempFile.deleteOnExit();
@@ -130,17 +129,9 @@ public class SiteParser implements VacancySource {
     }
 
     private static class SiteParseException extends RuntimeException {
-        
-        public SiteParseException(Throwable cause) {
-            super(cause);
-        }
 
         public SiteParseException(String message, Throwable cause) {
             super(message, cause);
-        }
-
-        public SiteParseException(String message) {
-            super(message);
         }
     }
 }
