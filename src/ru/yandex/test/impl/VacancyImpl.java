@@ -193,7 +193,7 @@ public class VacancyImpl implements Vacancy {
     public String toString() {
         return MessageFormat.format("Вакансия: {0} ({1}) url: {2}", vacancyName, companyName, vacancyUrl);
     }
-    
+
     /**
      * Класс с набором шинглов
      */

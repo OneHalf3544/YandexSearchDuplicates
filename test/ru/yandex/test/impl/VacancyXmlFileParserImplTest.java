@@ -1,29 +1,27 @@
 package ru.yandex.test.impl;
 
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import ru.yandex.test.Vacancy;
+import ru.yandex.test.VacancyXmlFileParser;
 
 /**
  *
  * @author OneHalf
  */
-public class VacancyXmlFileParserTest {
+public class VacancyXmlFileParserImplTest {
     
-    public VacancyXmlFileParserTest() {
+    public VacancyXmlFileParserImplTest() {
     }
 
     /**
-     * Test of parse method, of class VacancyXmlFileParser.
+     * Test of parse method, of class VacancyXmlFileParserImpl.
      */
     @Test
     public void testParse() {
         System.out.println("parse");
-        VacancyXmlFileParser instance = new VacancyXmlFileParser("vacancyexample.xml", "vacancyexample.xml");
+        VacancyXmlFileParser instance = new VacancyXmlFileParserImpl("vacancyexample.xml", "vacancyexample.xml");
         
         List<Vacancy> v = instance.getVacancies();
         Vacancy[] vacancies = v.toArray(new Vacancy[]{});

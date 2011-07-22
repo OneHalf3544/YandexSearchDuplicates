@@ -3,6 +3,7 @@ package ru.yandex.test.impl;
 import org.webharvest.definition.DefinitionResolver;
 import org.webharvest.definition.ScraperConfiguration;
 import org.webharvest.runtime.Scraper;
+import ru.yandex.test.SiteParser;
 import ru.yandex.test.Vacancy;
 import ru.yandex.test.VacancySource;
 import ru.yandex.test.webharvest.RecognizeSalaryPlugin;
@@ -18,8 +19,8 @@ import java.util.logging.Logger;
  *
  * @author OneHalf
  */
-public class SiteParser implements VacancySource {
-    private static final Logger LOGGER = Logger.getLogger(SiteParser.class.getName());
+public class SiteParserImpl implements SiteParser {
+    private static final Logger LOGGER = Logger.getLogger(SiteParserImpl.class.getName());
     private static final String WORKING_DIRECTORY = "..";
 
     private final String siteName;
@@ -39,7 +40,7 @@ public class SiteParser implements VacancySource {
      * @param siteName Название сайта
      * @param configResourceName Устанавливаемый файл конфигурации
      */
-    public SiteParser(String siteName, String configResourceName) {
+    public SiteParserImpl(String siteName, String configResourceName) {
         this.configResourceName = configResourceName;
         this.siteName = siteName;
     }
@@ -49,19 +50,13 @@ public class SiteParser implements VacancySource {
         return siteName;
     }
 
-    /**
-     * Установка числа вакансий, котоые нужно искать
-     * @param itemsCount Максимальное число вакансий при поиске
-     */
+    @Override
     public void setItemsCount(int itemsCount) {
         this.itemsCount = itemsCount;
         vacancies = null;
     }
 
-    /**
-     * Установка текста, по которому будут искаться вакансии
-     * @param searchText Текст запроса
-     */
+    @Override
     public void setSearchText(String searchText) {
         this.searchText = searchText;
         vacancies = null;
@@ -85,7 +80,7 @@ public class SiteParser implements VacancySource {
         try {
             ScraperConfiguration config;
             // Пытаемся получить URL внутреннего ресурса по имени
-            URL internalConfig = SiteParser.class.getResource(configResourceName);
+            URL internalConfig = SiteParserImpl.class.getResource(configResourceName);
             if (internalConfig != null) {
                 config = new ScraperConfiguration(internalConfig);
             }
@@ -104,7 +99,7 @@ public class SiteParser implements VacancySource {
             scraper.execute();
             LOGGER.log(Level.FINE, "Окончание сбора информации с сайта {0}", siteName);
 
-            VacancySource result = new VacancyXmlFileParser(siteName, tempFile);
+            VacancySource result = new VacancyXmlFileParserImpl(siteName, tempFile);
 
             if (deleteOnExit)  {
                 tempFile.deleteOnExit();

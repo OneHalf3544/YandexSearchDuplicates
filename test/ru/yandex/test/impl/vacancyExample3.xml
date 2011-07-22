@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vacancies>
+    <query value="BlaBla Developer"/>
+    <vacancy>
+        <vacancyName url="http://hh.ru/vacancy/1010">Программист</vacancyName>
+        <companyName companyUrl="roga-i-kopyta.com">Рога и Копыта</companyName>
+        <salary>
+            <minimum>60000</minimum>
+            <maximum>65000</maximum>
+        </salary>
+        <description>
+            Основные обязанности:
+            Участие в разработке крупных приложений на базе платформы Java SE/EE.
+
+            Требования к кандидатам:
+            Хорошее знание принципов ООП
+            Хорошее знание Java, опыт программирования на Java не менее года
+            Технический английский
+        </description>
+        <vacancyCity>Санкт-Петербург</vacancyCity>
+    </vacancy>
+    <vacancy>
+        <vacancyName url="Java Developer">Java Developer</vacancyName>
+        <companyName companyUrl="actimind.com">Actimind</companyName>
+        <salary>
+            <minimum>40000</minimum>
+            <maximum>70000</maximum>
+        </salary>
+        <description>
+            Вакансия открыта в нескольких проектах, включая:
+            - Программно-аппаратный комплекс для тестирования сетевого оборудования. Продукт довольно крупный, существует давно, постоянно дорабатывается и перерабатывается.
+            - Наш собственный коммерческий продукт actiTIME
+            - Интеллектуальный распределенный анализатор сайтов на предмет соответствия законам США о рекламе
+
+            Основные обязанности:
+            Участие в разработке крупных приложений на базе платформы Java SE/EE.
+
+            Требования к кандидатам:
+            Хорошее знание принципов ООП
+            Хорошее знание Java, опыт программирования на Java не менее года
+            Технический английский
+        </description>
+        <vacancyCity>Санкт-Петербург</vacancyCity>
+    </vacancy>
+</vacancies>

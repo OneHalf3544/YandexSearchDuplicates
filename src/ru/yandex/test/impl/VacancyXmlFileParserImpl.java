@@ -13,7 +13,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import ru.yandex.test.Vacancy;
-import ru.yandex.test.VacancySource;
+import ru.yandex.test.VacancyXmlFileParser;
 import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
 
 /**
@@ -22,9 +22,9 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
  * 
  * @author OneHalf
  */
- public class VacancyXmlFileParser implements VacancySource {
+ public class VacancyXmlFileParserImpl implements VacancyXmlFileParser {
     
-    private static final Logger LOGGER = Logger.getLogger(VacancyXmlFileParser.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(VacancyXmlFileParserImpl.class.getName());
     
     private List<Vacancy> vacancies;
     private String query;
@@ -36,7 +36,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
      * Названием источника будет имя файла
      * @param xmlFile Файл, созданный WebHarvest'ом
      */
-    public VacancyXmlFileParser(File xmlFile) {
+    public VacancyXmlFileParserImpl(File xmlFile) {
         this(xmlFile.getName(), xmlFile);
     }
 
@@ -46,7 +46,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
      * @param sourceName Название источника
      * @param xmlFile Файл, созданный WebHarvest'ом
      */
-    public VacancyXmlFileParser(String sourceName, File xmlFile) {
+    public VacancyXmlFileParserImpl(String sourceName, File xmlFile) {
         this.sourceName = sourceName;
         try {
             this.parse(new FileInputStream(xmlFile));
@@ -61,9 +61,9 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
      * @param name Имя источника
      * @param resourceName Имя ресурса 
      */
-    public VacancyXmlFileParser(String name, String resourceName) {
+    public VacancyXmlFileParserImpl(String name, String resourceName) {
         this.sourceName = name;
-        InputStream resourceStream = VacancyXmlFileParser.class.getResourceAsStream(resourceName);
+        InputStream resourceStream = VacancyXmlFileParserImpl.class.getResourceAsStream(resourceName);
         try {
             if (resourceStream != null) {
                 this.parse(resourceStream);
@@ -72,7 +72,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
                 this.parse(new FileInputStream(resourceName));
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(VacancyXmlFileParser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VacancyXmlFileParserImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -82,7 +82,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
      * @param name Название источника
      * @param inputStream Поток созданный на основе данных собранных WebHarvest'ом
      */
-    public VacancyXmlFileParser(String name, InputStream inputStream) {
+    public VacancyXmlFileParserImpl(String name, InputStream inputStream) {
         this.sourceName = name;
         this.parse(inputStream);
     }
@@ -101,7 +101,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
             LOGGER.log(Level.WARNING, "Ошибка парсинга xml-потока \""+sourceName+"\"", e);
         }
         finally {
-            try { inputStream.close(); } catch (IOException ex) {}
+            try { inputStream.close(); } catch (IOException ignored) {}
         }
     }
 
