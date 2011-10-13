@@ -24,7 +24,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
  */
  public class VacancyXmlFileParserImpl implements VacancyXmlFileParser {
     
-    private static final Logger LOGGER = Logger.getLogger(VacancyXmlFileParserImpl.class.getName());
+    private static final Logger log = Logger.getLogger(VacancyXmlFileParserImpl.class.getName());
     
     private List<Vacancy> vacancies;
     private String query;
@@ -51,7 +51,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
         try {
             this.parse(new FileInputStream(xmlFile));
         } catch (FileNotFoundException ex) {
-            LOGGER.log(Level.WARNING, "Нет такого файла", ex);
+            log.log(Level.WARNING, "Нет такого файла", ex);
         }
     }
 
@@ -89,16 +89,19 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
 
     private void parse(InputStream inputStream) {
         try {
-            LOGGER.log(Level.FINE, "Начало парсинга xml-потока \"{0}\" с вакансиями", sourceName);
+            log.log(Level.FINE, "Начало парсинга xml-потока \"{0}\" с вакансиями", sourceName);
+
             SAXParserFactory SAXFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = SAXFactory.newSAXParser();
             saxParser.parse(inputStream, vacancyCreatorHandler);
             
             vacancies = vacancyCreatorHandler.getVacancies();
             query = vacancyCreatorHandler.getQuery();
-            LOGGER.log(Level.FINE, "Окончание парсинга xml-потока \"{0}\" с вакансиями", sourceName);
-        } catch(Exception e){
-            LOGGER.log(Level.WARNING, "Ошибка парсинга xml-потока \""+sourceName+"\"", e);
+
+            log.log(Level.FINE, "Окончание парсинга xml-потока \"{0}\" с вакансиями", sourceName);
+        }
+        catch(Exception e){
+            log.log(Level.WARNING, "Ошибка парсинга xml-потока \""+sourceName+"\"", e);
         }
         finally {
             try { inputStream.close(); } catch (IOException ignored) {}

@@ -7,9 +7,12 @@ package ru.yandex.test;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.annotation.PostConstruct;
 import javax.swing.*;
+import java.applet.AppletContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +28,6 @@ import java.util.logging.Logger;
  */
 public class SearchDialog extends javax.swing.JFrame {
 
-    private static final BeanFactory beanFactory = new ClassPathXmlApplicationContext("/ru/yandex/test/config.xml");
     private static final Logger LOGGER = Logger.getLogger(SearchDialog.class.getName());
 
     @Autowired
@@ -51,15 +53,12 @@ public class SearchDialog extends javax.swing.JFrame {
     private JPanel pnlFiles;
     private JCheckBox cbSearchInSelf;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        final JFrame dialog = (JFrame) beanFactory.getBean("dialog");
+    @PostConstruct
+    public void start() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                dialog.setVisible(true);
+                SearchDialog.this.setVisible(true);
             }
         });
     }

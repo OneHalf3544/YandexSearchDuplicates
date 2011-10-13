@@ -11,6 +11,7 @@ import ru.yandex.test.webharvest.RecognizeSalaryPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.channels.NonWritableChannelException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

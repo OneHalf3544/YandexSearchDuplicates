@@ -4,23 +4,57 @@
     <option name="FILTER_RESOLVED_ITEMS" value="false" />
     <option name="ANALYZE_TEST_SOURCES" value="false" />
   </component>
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="PASSWORD" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="PROJECT_STATUS_DIALOG_SPLITTER_DIVIDER_LOCATION" value="500" />
+    <option name="CHANGES_STATUS_DIALOG_SPLITTER_DIVIDER_LOCATION" value="500" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="766b44b8-e2c0-406e-9e74-01c2bbbb746f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/yandex/test/SearchManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/yandex/test/SiteParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/yandex/test/VacancyXmlFileParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/yandex/test/impl/SearchManagerImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/ru/yandex/test/impl/SearchManagerImplTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/ru/yandex/test/impl/vacancyExample2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/ru/yandex/test/impl/vacancyExample3.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\SiteParser.java" afterPath="$PROJECT_DIR$/src/ru/yandex/test/impl/SiteParserImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\VacancyXmlFileParser.java" afterPath="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\test\ru\yandex\test\impl\VacancyXmlFileParserTest.java" afterPath="$PROJECT_DIR$/test/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_collections_google_collections_1_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_6_11.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_6_11.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf/config.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf/context.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf/log4j.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/yandex/test/Configuration.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/yandex/test/LoggerAspect.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/yandex/test/Main.java" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\config.xml" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\examplefiles\habrahabr.xml" afterPath="$PROJECT_DIR$/conf/examplefiles/habrahabr.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\examplefiles\job.xml" afterPath="$PROJECT_DIR$/conf/examplefiles/job.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\examplefiles\moikrug.xml" afterPath="$PROJECT_DIR$/conf/examplefiles/moikrug.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\examplefiles\rabota.xml" afterPath="$PROJECT_DIR$/conf/examplefiles/rabota.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\report.xsl" afterPath="$PROJECT_DIR$/conf/report.xsl" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\siteparseconfigs\habrahabr.xml" afterPath="$PROJECT_DIR$/conf/siteparseconfigs/habrahabr.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\siteparseconfigs\job.xml" afterPath="$PROJECT_DIR$/conf/siteparseconfigs/job.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\siteparseconfigs\moikrug.xml" afterPath="$PROJECT_DIR$/conf/siteparseconfigs/moikrug.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\siteparseconfigs\rabota.xml" afterPath="$PROJECT_DIR$/conf/siteparseconfigs/rabota.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\Documents\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\siteparseconfigs\stylesheet.xsl" afterPath="$PROJECT_DIR$/conf/siteparseconfigs/stylesheet.xsl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/YandexSearchDuplicates.iml" afterPath="$PROJECT_DIR$/YandexSearchDuplicates.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/yandex/test/SearchDialog.java" afterPath="$PROJECT_DIR$/src/ru/yandex/test/SearchDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/yandex/test/config.xml" afterPath="$PROJECT_DIR$/src/ru/yandex/test/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyImpl.java" afterPath="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/yandex/test/impl/ReportCreatorImpl.java" afterPath="$PROJECT_DIR$/src/ru/yandex/test/impl/ReportCreatorImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/yandex/test/impl/SiteParserImpl.java" afterPath="$PROJECT_DIR$/src/ru/yandex/test/impl/SiteParserImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java" afterPath="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java" />
     </list>
     <ignored path="YandexSearchDuplicates.iws" />
@@ -45,27 +79,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <field_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/ru/yandex/test/Duplicate.java" line="16" class="ru.yandex.test.Duplicate" package="ru.yandex.test" field_name="duplicates">
-        <option name="WATCH_MODIFICATION" value="true" />
-        <option name="WATCH_ACCESS" value="false" />
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="true" />
-        <option name="CONDITION" value="" />
-        <instance_id>
-          <option name="PATTERN" value="971" />
-          <option name="ENABLED" value="true" />
-        </instance_id>
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </field_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -99,43 +112,77 @@
       </breakpoint>
     </breakpoint_any>
     <breakpoint_rules />
-    <ui_properties>
-      <property name="line_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_flattenPackages" value="true" />
-      <property name="method_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_flattenPackages" value="true" />
-      <property name="exception_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_groupByMethods" value="false" />
-      <property name="line_breakpoints_flattenPackages" value="true" />
-      <property name="field_breakpoints_groupByClasses" value="true" />
-      <property name="method_breakpoints_groupByClasses" value="true" />
-      <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="exception_breakpoints_groupByClasses" value="true" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
-      <property name="method_breakpoints_groupByMethods" value="false" />
-    </ui_properties>
+    <ui_properties />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="YandexSearchDuplicates" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VacancyXmlFileParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/VacancyXmlFileParser.java">
+      <file leaf-file-name="context.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/context.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
+            <state line="18" column="58" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VacancyXmlFileParserImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java">
+      <file leaf-file-name="SearchDialog.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/SearchDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.33279744">
+            <state line="56" column="16" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="method#initComponents#0;class#SearchDialog#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VacancyImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="32" selection-start="307" selection-end="307" vertical-scroll-proportion="-4.5755625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Configuration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/Configuration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="14" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoggerAspect.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/LoggerAspect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="27" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SiteParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/SiteParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="42" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VacancySource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/VacancySource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="30" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -161,22 +208,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/ReportCreatorImpl.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/Duplicate.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/config.xml" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/SearchDialog.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyImpl.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/Vacancy.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/SearchManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/SearchManager.java" />
-        <option value="$PROJECT_DIR$/test/ru/yandex/test/impl/vacancyExample3.xml" />
-        <option value="$PROJECT_DIR$/test/ru/yandex/test/impl/vacancyExample2.xml" />
         <option value="$PROJECT_DIR$/test/ru/yandex/test/impl/SearchManagerImplTest.java" />
         <option value="$PROJECT_DIR$/src/ru/yandex/test/SiteParser.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/SiteParserImpl.java" />
         <option value="$PROJECT_DIR$/src/ru/yandex/test/VacancyXmlFileParser.java" />
+        <option value="$PROJECT_DIR$/src/ru/yandex/test/config.xml" />
+        <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/SiteParserImpl.java" />
+        <option value="$PROJECT_DIR$/conf/log4j.xml" />
+        <option value="$PROJECT_DIR$/src/ru/yandex/test/Main.java" />
+        <option value="$PROJECT_DIR$/src/ru/yandex/test/SearchDialog.java" />
         <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java" />
+        <option value="$PROJECT_DIR$/conf/config.xml" />
+        <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/ReportCreatorImpl.java" />
+        <option value="$PROJECT_DIR$/src/ru/yandex/test/LoggerAspect.java" />
+        <option value="$PROJECT_DIR$/conf/config.properties" />
+        <option value="$PROJECT_DIR$/conf/context.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/ru/yandex/test/Configuration.java" />
       </list>
     </option>
   </component>
@@ -213,16 +260,6 @@
           <option name="myItemId" value="YandexSearchDuplicates" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="YandexSearchDuplicates" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="Lifecycle" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
@@ -241,19 +278,10 @@
           <State>
             <id />
           </State>
-          <State>
-            <id>Control flow issues</id>
-          </State>
-          <State>
-            <id>Performance issues</id>
-          </State>
-          <State>
-            <id>Probable bugs</id>
-          </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>MismatchedCollectionQueryUpdate</id>
+            <id>Abstraction issues</id>
           </State>
         </selected-state>
       </profile-state>
@@ -285,6 +313,24 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="YandexSearchDuplicates">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -292,15 +338,9 @@
               <option name="myItemId" value="YandexSearchDuplicates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -310,36 +350,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -363,40 +373,22 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="YandexSearchDuplicates">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="116" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="135" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="project.structure.proportion" value="0.15332031" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="135" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="131" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="131" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="137" />
@@ -413,21 +405,21 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="MavenSettings" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLanguage" value="Java" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="ReadonlyStatusHandler">
     <option name="SHOW_DIALOG" value="false" />
@@ -449,7 +441,7 @@
       <recent name="ru.yandex.test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SearchManagerImplTest">
+  <component name="RunManager" selected="Application.SearchDoubles">
     <configuration default="false" name="ShingleTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="YandexSearchDuplicates" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -544,28 +536,6 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings">
@@ -613,6 +583,28 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -622,24 +614,6 @@
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
@@ -657,6 +631,24 @@
       <OutputType value="CONSOLE" save-to-file="false" />
       <FileType name="XML" />
       <JdkChoice value="FROM_MODULE" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -743,10 +735,10 @@
       </method>
     </configuration>
     <configuration default="false" name="SearchDoubles" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="ru.yandex.test.SearchDialog" />
+      <option name="MAIN_CLASS_NAME" value="ru.yandex.test.Main" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -848,7 +840,7 @@
       <item index="0" class="java.lang.String" itemvalue="Application.SearchDoubles" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.ShingleTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.RecognizeSalaryPluginTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.VacancyXmlFileParserTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.VacancyXmlFileParserImplTest" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.SalaryTest" />
       <item index="5" class="java.lang.String" itemvalue="JUnit.Test Project" />
       <item index="6" class="java.lang.String" itemvalue="JUnit.VacancyImplTest" />
@@ -929,25 +921,26 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32973805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24898621" sideWeight="0.67488444" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819724" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24855967" sideWeight="0.67488444" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3697997" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266564" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6918336" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819724" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27737227" sideWeight="0.40061632" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4379562" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3037037" sideWeight="0.40412045" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43714517" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40957016" sideWeight="0.6708075" order="0" side_tool="false" content_ui="tabs" x="431" y="128" width="726" height="564" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27737227" sideWeight="0.587057" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23195459" sideWeight="0.6933744" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3451464" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38058552" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30662557" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24979724" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37876385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="101" y="101" width="1078" height="558" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32927817" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24979724" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30662557" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -1016,117 +1009,120 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_20/src.zip!/java/util/LinkedList.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="268" column="0" selection-start="9742" selection-end="9742" vertical-scroll-proportion="0.21688741">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ru/yandex/test/impl/vacancyexample.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="59" selection-start="422" selection-end="422" vertical-scroll-proportion="0.30706075">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_20/src.zip!/java/lang/Cloneable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="17" selection-start="1338" selection-end="1338" vertical-scroll-proportion="0.77483445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="7" selection-start="5298" selection-end="5298" vertical-scroll-proportion="0.5778146">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/Vacancy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="24" selection-start="79" selection-end="79" vertical-scroll-proportion="0.16887417">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.6.0_20/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="26" selection-start="667" selection-end="667" vertical-scroll-proportion="0.40270728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.8.2/junit-4.8.2-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="405" selection-end="405" vertical-scroll-proportion="0.43729904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ru/yandex/test/impl/vacancyExample2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="54" selection-start="3974" selection-end="3974" vertical-scroll-proportion="0.40722495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/ru/yandex/test/impl/vacancyExample3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="32" selection-start="1843" selection-end="1843" vertical-scroll-proportion="0.74876845">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/SearchManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.94051445">
+        <state line="63" column="14" selection-start="2017" selection-end="2017" vertical-scroll-proportion="0.61736333">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/SiteParserImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="61" selection-start="3840" selection-end="3840" vertical-scroll-proportion="0.0">
+        <state line="43" column="11" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.33279744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.1/commons-io-2.1.jar!/org/apache/commons/io/IOUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="36" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.1/commons-io-2.1-sources.jar!/org/apache/commons/io/ThreadMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="9" selection-start="3676" selection-end="3676" vertical-scroll-proportion="0.77483445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.1/commons-io-2.1-sources.jar!/org/apache/commons/io/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="599" column="47" selection-start="22944" selection-end="22944" vertical-scroll-proportion="6.646302">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.1/commons-io-2.1-sources.jar!/org/apache/commons/io/IOCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="21" selection-start="1517" selection-end="1517" vertical-scroll-proportion="-5.176849">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.1/commons-io-2.1-sources.jar!/org/apache/commons/io/IOUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="744" column="36" selection-start="26383" selection-end="26383" vertical-scroll-proportion="-9.975884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="15" selection-start="2922" selection-end="2922" vertical-scroll-proportion="1.72578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="44" selection-start="272" selection-end="272" vertical-scroll-proportion="0.24598071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/Configuration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="14" selection-start="496" selection-end="496" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/LoggerAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="27" selection-start="372" selection-end="372" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/VacancySource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="30" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/SiteParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="387" selection-end="387" vertical-scroll-proportion="0.46463022">
+        <state line="10" column="42" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ru/yandex/test/impl/SearchManagerImplTest.java">
+    <entry file="file://$PROJECT_DIR$/conf/context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="17" selection-start="302" selection-end="302" vertical-scroll-proportion="0.49196142">
+        <state line="18" column="58" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/SearchDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="16" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#VacancyXmlFileParserMock#0;class#SearchManagerImplTest#0" expanded="false" />
+            <element signature="method#initComponents#0;class#SearchDialog#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/SearchManagerImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="52" selection-start="545" selection-end="545" vertical-scroll-proportion="-3.482315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/VacancyXmlFileParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.33279744">
+        <state line="15" column="32" selection-start="307" selection-end="307" vertical-scroll-proportion="-4.5755625">
           <folding />
         </state>
       </provider>

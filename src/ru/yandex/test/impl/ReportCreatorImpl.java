@@ -50,16 +50,15 @@ public class ReportCreatorImpl implements ReportCreator {
                         
             fileResult = File.createTempFile("dupl", ".html");
             TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(new StreamSource(
-                    ReportCreatorImpl.class.getResourceAsStream("report.xsl")));
+            Transformer transformer = factory.newTransformer(new StreamSource("conf/report.xsl"));
             transformer.transform(new DOMSource(document), new StreamResult(fileResult));
                     
         } catch (TransformerException ex) {
             Logger.getLogger(ReportCreatorImpl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, "I/O Error", ex);
         } catch (ParserConfigurationException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, "parse config error", ex);
         }
         return fileResult;
     }
