@@ -1,5 +1,6 @@
 package ru.yandex.test.impl;
 
+import org.apache.log4j.Logger;
 import org.webharvest.definition.DefinitionResolver;
 import org.webharvest.definition.ScraperConfiguration;
 import org.webharvest.runtime.Scraper;
@@ -11,17 +12,14 @@ import ru.yandex.test.webharvest.RecognizeSalaryPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.channels.NonWritableChannelException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author OneHalf
  */
 public class SiteParserImpl implements SiteParser {
-    private static final Logger LOGGER = Logger.getLogger(SiteParserImpl.class.getName());
+    private static final Logger log = Logger.getLogger(SiteParserImpl.class);
     private static final String WORKING_DIRECTORY = "..";
 
     private final String siteName;
@@ -70,14 +68,14 @@ public class SiteParserImpl implements SiteParser {
         }
         return vacancies;
     }
-    
+
     /**
      * Сбор вакансий с сайта
      * @param deleteOnExit Удалять ли файл после закрытия программы
      * @return Список вакансий
      */
     List<Vacancy> getVacancies(boolean deleteOnExit) {
-        LOGGER.log(Level.INFO, "Сбор информации с сайта {0}", siteName);
+        log.info("Сбор информации с сайта " + siteName);
         try {
             ScraperConfiguration config;
             // Пытаемся получить URL внутреннего ресурса по имени
@@ -98,7 +96,7 @@ public class SiteParserImpl implements SiteParser {
             scraper.addVariableToContext("outputFile", tempFile);
             
             scraper.execute();
-            LOGGER.log(Level.FINE, "Окончание сбора информации с сайта {0}", siteName);
+            log.debug("Окончание сбора информации с сайта " +  siteName);
 
             VacancySource result = new VacancyXmlFileParserImpl(siteName, tempFile);
 
@@ -109,7 +107,6 @@ public class SiteParserImpl implements SiteParser {
             return result.getVacancies();
         }
         catch (IOException ex) {
-            LOGGER.log(Level.WARNING, null, ex);
             throw new SiteParseException(String.format("Ошибка парсинга сайта \"%s\"", siteName), ex);
         }
     }

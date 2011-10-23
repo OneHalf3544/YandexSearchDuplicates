@@ -1,7 +1,6 @@
 package ru.yandex.test.webharvest;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 import org.webharvest.runtime.Scraper;
 import org.webharvest.runtime.ScraperContext;
 import org.webharvest.runtime.processors.WebHarvestPlugin;
@@ -19,7 +18,7 @@ import ru.yandex.test.Salary;
  * @author OneHalf
  */
 public class RecognizeSalaryPlugin extends WebHarvestPlugin {
-    private static final Logger LOGGER = Logger.getLogger(RecognizeSalaryPlugin.class.getName());
+    private static final Logger log = Logger.getLogger(RecognizeSalaryPlugin.class);
     private static final String PLUGIN_TAG_NAME = "salaryparse";
 
     private static final String WITHOUT_DIGITS = "\\D*";
@@ -41,8 +40,9 @@ public class RecognizeSalaryPlugin extends WebHarvestPlugin {
         Salary salary;
         try {
             salary = recognizeSalary(strSalary);
-        } catch (Exception e) {
-            LOGGER.log(Level.WARNING, "Строка зарплаты не распознана: \"{0}\"", strSalary);
+        }
+        catch (Exception e) {
+            log.warn(String.format("Строка зарплаты не распознана: '%s'", strSalary));
             salary = new Salary();
         }
         

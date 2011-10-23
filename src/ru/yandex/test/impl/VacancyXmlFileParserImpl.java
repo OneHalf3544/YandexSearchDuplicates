@@ -1,20 +1,18 @@
 package ru.yandex.test.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
+import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import ru.yandex.test.Vacancy;
 import ru.yandex.test.VacancyXmlFileParser;
 import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * Класс представляющий собранный Webharvest'ом файл
@@ -24,7 +22,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
  */
  public class VacancyXmlFileParserImpl implements VacancyXmlFileParser {
     
-    private static final Logger log = Logger.getLogger(VacancyXmlFileParserImpl.class.getName());
+    private static final Logger log = Logger.getLogger(VacancyXmlFileParserImpl.class);
     
     private List<Vacancy> vacancies;
     private String query;
@@ -35,8 +33,9 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
      * Конструктор объекта с указанием файла, из которого нужно брать данные.
      * Названием источника будет имя файла
      * @param xmlFile Файл, созданный WebHarvest'ом
+     * @throws FileNotFoundException if file not found
      */
-    public VacancyXmlFileParserImpl(File xmlFile) {
+    public VacancyXmlFileParserImpl(File xmlFile) throws FileNotFoundException {
         this(xmlFile.getName(), xmlFile);
     }
 
@@ -45,39 +44,27 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
      * и названия источника
      * @param sourceName Название источника
      * @param xmlFile Файл, созданный WebHarvest'ом
+     * @throws FileNotFoundException if file not found
      */
-    public VacancyXmlFileParserImpl(String sourceName, File xmlFile) {
+    public VacancyXmlFileParserImpl(String sourceName, File xmlFile) throws FileNotFoundException {
         this.sourceName = sourceName;
-        try {
-            this.parse(new FileInputStream(xmlFile));
-        } catch (FileNotFoundException ex) {
-            log.log(Level.WARNING, "Нет такого файла", ex);
-        }
+        this.parse(new FileInputStream(xmlFile));
     }
 
     /**
      * Создание объекта по имени и строке, которая может быть адресом ресурса
      * или именем файла
      * @param name Имя источника
-     * @param resourceName Имя ресурса 
+     * @param resourceName Имя ресурса
+     * @throws FileNotFoundException if file not found
      */
-    public VacancyXmlFileParserImpl(String name, String resourceName) {
+    public VacancyXmlFileParserImpl(String name, String resourceName) throws FileNotFoundException {
         this.sourceName = name;
-        InputStream resourceStream = VacancyXmlFileParserImpl.class.getResourceAsStream(resourceName);
-        try {
-            if (resourceStream != null) {
-                this.parse(resourceStream);
-            } 
-            else {
-                this.parse(new FileInputStream(resourceName));
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(VacancyXmlFileParserImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.parse(new FileInputStream(resourceName));
     }
-    
+
     /**
-     * Конструктор объекта с указанием потока, из которого нужно брать данные 
+     * Конструктор объекта с указанием потока, из которого нужно брать данные
      * и названия источника
      * @param name Название источника
      * @param inputStream Поток созданный на основе данных собранных WebHarvest'ом
@@ -89,7 +76,7 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
 
     private void parse(InputStream inputStream) {
         try {
-            log.log(Level.FINE, "Начало парсинга xml-потока \"{0}\" с вакансиями", sourceName);
+            log.debug(String.format("begin parse xml-stream \"%s\" for vacancies", sourceName));
 
             SAXParserFactory SAXFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = SAXFactory.newSAXParser();
@@ -98,13 +85,14 @@ import ru.yandex.test.impl.vacancyparser.VacancySaxParserHandler;
             vacancies = vacancyCreatorHandler.getVacancies();
             query = vacancyCreatorHandler.getQuery();
 
-            log.log(Level.FINE, "Окончание парсинга xml-потока \"{0}\" с вакансиями", sourceName);
+            log.debug("Окончание парсинга xml-потока \"" + sourceName + "\" с вакансиями");
         }
         catch(Exception e){
-            log.log(Level.WARNING, "Ошибка парсинга xml-потока \""+sourceName+"\"", e);
+            throw new IllegalStateException(
+                    String.format("error parse xml-stream '%s'", sourceName), e);
         }
         finally {
-            try { inputStream.close(); } catch (IOException ignored) {}
+            IOUtils.closeQuietly(inputStream);
         }
     }
 

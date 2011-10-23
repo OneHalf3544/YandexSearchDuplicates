@@ -1,5 +1,7 @@
 package ru.yandex.test.impl;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.yandex.test.*;
 
@@ -10,8 +12,6 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by IntelliJ IDEA.
@@ -22,9 +22,11 @@ import java.util.logging.Logger;
 @Service
 public class SearchManagerImpl implements SearchManager {
 
-    private static final Logger LOGGER = Logger.getLogger(SearchManagerImpl.class.getName());
+    private static final Logger log = Logger.getLogger(SearchManagerImpl.class);
 
-    private double thresholdOfEuivalence = 0.55;
+    @Value("equivalence.threshold")
+    private double thresholdOfEuivalence;
+
     private boolean searchInSelf = true;
 
     private List<VacancySource> vacancySources;
@@ -82,11 +84,6 @@ public class SearchManagerImpl implements SearchManager {
         this.itemsCount = itemsCount;
     }
 
-    @Override
-    public double getThresholdOfEquivalence() {
-        return thresholdOfEuivalence;
-    }
-
     /**
      * Установка сайтов-источников. Добавляет сайты источники в программу и ChekBox'ы в диалог
      * @param siteParsers Сайты-источники
@@ -110,7 +107,7 @@ public class SearchManagerImpl implements SearchManager {
     * @return Набор дубликатов
     */
     Set<Duplicate> duplicatesFromDifferentSources() {
-        LOGGER.log(Level.FINE, "Поиск дубликатов");
+        log.debug("Поиск дубликатов");
 
         Set<Duplicate> result = new HashSet<Duplicate>();
 
@@ -124,14 +121,13 @@ public class SearchManagerImpl implements SearchManager {
 
                         if (k.getLevelOfSimilarity(l) > thresholdOfEuivalence) {
                             result.add(new Duplicate(k, l));
-                            LOGGER.log(Level.FINE, "Найдены дубликаты: \n{0}, \n{1}",
-                                    new Object[]{k, l});
+                            log.info(String.format("Найдены дубликаты: \n%s, \n%s", k, l));
                         }
                     }
                 }
             }
         }
-        LOGGER.log(Level.FINER, "Окончание поиска дубликатов");
+        log.debug("Окончание поиска дубликатов");
 
         return result;
     }
@@ -151,8 +147,7 @@ public class SearchManagerImpl implements SearchManager {
             for (int j = i+1; j < vacancies.size(); j++) {
                  if (vacancies.get(i).getLevelOfSimilarity(vacancies.get(j)) > thresholdOfEuivalence) {
                     result.add(new Duplicate(vacancies.get(i), vacancies.get(j)));
-                    LOGGER.log(Level.FINE, "Найдены дубликаты: \n{0}, \n{1}",
-                            new Object[]{vacancies.get(i), vacancies.get(j)});
+                    log.debug(String.format("Найдены дубликаты: \n%s, \n%s", vacancies.get(i), vacancies.get(j)));
                 }
             }
         }

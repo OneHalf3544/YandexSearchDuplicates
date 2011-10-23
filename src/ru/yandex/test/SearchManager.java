@@ -3,18 +3,10 @@ package ru.yandex.test;
 import java.util.Set;
 
 /**
- * Created by IntelliJ IDEA.
- * User: OneHalf
  * Date: 22.07.11
  * Time: 16:50
  */
 public interface SearchManager {
-
-    /**
-     * @return Порог эквивалентости определяющий уровень
-     * "похожести" ввакансий при котором они считаются равными и попадают в отчет
-     */
-    public double getThresholdOfEquivalence();
 
     /**
      * @param thresholdOfEquivalence Порог эквивалентости определяющий уровень
@@ -48,6 +40,7 @@ public interface SearchManager {
 
     /**
      * Инициализация источников вакансий в соответствии с состояниями CheckBox'ов
+     * @throws InterruptedException if user abort searching
      */
     public void initializeSources() throws InterruptedException;
 

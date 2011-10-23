@@ -1,5 +1,6 @@
 package ru.yandex.test.impl;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -21,8 +22,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Класс объектов, создающих отчеты
@@ -31,8 +30,9 @@ import java.util.logging.Logger;
  */
 @Service("reportCreator")
 public class ReportCreatorImpl implements ReportCreator {
-    private final static Logger LOGGER = Logger.getLogger(ReportCreatorImpl.class.getName());
-    
+
+    private static final Logger log = Logger.getLogger(ReportCreatorImpl.class);
+
     @Override
     public File getReport(Collection<Duplicate> vacancies) {
         File fileResult = null;
@@ -54,11 +54,11 @@ public class ReportCreatorImpl implements ReportCreator {
             transformer.transform(new DOMSource(document), new StreamResult(fileResult));
                     
         } catch (TransformerException ex) {
-            Logger.getLogger(ReportCreatorImpl.class.getName()).log(Level.SEVERE, null, ex);
+            log.error("xml transformer error", ex);
         } catch (IOException ex) {
-            LOGGER.log(Level.SEVERE, "I/O Error", ex);
+            log.error("I/O Error", ex);
         } catch (ParserConfigurationException ex) {
-            LOGGER.log(Level.SEVERE, "parse config error", ex);
+            log.error("parse config error", ex);
         }
         return fileResult;
     }

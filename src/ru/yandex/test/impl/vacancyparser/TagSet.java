@@ -5,7 +5,6 @@ import ru.yandex.test.Salary;
 import ru.yandex.test.Vacancy;
 import ru.yandex.test.impl.VacancyImpl;
 
-import javax.swing.text.TabSet;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,21 +28,20 @@ class TagSet {
 
     private Map<String, Tag> tags = new HashMap<String, Tag>();
 
-    Tag VACANCIES = new VacanciesTag(this);
-    Tag QUERY = new QueryTag(this);
-    Tag VACANCY = new VacancyTag(this);
+    private Tag VACANCY_NAME = new VacancyNameTag(this);
 
-    Tag VACANCY_NAME = new VacancyNameTag(this);
-    Tag COMPANY_NAME = new CompanyNameTag(this);
-    Tag CITY = new CityTag(this);
-
-    Tag SALARY = new SalaryTag(this);
-    Tag MINIMUM_SALARY = new MinimumSalaryTag(this);
-    Tag MAXIMUM_SALARY = new MaximumSalaryTag(this);
-
-    Tag DESCRIPTION = new DescriptionTag(this);
+    private Tag SALARY = new SalaryTag(this);
 
     TagSet() {
+        Tag VACANCIES = new VacanciesTag(this);
+        Tag QUERY = new QueryTag(this);
+        Tag VACANCY = new VacancyTag(this);
+        Tag COMPANY_NAME = new CompanyNameTag(this);
+        Tag CITY = new CityTag(this);
+        Tag MINIMUM_SALARY = new MinimumSalaryTag(this);
+        Tag MAXIMUM_SALARY = new MaximumSalaryTag(this);
+        Tag DESCRIPTION = new DescriptionTag(this);
+
         tags.put(VACANCIES.TAG_NAME, VACANCIES);
         tags.put(QUERY.TAG_NAME, QUERY);
         tags.put(VACANCY.TAG_NAME, VACANCY);

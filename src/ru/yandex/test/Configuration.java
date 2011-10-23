@@ -6,6 +6,7 @@ import ru.yandex.test.impl.SiteParserImpl;
 import ru.yandex.test.impl.VacancyXmlFileParserImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -44,7 +45,7 @@ public class Configuration {
         }
     }
 
-    final void loadProperties(Properties properties) {
+    final void loadProperties(Properties properties) throws FileNotFoundException {
 
         for (Object o : properties.keySet()) {
             String key = o.toString();
@@ -71,16 +72,16 @@ public class Configuration {
                 String file = properties.getProperty(fiieKey);
 
                 preparsedFiles.add(new VacancyXmlFileParserImpl(name, file));
-
-                continue;
             }
         }
     }
 
+    @SuppressWarnings({"UnusedDeclaration"})
     Set<SiteParser> getSiteParsers() {
         return siteParsers;
     }
 
+    @SuppressWarnings({"UnusedDeclaration"})
     Set<VacancyXmlFileParser> getPreparsedXmlFiles() {
         return preparsedFiles;
     }

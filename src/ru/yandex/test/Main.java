@@ -3,11 +3,12 @@ package ru.yandex.test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Created by IntelliJ IDEA.
- * User: OneHalf
+ * Spring context loader
+ *
  * Date: 12.10.11
  * Time: 22:33
- * To change this template use File | Settings | File Templates.
+ *
+ * @author OneHalf
  */
 public class Main {
     public static void main(String[] args) {

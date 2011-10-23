@@ -1,12 +1,10 @@
 package ru.yandex.test;
 
-import ru.yandex.test.VacancySource;
-
 /**
- * Created by IntelliJ IDEA.
- * User: OneHalf
  * Date: 22.07.11
  * Time: 22:00
+ *
+ * @author OneHalf
  */
 public interface SiteParser extends VacancySource {
 

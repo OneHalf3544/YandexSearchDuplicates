@@ -1,19 +1,16 @@
 package ru.yandex.test.impl;
 
-import java.text.MessageFormat;
-import java.util.logging.Logger;
-
 import ru.yandex.test.Salary;
 import ru.yandex.test.Vacancy;
 import ru.yandex.test.shingles.Shingle;
+
+import java.text.MessageFormat;
 
 /**
  *
  * @author OneHalf
  */
 public class VacancyImpl implements Vacancy {
-
-    private final static Logger LOGGER = Logger.getLogger(VacancyImpl.class.getName());
 
     // Сумма коэфициентов перед слагаемыми должна быть равна единице
     private static final double CITY_NAME_INFLUENCE = 0.1;
@@ -119,7 +116,7 @@ public class VacancyImpl implements Vacancy {
      * не пересекаются, то функция сразу возвращает 0.0</p>
      * <p>Далее по алгоритму шинглов сравниваются:
      * <ul>
-     * <li> Название вакансии (вклад в результат - до 10%)
+     * <li> Название вакансии (вклад в результат - до 10%)</li>
      * <li> Название компании-работодателя (вклад в результат - до 40%)</li>
      * <li> Регион, в котором предлагается работа (вклад в результат - до 10%)</li>
      * <li> Описание вакансии (вклад в результат - до 40%)</li>

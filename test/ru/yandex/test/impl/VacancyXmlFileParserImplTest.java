@@ -17,14 +17,15 @@ public class VacancyXmlFileParserImplTest {
 
     /**
      * Test of parse method, of class VacancyXmlFileParserImpl.
+     * @throws Exception on parse error
      */
     @Test
-    public void testParse() {
+    public void testParse() throws Exception {
         System.out.println("parse");
-        VacancyXmlFileParser instance = new VacancyXmlFileParserImpl("vacancyexample.xml", "vacancyexample.xml");
+        VacancyXmlFileParser instance = new VacancyXmlFileParserImpl("vacancyexample.xml", "testResource/vacancyexample.xml");
         
         List<Vacancy> v = instance.getVacancies();
-        Vacancy[] vacancies = v.toArray(new Vacancy[]{});
+        Vacancy[] vacancies = v.toArray(new Vacancy[v.size()]);
 
         assertEquals("Запрос поиска", "Java", instance.getQuery());
 

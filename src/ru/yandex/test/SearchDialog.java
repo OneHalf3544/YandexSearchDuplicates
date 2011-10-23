@@ -5,22 +5,17 @@
  */
 package ru.yandex.test;
 
-import org.springframework.beans.factory.BeanFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
-import java.applet.AppletContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +23,7 @@ import java.util.logging.Logger;
  */
 public class SearchDialog extends javax.swing.JFrame {
 
-    private static final Logger LOGGER = Logger.getLogger(SearchDialog.class.getName());
+    private static final Logger log = Logger.getLogger(SearchDialog.class);
 
     @Autowired
     private ReportCreator reportCreator;
@@ -53,6 +48,7 @@ public class SearchDialog extends javax.swing.JFrame {
     private JPanel pnlFiles;
     private JCheckBox cbSearchInSelf;
 
+    @SuppressWarnings({"UnusedDeclaration"})
     @PostConstruct
     public void start() {
         SwingUtilities.invokeLater(new Runnable() {
@@ -70,7 +66,7 @@ public class SearchDialog extends javax.swing.JFrame {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) {
-            Logger.getLogger(SearchDialog.class.getName()).log(Level.SEVERE, null, ex);
+            log.error("can not set system look and feel", ex);
         }
         initComponents();
     }
@@ -183,7 +179,7 @@ public class SearchDialog extends javax.swing.JFrame {
             File fileResult = reportCreator.getReport(lastResult);
             Desktop.getDesktop().open(fileResult);
         } catch (IOException ex) {
-            Logger.getLogger(SearchDialog.class.getName()).log(Level.SEVERE, null, ex);
+            log.error("open report error", ex);
         }
     }
 
@@ -349,7 +345,7 @@ public class SearchDialog extends javax.swing.JFrame {
             try {
                 setDuplicateVacancy(this.get());
             } catch (Exception e) {
-                LOGGER.log(Level.WARNING, "Ошибка при поиске дубликатов", e);
+                log.warn("Ошибка при поиске дубликатов", e);
             }
         }
     }

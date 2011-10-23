@@ -3,8 +3,8 @@ package ru.yandex.test.webharvest;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.log4j.Logger;
 import org.webharvest.runtime.variables.Variable;
 import ru.yandex.test.Salary;
 
@@ -13,8 +13,12 @@ import ru.yandex.test.Salary;
  * 
  * @author OneHalf
  */
+// Все методы используются как объявлено в файлах конфигурации webharvest
+@SuppressWarnings({"UnusedDeclaration"})
 public class SalaryVariable extends Variable {
-    
+
+    private static final Logger log = Logger.getLogger(SalaryVariable.class);
+
     private Salary salary;
 
     public SalaryVariable(Salary salary) {
@@ -31,8 +35,7 @@ public class SalaryVariable extends Variable {
         try {
             return toString().getBytes(charset);
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(SalaryVariable.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+            throw new IllegalStateException(charset + " not supported", ex);
         }
     }
 

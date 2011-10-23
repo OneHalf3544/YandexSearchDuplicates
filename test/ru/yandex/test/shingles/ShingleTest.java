@@ -21,6 +21,7 @@ public class ShingleTest {
             + "Звучал мне долго голос нежный\n"
             + "И снились милые черты.\n";
 
+    @SuppressWarnings({"UnusedDeclaration"})
     private static final String exampleString3 =
             "Шли годы. Бурь порыв мятежный\n"
             + "Рассеял прежние мечты,\n"

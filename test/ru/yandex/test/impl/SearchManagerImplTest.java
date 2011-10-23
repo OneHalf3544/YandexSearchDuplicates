@@ -1,12 +1,15 @@
 package ru.yandex.test.impl;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import ru.yandex.test.Duplicate;
+import ru.yandex.test.SearchManager;
+import ru.yandex.test.VacancyXmlFileParser;
 
-import ru.yandex.test.*;
+import java.util.HashSet;
+import java.util.Set;
 
-import java.util.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,19 +19,14 @@ import java.util.*;
  */
 public class SearchManagerImplTest {
 
-    @Test @Ignore
-    public void testInitializeSources() {
-        fail("This is a prototype");
-    }
-
     @Test
     public void testSetSearchInSelf() throws Exception {
         System.out.println("testSetSearchInSelf");
         Set<VacancyXmlFileParser> preparsedFiles;
 //--------------------------------------------------------------------------------------------------------
         preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/ru/yandex/test/impl/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/ru/yandex/test/impl/vacancyExample3.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
 
         SearchManager searchManager = new SearchManagerImpl();
         searchManager.setPreparsedXmlFiles(preparsedFiles);
@@ -38,8 +36,8 @@ public class SearchManagerImplTest {
         Set<Duplicate> duplicates = searchManager.searchDuplicates();
 //--------------------------------------------------------------------------------------------------------
         preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/ru/yandex/test/impl/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/ru/yandex/test/impl/vacancyExample3.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
 
         SearchManager searchManager2 = new SearchManagerImpl();
         searchManager2.setPreparsedXmlFiles(preparsedFiles);
@@ -54,9 +52,8 @@ public class SearchManagerImplTest {
     @Test
     public void testSearchDuplicates() throws Exception {
         Set<VacancyXmlFileParser> preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/ru/yandex/test/impl/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/ru/yandex/test/impl/vacancyExample3.xml"));
-//        preparsedFiles.add(new VacancyXmlFileParserMock());
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
 
         SearchManager searchManager = new SearchManagerImpl();
         searchManager.setPreparsedXmlFiles(preparsedFiles);
@@ -73,7 +70,7 @@ public class SearchManagerImplTest {
         System.out.println("testDuplicatesFromSelf");
 
         VacancyXmlFileParser file = new VacancyXmlFileParserImpl(
-                "file1", "/ru/yandex/test/impl/vacancyExample2.xml");
+                "file1", "testResource/vacancyExample2.xml");
 
         SearchManagerImpl searchManager = new SearchManagerImpl();
         searchManager.setThresholdOfEquivalence(0.55);
@@ -84,8 +81,8 @@ public class SearchManagerImplTest {
     @Test
     public void testDuplicatesFromDifferent() throws Exception {
         Set<VacancyXmlFileParser> preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/ru/yandex/test/impl/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/ru/yandex/test/impl/vacancyExample3.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
 
         SearchManagerImpl searchManager = new SearchManagerImpl();
         searchManager.setPreparsedXmlFiles(preparsedFiles);
@@ -95,50 +92,5 @@ public class SearchManagerImplTest {
         Set<Duplicate> duplicates = searchManager.duplicatesFromDifferentSources();
 
         assertEquals("Число дубликатов", 1, duplicates.size());
-    }
-
-    private static class VacancyXmlFileParserMock implements VacancyXmlFileParser {
-
-        final static Vacancy vacancy1 = new VacancyImpl("Программист", "url.ru", "Рога и копыта", "url2", "Питер",
-                new Salary(), "Описание вакансии должно быть больше 6 слов, чтобы сработал " +
-                "алгоритм шинглов. Бла Бла Бла. ");
-        final static Vacancy vacancy2 = new VacancyImpl("Какая-то другая вакансия",
-                "url.ru",
-                "Еще какая-то фирма",
-                "url2",
-                "Масква",
-                new Salary(10000, 20000),
-                "Тут тоже много-много-много слов, счтобы правильно посчитались хеши из подстрок текста");
-        final static Vacancy vacancy3 = new VacancyImpl("Курьер, (Топ-Топ-Менеджер)",
-                "url.ru",
-                "Рог и копыто", "url2", "Питер",
-                new Salary(null, 100000), "Описание вакансии должно быть больше 6 слов, чтобы сработал " +
-                "алгоритм шинглов. Бла Бла Бла. ");
-        final static Vacancy vacancy4 = new VacancyImpl("Программист", "url.ru", "Рога и копыта", "url2", "Питер",
-                new Salary(), "Описание вакансии должно быть больше 6 слов, чтобы сработал " +
-                "алгоритм шинглов. Бла Бла Бла. ");
-
-        private List<Vacancy> vacanciesList = new LinkedList<Vacancy>();
-        {
-            vacanciesList.add(vacancy1);
-            vacanciesList.add(vacancy2);
-            vacanciesList.add(vacancy3);
-            vacanciesList.add(vacancy4);
-        }
-
-        @Override
-        public List<Vacancy> getVacancies() {
-            return vacanciesList;
-        }
-
-        @Override
-        public String getSourceName() {
-            return "СайтПоПоискуРаботы.рф";
-        }
-
-        @Override
-        public String getQuery() {
-            return "BlaBlaDeveloper";
-        }
     }
 }

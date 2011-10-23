@@ -1,13 +1,10 @@
 package ru.yandex.test.impl;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import ru.yandex.test.Salary;
 import ru.yandex.test.Vacancy;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -77,22 +74,6 @@ public class VacancyImplTest {
             + "Разрабатываем программу %programName%");
     
     public VacancyImplTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
@@ -210,15 +191,15 @@ public class VacancyImplTest {
         
         expResult = 1.0; delta = 0.01;
         result = VACANCY_1.getLevelOfSimilarity(VACANCY_1);
-        assertEquals(expResult, result);
+        assertEquals(expResult, result, delta);
 
         expResult = 1.0; delta = 0.01;
         result = VACANCY_3.getLevelOfSimilarity(VACANCY_3);
-        assertEquals(expResult, result);
+        assertEquals(expResult, result, delta);
 
         expResult = 0.0; delta = 0.01;
         result = VACANCY_1.getLevelOfSimilarity(VACANCY_3);
-        assertEquals(expResult, result);
+        assertEquals(expResult, result, delta);
 
         //------------
         expResult = 0.75; delta = 0.10;
