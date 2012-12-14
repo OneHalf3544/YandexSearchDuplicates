@@ -25,8 +25,8 @@ public class SearchManagerImplTest {
         Set<VacancyXmlFileParser> preparsedFiles;
 //--------------------------------------------------------------------------------------------------------
         preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/vacancyExample3.xml"));
 
         SearchManager searchManager = new SearchManagerImpl();
         searchManager.setPreparsedXmlFiles(preparsedFiles);
@@ -36,8 +36,8 @@ public class SearchManagerImplTest {
         Set<Duplicate> duplicates = searchManager.searchDuplicates();
 //--------------------------------------------------------------------------------------------------------
         preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/vacancyExample3.xml"));
 
         SearchManager searchManager2 = new SearchManagerImpl();
         searchManager2.setPreparsedXmlFiles(preparsedFiles);
@@ -52,8 +52,8 @@ public class SearchManagerImplTest {
     @Test
     public void testSearchDuplicates() throws Exception {
         Set<VacancyXmlFileParser> preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/vacancyExample3.xml"));
 
         SearchManager searchManager = new SearchManagerImpl();
         searchManager.setPreparsedXmlFiles(preparsedFiles);
@@ -81,8 +81,8 @@ public class SearchManagerImplTest {
     @Test
     public void testDuplicatesFromDifferent() throws Exception {
         Set<VacancyXmlFileParser> preparsedFiles = new HashSet<VacancyXmlFileParser>();
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "testResource/vacancyExample2.xml"));
-        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "testResource/vacancyExample3.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file1", "/vacancyExample2.xml"));
+        preparsedFiles.add(new VacancyXmlFileParserImpl("file2", "/vacancyExample3.xml"));
 
         SearchManagerImpl searchManager = new SearchManagerImpl();
         searchManager.setPreparsedXmlFiles(preparsedFiles);

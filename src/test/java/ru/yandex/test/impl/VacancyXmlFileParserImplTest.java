@@ -1,10 +1,12 @@
 package ru.yandex.test.impl;
 
-import java.util.List;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import ru.yandex.test.Vacancy;
 import ru.yandex.test.VacancyXmlFileParser;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -22,7 +24,8 @@ public class VacancyXmlFileParserImplTest {
     @Test
     public void testParse() throws Exception {
         System.out.println("parse");
-        VacancyXmlFileParser instance = new VacancyXmlFileParserImpl("vacancyexample.xml", "testResource/vacancyexample.xml");
+        VacancyXmlFileParser instance = new VacancyXmlFileParserImpl(
+                "vacancyexample.xml", getClass().getResourceAsStream("/vacancyexample.xml"));
         
         List<Vacancy> v = instance.getVacancies();
         Vacancy[] vacancies = v.toArray(new Vacancy[v.size()]);

@@ -28,38 +28,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="766b44b8-e2c0-406e-9e74-01c2bbbb746f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\config.properties" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\context.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\habrahabr.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\job.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\moikrug.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\rabota.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\log4j.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\report.xsl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\habrahabr.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\job.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\moikrug.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\rabota.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\stylesheet.xsl" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\config.properties" afterPath="$PROJECT_DIR$/src/main/config/config.properties" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\context.xml" afterPath="$PROJECT_DIR$/src/main/config/context.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\habrahabr.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/habrahabr.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\job.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/job.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\moikrug.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/moikrug.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\rabota.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/rabota.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\log4j.xml" afterPath="$PROJECT_DIR$/src/main/config/log4j.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\report.xsl" afterPath="$PROJECT_DIR$/src/main/config/report.xsl" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\habrahabr.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/habrahabr.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\job.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/job.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\moikrug.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/moikrug.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\rabota.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/rabota.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\stylesheet.xsl" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/stylesheet.xsl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/SearchManagerImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/SearchManagerImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="YandexSearchDuplicates.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="766b44b8-e2c0-406e-9e74-01c2bbbb746f" time="1355516507057" ignored="false" />
+    <file path="/Dummy.txt" changelist="766b44b8-e2c0-406e-9e74-01c2bbbb746f" time="1355516859539" ignored="false" />
     <file path="/pom.xml" changelist="766b44b8-e2c0-406e-9e74-01c2bbbb746f" time="1355516274655" ignored="false" />
+    <file path="/VacancyXmlFileParserImplTest.java" changelist="766b44b8-e2c0-406e-9e74-01c2bbbb746f" time="1355518636332" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,16 +105,61 @@
       <file leaf-file-name="VacancyXmlFileParserImplTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1578" selection-end="1578" vertical-scroll-proportion="-19.24">
+            <state line="27" column="16" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="VacancyImplTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="14" selection-start="900" selection-end="900" vertical-scroll-proportion="0.34">
+            <state line="12" column="13" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VacancyXmlFileParserImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/VacancyXmlFileParserImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="29" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchManagerImplTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/SearchManagerImplTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="66" selection-start="3682" selection-end="3682" vertical-scroll-proportion="0.6916566">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SalaryTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/SalaryTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="9" selection-start="649" selection-end="649" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecognizeSalaryPluginTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/webharvest/RecognizeSalaryPluginTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoggerAspect.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/LoggerAspect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="16" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,8 +168,10 @@
       <file leaf-file-name="ShingleTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/shingles/ShingleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="44" selection-start="653" selection-end="653" vertical-scroll-proportion="-0.68">
-              <folding />
+            <state line="23" column="44" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#613#653#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -174,9 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/Main.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/ru/yandex/test/SearchDialog.java" />
         <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyImpl.java" />
         <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/VacancyXmlFileParserImpl.java" />
         <option value="$PROJECT_DIR$/src/ru/yandex/test/impl/vacancyparser/TagSet.java" />
@@ -190,6 +212,9 @@
         <option value="$PROJECT_DIR$/src/ru/yandex/test/webharvest/RecognizeSalaryPlugin.java" />
         <option value="$PROJECT_DIR$/test/ru/yandex/test/shingles/ShingleTest.java" />
         <option value="$PROJECT_DIR$/test/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/SearchManagerImplTest.java" />
       </list>
     </option>
   </component>
@@ -308,10 +333,6 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -328,24 +349,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -371,11 +374,93 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webharvest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YandexSearchDuplicates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YandexSearchDuplicates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shingles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YandexSearchDuplicates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YandexSearchDuplicates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YandexSearchDuplicates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YandexSearchDuplicates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -450,7 +535,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="Errors" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.19999999" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
@@ -908,7 +993,15 @@
       <created>1355516586533</created>
       <updated>1355516586533</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="change project structure&#10;">
+      <created>1355516634999</created>
+      <updated>1355516634999</updated>
+    </task>
+    <task id="LOCAL-00005" summary="change project structure&#10;">
+      <created>1355516869862</created>
+      <updated>1355516869862</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <option name="clearContext" value="false" />
     <option name="createChangelist" value="false" />
     <servers>
@@ -948,7 +1041,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32973805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -967,8 +1060,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4370331" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40957016" sideWeight="0.6708075" order="0" side_tool="false" content_ui="tabs" x="431" y="128" width="726" height="564" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2796158" sideWeight="0.3081664" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37750384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2353255" sideWeight="0.6230068" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37699318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="101" y="101" width="1078" height="558" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1062,20 +1155,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/SearchManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="0" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.9453376">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/SiteParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="18" selection-start="83" selection-end="83" vertical-scroll-proportion="0.16398714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/config/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="3" selection-start="27" selection-end="48" vertical-scroll-proportion="0.0">
@@ -1135,9 +1214,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="781" selection-end="781" vertical-scroll-proportion="0.4">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/LoggerAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="16" selection-start="578" selection-end="578" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/SalaryTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+        <state line="28" column="9" selection-start="649" selection-end="649" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1149,37 +1242,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/shingles/ShingleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="44" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#613#653#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="16" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="204" selection-end="204" vertical-scroll-proportion="0.21864952">
+        <state line="12" column="13" selection-start="204" selection-end="204" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/VacancyXmlFileParserImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="29" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/SearchManagerImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="406" selection-end="406" vertical-scroll-proportion="0.27331188">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1578" selection-end="1578" vertical-scroll-proportion="-19.24">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/shingles/ShingleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="44" selection-start="653" selection-end="653" vertical-scroll-proportion="-0.68">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="14" selection-start="900" selection-end="900" vertical-scroll-proportion="0.34">
+        <state line="83" column="66" selection-start="3682" selection-end="3682" vertical-scroll-proportion="0.6916566">
           <folding />
         </state>
       </provider>
@@ -1201,7 +1296,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1225,7 +1320,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>Android 2.1 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1241,8 +1336,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
-                <option value="0.5" />
+                <option value="0.19999999" />
               </list>
             </option>
           </splitter-proportions>
