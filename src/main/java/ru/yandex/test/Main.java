@@ -11,8 +11,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author OneHalf
  */
 public class Main {
+
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext beanFactory = new ClassPathXmlApplicationContext("classpath:context.xml");
+        ClassPathXmlApplicationContext beanFactory = new ClassPathXmlApplicationContext("classpath*:context.xml");
         beanFactory.registerShutdownHook();
     }
 }

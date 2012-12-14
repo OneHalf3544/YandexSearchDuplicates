@@ -76,13 +76,11 @@ public class Configuration {
         }
     }
 
-    @SuppressWarnings({"UnusedDeclaration"})
-    Set<SiteParser> getSiteParsers() {
+    public Set<SiteParser> getSiteParsers() {
         return siteParsers;
     }
 
-    @SuppressWarnings({"UnusedDeclaration"})
-    Set<VacancyXmlFileParser> getPreparsedXmlFiles() {
+    public Set<VacancyXmlFileParser> getPreparsedXmlFiles() {
         return preparsedFiles;
     }
 }
