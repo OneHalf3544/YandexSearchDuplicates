@@ -21,19 +21,6 @@
     <build>
         <directory>build</directory>
         <finalName>${artifactId}-${version}</finalName>
-        <sourceDirectory>src</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>conf</directory>
-            </resource>
-        </resources>
-
-        <testSourceDirectory>test</testSourceDirectory>
-        <testResources>
-            <testResource>
-                <directory>testResource</directory>
-            </testResource>
-        </testResources>
     </build>
 
     <dependencies>
