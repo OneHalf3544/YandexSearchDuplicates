@@ -60,7 +60,7 @@ import java.util.List;
      */
     public VacancyXmlFileParserImpl(String name, String resourceName) throws FileNotFoundException {
         this.sourceName = name;
-        this.parse(new FileInputStream(resourceName));
+        this.parse(getClass().getResourceAsStream(resourceName));
     }
 
     /**

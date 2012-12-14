@@ -70,7 +70,7 @@ public class SearchManagerImplTest {
         System.out.println("testDuplicatesFromSelf");
 
         VacancyXmlFileParser file = new VacancyXmlFileParserImpl(
-                "file1", "testResource/vacancyExample2.xml");
+                "file1", "/vacancyExample2.xml");
 
         SearchManagerImpl searchManager = new SearchManagerImpl();
         searchManager.setThresholdOfEquivalence(0.55);
