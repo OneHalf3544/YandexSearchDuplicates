@@ -8,7 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/testResource" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/config" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/target" />

@@ -42,11 +42,11 @@
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="XSLT-Support.FileAssociationsManager">
-    <file url="file://$PROJECT_DIR$/src/config/siteparseconfigs/stylesheet.xsl">
-      <association url="file://$PROJECT_DIR$/src/config/examplefiles/habrahabr.xml" />
-      <association url="file://$PROJECT_DIR$/src/config/examplefiles/job.xml" />
-      <association url="file://$PROJECT_DIR$/src/config/examplefiles/moikrug.xml" />
-      <association url="file://$PROJECT_DIR$/src/config/examplefiles/rabota.xml" />
+    <file url="file://$PROJECT_DIR$/src/main/config/siteparseconfigs/stylesheet.xsl">
+      <association url="file://$PROJECT_DIR$/src/main/config/examplefiles/habrahabr.xml" />
+      <association url="file://$PROJECT_DIR$/src/main/config/examplefiles/job.xml" />
+      <association url="file://$PROJECT_DIR$/src/main/config/examplefiles/moikrug.xml" />
+      <association url="file://$PROJECT_DIR$/src/main/config/examplefiles/rabota.xml" />
     </file>
   </component>
 </project>

@@ -28,59 +28,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="766b44b8-e2c0-406e-9e74-01c2bbbb746f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\config.properties" afterPath="$PROJECT_DIR$/src/config/config.properties" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\context.xml" afterPath="$PROJECT_DIR$/src/config/context.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\examplefiles\habrahabr.xml" afterPath="$PROJECT_DIR$/src/config/examplefiles/habrahabr.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\examplefiles\job.xml" afterPath="$PROJECT_DIR$/src/config/examplefiles/job.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\examplefiles\moikrug.xml" afterPath="$PROJECT_DIR$/src/config/examplefiles/moikrug.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\examplefiles\rabota.xml" afterPath="$PROJECT_DIR$/src/config/examplefiles/rabota.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\log4j.xml" afterPath="$PROJECT_DIR$/src/config/log4j.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\report.xsl" afterPath="$PROJECT_DIR$/src/config/report.xsl" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\siteparseconfigs\habrahabr.xml" afterPath="$PROJECT_DIR$/src/config/siteparseconfigs/habrahabr.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\siteparseconfigs\job.xml" afterPath="$PROJECT_DIR$/src/config/siteparseconfigs/job.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\siteparseconfigs\moikrug.xml" afterPath="$PROJECT_DIR$/src/config/siteparseconfigs/moikrug.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\siteparseconfigs\rabota.xml" afterPath="$PROJECT_DIR$/src/config/siteparseconfigs/rabota.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\conf\siteparseconfigs\stylesheet.xsl" afterPath="$PROJECT_DIR$/src/config/siteparseconfigs/stylesheet.xsl" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\Configuration.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/Configuration.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\Duplicate.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/Duplicate.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\LoggerAspect.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/LoggerAspect.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\Main.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/Main.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\ReportCreator.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/ReportCreator.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\Salary.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/Salary.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\SearchDialog.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/SearchDialog.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\SearchManager.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/SearchManager.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\SiteParser.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/SiteParser.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\Vacancy.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/Vacancy.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\VacancySource.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/VacancySource.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\VacancyXmlFileParser.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/VacancyXmlFileParser.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\ReportCreatorImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/ReportCreatorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\SearchManagerImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/SearchManagerImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\SiteParserImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/SiteParserImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\VacancyImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/VacancyImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\VacancyXmlFileParserImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/VacancyXmlFileParserImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\vacancyparser\Tag.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/vacancyparser/Tag.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\vacancyparser\TagSet.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/vacancyparser/TagSet.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\impl\vacancyparser\VacancySaxParserHandler.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/impl/vacancyparser/VacancySaxParserHandler.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\shingles\Shingle.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/shingles/Shingle.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\webharvest\RecognizeSalaryPlugin.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/webharvest/RecognizeSalaryPlugin.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\ru\yandex\test\webharvest\SalaryVariable.java" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/test/webharvest/SalaryVariable.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\testResource\vacancyExample2.xml" afterPath="$PROJECT_DIR$/src/test/resources/vacancyExample2.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\testResource\vacancyExample3.xml" afterPath="$PROJECT_DIR$/src/test/resources/vacancyExample3.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\testResource\vacancyexample.xml" afterPath="$PROJECT_DIR$/src/test/resources/vacancyexample.xml" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\test\ru\yandex\test\SalaryTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/SalaryTest.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\test\ru\yandex\test\impl\SearchManagerImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/SearchManagerImplTest.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\test\ru\yandex\test\impl\VacancyImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyImplTest.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\test\ru\yandex\test\impl\VacancyXmlFileParserImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/impl/VacancyXmlFileParserImplTest.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\test\ru\yandex\test\shingles\ShingleTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/shingles/ShingleTest.java" />
-      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\test\ru\yandex\test\webharvest\RecognizeSalaryPluginTest.java" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/test/webharvest/RecognizeSalaryPluginTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\config.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\context.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\habrahabr.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\job.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\moikrug.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\rabota.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\log4j.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\report.xsl" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\habrahabr.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\job.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\moikrug.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\rabota.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\stylesheet.xsl" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\config.properties" afterPath="$PROJECT_DIR$/src/main/config/config.properties" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\context.xml" afterPath="$PROJECT_DIR$/src/main/config/context.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\habrahabr.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/habrahabr.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\job.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/job.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\moikrug.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/moikrug.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\examplefiles\rabota.xml" afterPath="$PROJECT_DIR$/src/main/config/examplefiles/rabota.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\log4j.xml" afterPath="$PROJECT_DIR$/src/main/config/log4j.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\report.xsl" afterPath="$PROJECT_DIR$/src/main/config/report.xsl" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\habrahabr.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/habrahabr.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\job.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/job.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\moikrug.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/moikrug.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\rabota.xml" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/rabota.xml" />
+      <change type="MOVED" beforePath="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config\siteparseconfigs\stylesheet.xsl" afterPath="$PROJECT_DIR$/src/main/config/siteparseconfigs/stylesheet.xsl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="YandexSearchDuplicates.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="766b44b8-e2c0-406e-9e74-01c2bbbb746f" time="1355516118194" ignored="false" />
+    <file path="/Dummy.txt" changelist="766b44b8-e2c0-406e-9e74-01c2bbbb746f" time="1355516507057" ignored="false" />
     <file path="/pom.xml" changelist="766b44b8-e2c0-406e-9e74-01c2bbbb746f" time="1355516274655" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -374,22 +352,8 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -407,33 +371,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="siteparseconfigs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YandexSearchDuplicates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="examplefiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -534,6 +476,7 @@
       <recent name="ru.yandex.test.impl" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\main" />
       <recent name="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\config" />
       <recent name="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\test\resources" />
       <recent name="C:\Users\OneHalf\IdeaProjects\YandexSearchDuplicates\src\test\java" />
@@ -961,7 +904,11 @@
       <created>1310382650361</created>
       <updated>1310586811183</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="change project structure&#10;">
+      <created>1355516586533</created>
+      <updated>1355516586533</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <option name="clearContext" value="false" />
     <option name="createChangelist" value="false" />
     <servers>
@@ -1014,6 +961,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266564" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6918336" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819724" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3037037" sideWeight="0.40412045" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4370331" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1027,7 +975,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819724" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6918336" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32927817" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3451464" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24979724" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1039,8 +986,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <value>
         <are-packages-shown value="false" />
@@ -1129,14 +1076,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/config.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/config/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="3" selection-start="27" selection-end="48" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/context.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/config/context.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="0" selection-start="860" selection-end="860" vertical-scroll-proportion="0.0">
           <folding />
@@ -1172,12 +1119,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/webharvest/SalaryVariable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="13" selection-start="1135" selection-end="1135" vertical-scroll-proportion="1.2572347" />
+        <state line="46" column="13" selection-start="1135" selection-end="1135" vertical-scroll-proportion="1.2572347">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/yandex/test/webharvest/RecognizeSalaryPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="67" selection-start="485" selection-end="485" vertical-scroll-proportion="0.3908046" />
+        <state line="14" column="67" selection-start="485" selection-end="485" vertical-scroll-proportion="0.3908046">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ru/yandex/test/SalaryTest.java">
