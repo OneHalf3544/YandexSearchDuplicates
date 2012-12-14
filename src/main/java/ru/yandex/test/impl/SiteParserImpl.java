@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class SiteParserImpl implements SiteParser {
     private static final Logger log = Logger.getLogger(SiteParserImpl.class);
-    private static final String WORKING_DIRECTORY = "..";
+    private static final String WORKING_DIRECTORY = "";
 
     private final String siteName;
     private final String configResourceName;
