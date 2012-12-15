@@ -7,6 +7,7 @@ package ru.yandex.test;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
@@ -15,12 +16,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 /**
  *
  * @author OneHalf
  */
+@Service
 public class SearchDialog extends javax.swing.JFrame {
 
     private static final Logger log = Logger.getLogger(SearchDialog.class);
@@ -48,10 +51,9 @@ public class SearchDialog extends javax.swing.JFrame {
     private JPanel pnlFiles;
     private JCheckBox cbSearchInSelf;
 
-    @SuppressWarnings({"UnusedDeclaration"})
     @PostConstruct
-    public void start() {
-        SwingUtilities.invokeLater(new Runnable() {
+    public void start() throws InvocationTargetException, InterruptedException {
+        SwingUtilities.invokeAndWait(new Runnable() {
             @Override
             public void run() {
                 SearchDialog.this.setVisible(true);
@@ -62,13 +64,19 @@ public class SearchDialog extends javax.swing.JFrame {
     /**
      * Creates new form SearchDialog
      */
-    public SearchDialog() {
+    @Autowired
+    public SearchDialog(Configuration configuration) {
+        log.info("create searchDialog");
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ex) {
             log.error("can not set system look and feel", ex);
         }
         initComponents();
+
+        setSiteParsers(configuration.getSiteParsers());
+        setPreparsedXmlFiles(configuration.getPreparsedXmlFiles());
     }
 
     private void initComponents() {
@@ -222,7 +230,6 @@ public class SearchDialog extends javax.swing.JFrame {
      * Установка сайтов-источников. Добавляет сайты источники в программу и ChekBox'ы в диалог
      * @param siteParsers Сайты-источники
      */
-    @SuppressWarnings({"UnusedDeclaration"})
     public void setSiteParsers(Set<SiteParser> siteParsers) {
         for (JCheckBox checkBox : siteCheckBoxes.keySet()) {
             pnlSites.remove(checkBox);
@@ -240,7 +247,6 @@ public class SearchDialog extends javax.swing.JFrame {
      * Установка файлов-источников. Добавляет файлы-источники в программу и ChekBox'ы в диалог
      * @param files Файлы-источники
      */
-    @SuppressWarnings({"UnusedDeclaration"})
     public void setPreparsedXmlFiles(Set<VacancyXmlFileParser> files) {
         for (JCheckBox checkBox : preparsedCheckBoxes.keySet()) {
             pnlFiles.remove(checkBox);

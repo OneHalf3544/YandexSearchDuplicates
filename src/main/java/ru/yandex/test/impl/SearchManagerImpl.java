@@ -24,7 +24,7 @@ public class SearchManagerImpl implements SearchManager {
 
     private static final Logger log = Logger.getLogger(SearchManagerImpl.class);
 
-    @Value("equivalence.threshold")
+    @Value("${equivalence.threshold}")
     private double thresholdOfEuivalence;
 
     private boolean searchInSelf = true;

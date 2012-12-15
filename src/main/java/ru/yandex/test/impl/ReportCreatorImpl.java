@@ -50,7 +50,7 @@ public class ReportCreatorImpl implements ReportCreator {
                         
             fileResult = File.createTempFile("dupl", ".html");
             TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(new StreamSource("conf/report.xsl"));
+            Transformer transformer = factory.newTransformer(new StreamSource("config/report.xsl"));
             transformer.transform(new DOMSource(document), new StreamResult(fileResult));
                     
         } catch (TransformerException ex) {
